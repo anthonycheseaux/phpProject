@@ -13,6 +13,7 @@ class User
 	public $role;
 	public $email;
 	public $endDateShipper;
+	private $inactive;
 	
 	public function __construct($id, $firstname, $lasname, $password, $title, $adress1, $adress2,
 			$city, $role, $email, $society, $endDateShipper)
@@ -30,6 +31,14 @@ class User
 		$this->society=$society;
 		$this->endDateShipper=$endDateShipper;
 	
+	}
+	
+	function isInactive() {
+		return $this->inactive;
+	}
+	
+	function setInactive($inactive) {
+		$this->inactive = $inactive;
 	}
 }
 ?>
