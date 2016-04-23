@@ -16,7 +16,7 @@
  \************************************************************/
 class User
 {
-	public function __construct($id, $firstname, $lasname, $password, $title, $adress1, $adress2,
+public function __construct($id, $firstname, $lasname, $password, $title, $adress1, $adress2,
 			$city, $role, $email, $society, $endDateShipper)
 	{
 		$this->id = $id;
@@ -172,5 +172,13 @@ class User
 	private $role;
 	private $email;
 	private $endDateShipper;
+
+	function isInactive() {
+		return $this->inactive;
+	}
+	
+	function setInactive($inactive) {
+		$this->inactive = $inactive;
+	}
 }
 ?>
