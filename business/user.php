@@ -160,6 +160,14 @@ public function __construct($id, $firstname, $lasname, $password, $title, $adres
 		$this->endDateShipper = $endDateShipper;
 	}
 	
+	public function isInactive() {
+		return $this->inactive;
+	}
+	
+	public function setInactive($inactive) {
+		$this->inactive = $inactive;
+	}
+	
 	private $id;
 	private $firstname;
 	private $lastname;
@@ -172,13 +180,5 @@ public function __construct($id, $firstname, $lasname, $password, $title, $adres
 	private $role;
 	private $email;
 	private $endDateShipper;
-
-	function isInactive() {
-		return $this->inactive;
-	}
-	
-	function setInactive($inactive) {
-		$this->inactive = $inactive;
-	}
 }
 ?>
