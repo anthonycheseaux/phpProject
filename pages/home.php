@@ -10,7 +10,7 @@ echo 'anthony';
 
 ?>
 
-<h1><?php echo _BIENVENUE;?></h1>
+<h1><?php echo _US_SHIPPER_SUBSCR_END;?></h1>
 <div><?php echo _BONNE_NAVIGATION;?></div>
 
 <a href="?lang=fr" type="button">Français</a>
