@@ -27,4 +27,7 @@ $variables = array(
  
 renderLayoutWithContentFile("/pages/home.php", $variables);
 
+
+
 ?>
+
