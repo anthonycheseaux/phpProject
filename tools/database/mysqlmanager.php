@@ -1,13 +1,28 @@
 <?php
-require_once 'mysqlmanager.php';
-require_once 'business/user.php';
+/************************************************************\
+ *
+ * File			mysqlmanager.php
+ *
+ * Language		PHP
+ *
+ * Author		Sylvain Tauxe
+ * Creation		20160417
+ * modification 20160424
+ *
+ * Project		teemw
+ *
+ \************************************************************/
+
+
+require_once 'mysqlconnection.php';
+require_once '../business/user.php';
 class MySqlManager
 {
 	private $_conn;
 
 	public function __construct()
 	{
-		$this->_conn=new MySqlConn();
+		$this->_conn=new MySqlConnection();
 	}
 
 	public function checkLoginCustommer ($email, $pwd){

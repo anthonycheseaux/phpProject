@@ -115,7 +115,7 @@ public function __construct($id, $firstname, $lasname, $password, $title, $adres
 		return $this->adress2;
 	}
 	
-	public function setAddress1($adress2)
+	public function setAddress2($adress2)
 	{
 		$this->adress2 = $adress2;
 	}
