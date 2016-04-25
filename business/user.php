@@ -16,12 +16,12 @@
  \************************************************************/
 class User
 {
-public function __construct($id, $firstname, $lasname, $password, $title, $adress1, $adress2,
+public function __construct($id, $firstname, $lastname, $password, $title, $adress1, $adress2,
 			$city, $role, $email, $society, $endDateShipper)
 	{
 		$this->id = $id;
 		$this->firstname = $firstname;
-		$this->lastname = $lasname;
+		$this->lastname = $lastname;
 		$this->password = $password;
 		$this->title = $title;
 		$this->adress1 = $adress1;
