@@ -1,4 +1,19 @@
 <?php
+/************************************************************\
+ *
+ * File			mysqlconnection.php
+ *
+ * Language		PHP
+ *
+ * Author		Anthony Cheseaux, Sylvain Tauxe
+ * Creation		20160418
+ * modification 20160423
+ *
+ * Project		teemw
+ *
+ \************************************************************/
+
+
 class MySqlConnection
 {
 	const HOST = "127.0.0.1";
@@ -45,7 +60,7 @@ class MySqlConnection
 		
 		if($e[1]!=null){
 			if($e[1] == 1062) //test if username already exist
-				return 'doubloon';
+				return 'doublon';
 				else
 					die(print_r($this->getConnection()->errorInfo(), true));
 		}

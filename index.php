@@ -7,7 +7,6 @@
  *
  * Author		Anthony Cheseaux
  * Creation		20160419
- * Last update	20160419
  *
  * Project		teemw
  * Package		include
