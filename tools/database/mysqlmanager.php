@@ -7,7 +7,7 @@
  *
  * Author		Sylvain Tauxe
  * Creation		20160417
- * modification 20160424
+ * modification 20160509
  *
  * Project		teemw
  *
@@ -67,6 +67,14 @@ class MySqlManager
 		user_adress1, user_adress2, user_city, user_role, user_email, user_society)
 		VALUES ('$fname', '$lname', '$pwd', '$title', '$adr1', '$adr2', '$city', '$role', '$email', '$society');";
 		return $this->_conn->executeQuery($query);
+	}
+	
+
+	public function updateUser($id, $adress1, $adress2, $password, $society){
+	
+		$query = "UPDATE user SET user_society = '$society', user_adress1 = '$adress1', user_adress2 = '$adress2', user_password = '$password' WHERE  user_id ='$id' ;";
+		return $this->_conn->executeQuery($query);
+	
 	}
 	
 
