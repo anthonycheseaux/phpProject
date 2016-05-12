@@ -24,7 +24,7 @@ $variables = array(
 		'setInIndexDotPhp' => $setInIndexDotPhp
 );
  
-renderLayoutWithContentFile("/pages/adlist.php", $variables);
+renderLayoutWithContentFile("/pages/home.php", $variables);
 
 
 
