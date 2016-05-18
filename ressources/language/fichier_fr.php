@@ -89,6 +89,54 @@ define("_AD_DATE_END","Date de fin");
 define("_BIENVENUE","Bienvenue sur mon site web !");
 define("_BONNE_NAVIGATION","Je vous souhaite une bonne navigation.");
 
+/*
+ * Traduction de Pages/inputAd.php
+ */
+define("_NOUVELLE_ANNONCE", "Nouvelle annonce");
+define("_SAISIR_ANNONCE", "Saisir une annonce");
+define("_CHOISIR_CATEGORIE", "Choisir une catégorie");
+define("_SELECTION", "selection");
+define("_FERMER", "fermer");
+define("_CE_MOIS", "ce mois");
+define("_ENREGISTRER_ANNONCE", "Enregistrer l'annonce");
+// Jours abrégés
+define("_JOUR_LU", "Lu");
+define("_JOUR_MA", "Ma");
+define("_JOUR_ME", "Me");
+define("_JOUR_JE", "Je");
+define("_JOUR_VE", "Ve");
+define("_JOUR_SA", "Sa");
+define("_JOUR_DI", "Di");
+// Mois
+define("_JANVIER", "Janvier");
+define("_FEVRIER", "Fevrier");
+define("_MARS", "Mars");
+define("_AVRIL", "Avril");
+define("_MAI", "Mai");
+define("_JUIN", "Juin");
+define("_JUILLET", "Juillet");
+define("_AOUT", "Aout");
+define("_SEPTEMBRE", "Septembre");
+define("_OCTOBRE", "Octobre");
+define("_NOVEMBRE", "Novembre");
+define("_DECEMBRE", "Decembre");
+
+/*
+ * Traduction des catégories
+ */
+define("_CATEGORIE_DEMENAGEMENT", "Déménagement");
+define("_CATEGORIE_MOBILIER", "Mobilier");
+define("_CATEGORIE_ELECTROMENAGER", "Electroménager");
+define("_CATEGORIE_CARTONS", "Cartons");
+define("_CATEGORIE_PALETTES", "Palettes");
+define("_CATEGORIE_VEHICULES", "Véhicules");
+define("_CATEGORIE_DEUX_ROUES", "Deux-roues");
+define("_CATEGORIE_BATEAU", "Bateaux");
+define("_CATEGORIE_ANIMAUX", "Animaux");
+define("_CATEGORIE_DIVERS", "Divers");
+
+
+
 
 /*
  * Traduction de ...
