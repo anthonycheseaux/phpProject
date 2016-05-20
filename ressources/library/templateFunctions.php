@@ -28,4 +28,23 @@
 		
 		require_once (TEMPLATES_PATH . "/footer.php");
 	}
+	
+	function renderLayout($contentFile) {
+		$contentFileFullPath = TEMPLATES_PATH . "/../../" . $contentFile;
+	
+		require_once (TEMPLATES_PATH . "/header.php");
+		
+	
+		
+		if (file_exists ( $contentFileFullPath )) {
+			require_once ($contentFileFullPath);
+		}
+		else {
+			require_once (TEMPLATES_PATH . "/error.php");
+		}
+		
+		
+		
+		require_once (TEMPLATES_PATH . "/footer.php");
+	}
 ?>

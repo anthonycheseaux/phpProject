@@ -1,73 +1,67 @@
 <?php
 
 // Configuration des traductions
-session_start(); // permet d'activer le contenu de la Session, soit lang
+session_start (); // permet d'activer le contenu de la Session, soit lang
 
-if(!empty($_GET['lang'])){
-	switch($_GET['lang']){
-		case "fr":
-			$_SESSION['lang'] = "fr";
+if (! empty ( $_GET ['lang'] )) {
+	switch ($_GET ['lang']) {
+		case "fr" :
+			$_SESSION ['lang'] = "fr";
 			break;
-		case "en":
-			$_SESSION['lang'] = "en";
+		case "en" :
+			$_SESSION ['lang'] = "en";
 			break;
-		case "it":
-			$_SESSION['lang'] = "it";
+		case "it" :
+			$_SESSION ['lang'] = "it";
 			break;
 		default :
-			$_SESSION['lang'] = "fr"; //au cas ou quelqu'un rentre autre chose que fr/en ou it
+			$_SESSION ['lang'] = "fr"; // au cas ou quelqu'un rentre autre chose que fr/en ou it
 			break;
 	}
 }
-if (empty($_SESSION['lang'])){
-	$_SESSION['lang'] = 'fr';
+if (empty ( $_SESSION ['lang'] )) {
+	$_SESSION ['lang'] = 'fr';
 }
 
-switch($_SESSION['lang']){
-	case "fr":
+switch ($_SESSION ['lang']) {
+	case "fr" :
 		$fichier_langage = "ressources/language/fichier_fr.php";
 		break;
-	case "en":
+	case "en" :
 		$fichier_langage = "ressources/language/fichier_en.php";
 		break;
-	case "it":
+	case "it" :
 		$fichier_langage = "fichier_it.php";
 		break;
 }
-include($fichier_langage);
-
-
+// include($fichier_langage);
 
 // Configuration
-$config = array(
-    "db" => array(
-        "db1" => array(
-            "dbname" => "",
-            "username" => "",
-            "password" => "",
-            "host" => ""
-        )
-    ),
-    "urls" => array(
-        "baseUrl" => ""
-    ),
-    "paths" => array(
-        "resources" => "/resources",
-        "images" => array(
-            "content" => $_SERVER["DOCUMENT_ROOT"] . "../img/content",
-            "layout" => $_SERVER["DOCUMENT_ROOT"] . "../img/layout"
-        )
-    )
+$config = array (
+		"db" => array (
+				"db1" => array (
+						"dbname" => "",
+						"username" => "",
+						"password" => "",
+						"host" => "" 
+				) 
+		),
+		"urls" => array (
+				"baseUrl" => "" 
+		),
+		"paths" => array (
+				"resources" => "/resources",
+				"images" => array (
+						"content" => $_SERVER ["DOCUMENT_ROOT"] . "../img/content",
+						"layout" => $_SERVER ["DOCUMENT_ROOT"] . "../img/layout" 
+				) 
+		) 
 );
- 
 
-defined("LIBRARY_PATH")
-    or define("LIBRARY_PATH", realpath(dirname(__FILE__) . '/library'));
-     
-defined("TEMPLATES_PATH")
-    or define("TEMPLATES_PATH", realpath(dirname(__FILE__) . '/templates'));
- 
-defined("LANGUAGE_PATH")
-    or define("LANGUAGE_PATH", realpath(dirname(__FILE__) . '/language'));
+defined ( "LIBRARY_PATH" ) or define ( "LIBRARY_PATH", realpath ( dirname ( __FILE__ ) . '/library' ) );
+
+defined ( "TEMPLATES_PATH" ) or define ( "TEMPLATES_PATH", realpath ( dirname ( __FILE__ ) . '/templates' ) );
+
+defined ( "LANGUAGE_PATH" ) or define ( "LANGUAGE_PATH", realpath ( dirname ( __FILE__ ) . '/language' ) );
 
 ?>

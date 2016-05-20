@@ -13,7 +13,7 @@
  * 
  \************************************************************/
 
-include_once '../ressources/templates/header.php';
+require_once('../ressources/templates/header.php');
 
 ?>
 
@@ -187,5 +187,5 @@ Register for Customer :
 
 <?php
 
-include_once '../ressources/templates/footer.php';
+require_once('../ressources/templates/footer.php');
 ?>
