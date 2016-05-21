@@ -61,7 +61,7 @@ if(isset($_GET['action'])){
 function logout(){
 	
 	session_destroy();
-	header("location: ../pages/login.php");
+	header("location: ../pages/home.php");
 	exit;
 }
 
@@ -75,7 +75,7 @@ function authenticateShipper($mysql){
 		$_SESSION['from_data'] = array($email, $pwd);
 		$_SESSION['msg'] = 'Email or password incorrect';
 		$_SESSION['rank'] = -1;
-		header("location: ../pages/login.php");
+		header("location: ../pages/home.php");
 		exit();
 	}
 	
@@ -98,7 +98,7 @@ function authenticateCustomer($mysql){
 		$_SESSION['from_data'] = array($email, $pwd);
 		$_SESSION['msg'] = 'Email or password incorrect';
 		$_SESSION['rank'] = -1;
-		header("location: ../pages/login.php");
+		header("location: ../pages/home.php");
 		exit;
 	}
 
@@ -187,7 +187,7 @@ function registerShipper($mysql){
 		$_SESSION['msg'] = $msg;
 		$_SESSION['form_data'] = array($fname, $lname, $pwd, $title, $adress1, $adress2, $postCode, $cityName,  $country, $email, $society); //To auto complete the fields no empty
 
-		header("location: ../pages/register.php");
+		header("location: ../pages/home.php");
 
 		exit();
 	}
@@ -205,7 +205,7 @@ function registerShipper($mysql){
 		$_SESSION['msg'] = 'Registration succeeded';
 	}
 	
-	header("location: ../pages/register.php");
+	header("location: ../pages/home.php");
 	exit;
 }
 

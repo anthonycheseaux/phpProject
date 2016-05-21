@@ -104,6 +104,20 @@ $form_data_User = isset ( $_SESSION ['form_data_user'] ) ? $_SESSION ['form_data
 );
 ?>
 	
+	 <?php
+	//if ($rank == 'shipper_ok'){?>
+	<!--<br>
+	<br>
+		<div class="alert alert-success" role="alert">
+		<strong>Success!</strong> Indicates a successful or positive action.
+		</div>-->
+	<?php
+	// }
+	//var_dump($rank);
+	//$rank=-1;
+	
+	?> 	
+	
 	<!-- Register Shipper Modal -->
 	<div class="modal fade" id="registerShipperModal" tabindex="-1"
 		role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"

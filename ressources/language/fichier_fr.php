@@ -89,17 +89,28 @@ define("_AD_DATE_END","Date de fin");
 define("_BIENVENUE","Bienvenue sur mon site web !");
 define("_BONNE_NAVIGATION","Je vous souhaite une bonne navigation.");
 
+define("_LOGIN", "Login");
+define("_REGISTER", "S'enregistrer");
+define("_I_AM_A_SHIPPER", "Je suis un transporteur");
+define("_I_AM_A_CUSTOMER", "Je suis un client");
+define("_REGISTER_FOR_SHIPPER", "CrÃ©er un compte transporteur");
+define("_REGISTER_FOR_CUSTOMER", "CrÃ©er un compte client");
+define("_MR", "Monsieur");
+define("_MS", "Madame");
+define("_NIP", "NPA");
+define("_CREATE", "CrÃ©er");
+
 /*
  * Traduction de Pages/inputAd.php
  */
 define("_NOUVELLE_ANNONCE", "Nouvelle annonce");
 define("_SAISIR_ANNONCE", "Saisir une annonce");
-define("_CHOISIR_CATEGORIE", "Choisir une catégorie");
+define("_CHOISIR_CATEGORIE", "Choisir une catï¿½gorie");
 define("_SELECTION", "selection");
 define("_FERMER", "fermer");
 define("_CE_MOIS", "ce mois");
 define("_ENREGISTRER_ANNONCE", "Enregistrer l'annonce");
-// Jours abrégés
+// Jours abrï¿½gï¿½s
 define("_JOUR_LU", "Lu");
 define("_JOUR_MA", "Ma");
 define("_JOUR_ME", "Me");
@@ -122,14 +133,14 @@ define("_NOVEMBRE", "Novembre");
 define("_DECEMBRE", "Decembre");
 
 /*
- * Traduction des catégories
+ * Traduction des catï¿½gories
  */
-define("_CATEGORIE_DEMENAGEMENT", "Déménagement");
+define("_CATEGORIE_DEMENAGEMENT", "Dï¿½mï¿½nagement");
 define("_CATEGORIE_MOBILIER", "Mobilier");
-define("_CATEGORIE_ELECTROMENAGER", "Electroménager");
+define("_CATEGORIE_ELECTROMENAGER", "Electromï¿½nager");
 define("_CATEGORIE_CARTONS", "Cartons");
 define("_CATEGORIE_PALETTES", "Palettes");
-define("_CATEGORIE_VEHICULES", "Véhicules");
+define("_CATEGORIE_VEHICULES", "Vï¿½hicules");
 define("_CATEGORIE_DEUX_ROUES", "Deux-roues");
 define("_CATEGORIE_BATEAU", "Bateaux");
 define("_CATEGORIE_ANIMAUX", "Animaux");

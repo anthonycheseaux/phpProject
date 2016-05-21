@@ -1,5 +1,5 @@
 <?php
-
+echo(file_exists("language/fichier_fr.php"));
 // Configuration des traductions
 session_start (); // permet d'activer le contenu de la Session, soit lang
 
@@ -25,16 +25,16 @@ if (empty ( $_SESSION ['lang'] )) {
 
 switch ($_SESSION ['lang']) {
 	case "fr" :
-		$fichier_langage = "ressources/language/fichier_fr.php";
+		$fichier_langage = "language/fichier_fr.php";
 		break;
 	case "en" :
-		$fichier_langage = "ressources/language/fichier_en.php";
+		$fichier_langage = "language/fichier_en.php";
 		break;
 	case "it" :
 		$fichier_langage = "fichier_it.php";
 		break;
 }
-// include($fichier_langage);
+ include($fichier_langage);
 
 // Configuration
 $config = array (
