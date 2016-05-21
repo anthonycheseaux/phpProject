@@ -14,7 +14,7 @@
  \************************************************************/
 
 require_once 'mysqlconnection.php';
-require_once '../../business/ad.php';
+require_once '/business/ad.php';
 class MySqlAdManager {
 	
 	public function __construct() {
@@ -33,7 +33,17 @@ class MySqlAdManager {
 	}
 	
 	public function getAllAds() {
-		// TODO
+		$query = "SELECT * FROM ad";
+		$result = $this->_conn->selectDB($query);
+		while($row = $result->fetch()) {
+			$ad = new Ad($row[$this::ID], $row[$this::USER], $row[$this::CATEGORY], 
+					$row[$this::DEPARTURE_CITY], $row[$this::DESTINATION_CITY], $row[$this::TITLE], 
+					$row[$this::DESCRIPTION], $row[$this::TOTAL_WEIGHT], $row[$this::OBJECTS_NUMBER], 
+					$row[$this::TOTAL_VOLUME], $row[$this::DATE_BEGINNING], $row[$this::DATE_END]);
+			$response[] = $ad;
+			unset($ad);
+		}
+		return $response;
 	}
 	
 	public function createAd(Ad $ad) {
