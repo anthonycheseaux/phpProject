@@ -89,17 +89,35 @@ define("_AD_DATE_END","Date de fin");
 define("_BIENVENUE","Bienvenue sur mon site web !");
 define("_BONNE_NAVIGATION","Je vous souhaite une bonne navigation.");
 
+define("_LOGIN", "Login");
+define("_REGISTER", "S'enregistrer");
+define("_I_AM_A_SHIPPER", "Je suis un transporteur");
+define("_I_AM_A_CUSTOMER", "Je suis un client");
+define("_REGISTER_FOR_SHIPPER", "CrÃ©er un compte transporteur");
+define("_REGISTER_FOR_CUSTOMER", "CrÃ©er un compte client");
+define("_MR", "Monsieur");
+define("_MS", "Madame");
+define("_NIP", "NPA");
+define("_CREATE", "CrÃ©er");
+define("_ALREADY_CLIENT", "DÃ©jÃ  client ?");
+define("_ALREADY_CLIENT_TEXT", "Que vous soyez un transporteur ou un demandeur de transport, accÃ©der Ã  votre espace personnel afin de profiter des incroyables services offerts par TEEMW !");
+define("_SUBSCRIBE_SHIPPER", "Vous Ãªtes transporteur ?");
+define("_SUBSCRIBE_SHIPPER_TEXT", "N'hÃ©sitez plus et inscrivez-vous pour un tarif avantageux afin de faire valoir vos service auprÃ¨s de nombreux demandeur qui postent quotidiennement des requÃªtes !");
+define("_SUBSCRIBE_CUSTOMER", "A la recherche d'un transporteur ?");
+define("_SUBSCRIBE_CUSTOMER_TEXT", "CrÃ©er un compte gratuitement et accÃ©der Ã  un espace dÃ©diÃ© oÃ¹ vous pourrez poster vos demandes et recevrez des devis dans les plus brefs dÃ©lais !");
+define("_OUR_SERVICES", "Nos services");
+
 /*
  * Traduction de Pages/inputAd.php
  */
 define("_NOUVELLE_ANNONCE", "Nouvelle annonce");
 define("_SAISIR_ANNONCE", "Saisir une annonce");
-define("_CHOISIR_CATEGORIE", "Choisir une catégorie");
+define("_CHOISIR_CATEGORIE", "Choisir une catï¿½gorie");
 define("_SELECTION", "selection");
 define("_FERMER", "fermer");
 define("_CE_MOIS", "ce mois");
 define("_ENREGISTRER_ANNONCE", "Enregistrer l'annonce");
-// Jours abrégés
+// Jours abrï¿½gï¿½s
 define("_JOUR_LU", "Lu");
 define("_JOUR_MA", "Ma");
 define("_JOUR_ME", "Me");
@@ -125,26 +143,26 @@ define("_DECEMBRE", "Decembre");
  * Traduction de tools/business/check_info_ad.php
  */
 define("_MANQUE_TITRE", "Saisissez un titre");
-define("_MANQUE_CATEGORIE", "Sélectionnez une catégorie");
-define("_MANQUE_LOCALITE_DEPART", "Choisissez une localité de départ");
-define("_MANQUE_LOCALITE_DESTINATION", "Choisissez une localité d'arrivée");
+define("_MANQUE_CATEGORIE", "Sï¿½lectionnez une catï¿½gorie");
+define("_MANQUE_LOCALITE_DEPART", "Choisissez une localitï¿½ de dï¿½part");
+define("_MANQUE_LOCALITE_DESTINATION", "Choisissez une localitï¿½ d'arrivï¿½e");
 define("_MANQUE_DESCRIPTION", "Veuillez saisir une description pour votre annonce");
 define("_MANQUE_POIDS_TOTAL", "Saisissez le poids total de la marchandise");
 define("_MANQUE_NOMBRE_D_OBJETS", "Saisissez le nombre total d'objets");
 define("_MANQUE_VOLUME_TOTAL", "Saisissez le volume total du transport");
-define("_MANQUE_DATE_DEBUT", "Il manque la date de début");
+define("_MANQUE_DATE_DEBUT", "Il manque la date de dï¿½but");
 define("_MANQUE_DATE_FIN", "Il manque la date de fin");
-define("_DATES_FIN_DEBUT_INVERSEES", "Ne peut être antérieure à la date de début");
-define("_ANNONCE_ENREGISTREE", "Votre annonce est enregistrée");
+define("_DATES_FIN_DEBUT_INVERSEES", "Ne peut ï¿½tre antï¿½rieure ï¿½ la date de dï¿½but");
+define("_ANNONCE_ENREGISTREE", "Votre annonce est enregistrï¿½e");
 /*
- * Traduction des catégories
+ * Traduction des catï¿½gories
  */
-define("_CATEGORIE_DEMENAGEMENT", "Déménagement");
+define("_CATEGORIE_DEMENAGEMENT", "Dï¿½mï¿½nagement");
 define("_CATEGORIE_MOBILIER", "Mobilier");
-define("_CATEGORIE_ELECTROMENAGER", "Electroménager");
+define("_CATEGORIE_ELECTROMENAGER", "Electromï¿½nager");
 define("_CATEGORIE_CARTONS", "Cartons");
 define("_CATEGORIE_PALETTES", "Palettes");
-define("_CATEGORIE_VEHICULES", "Véhicules");
+define("_CATEGORIE_VEHICULES", "Vï¿½hicules");
 define("_CATEGORIE_DEUX_ROUES", "Deux-roues");
 define("_CATEGORIE_BATEAU", "Bateaux");
 define("_CATEGORIE_ANIMAUX", "Animaux");

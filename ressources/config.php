@@ -1,5 +1,5 @@
 <?php
-
+echo(file_exists("language/fichier_fr.php"));
 // Configuration des traductions
 session_start (); // permet d'activer le contenu de la Session, soit lang
 
