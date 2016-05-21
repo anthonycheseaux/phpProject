@@ -1,5 +1,6 @@
 <?php
 require_once ('../ressources/templates/header.php');
+require_once ('../ressources/config.php');
 ?>
 <body>
 	<nav class="navbar navbar-full navbar-inverse navbar-fixed-top">
@@ -22,14 +23,14 @@ require_once ('../ressources/templates/header.php');
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
-					<li><a data-toggle="modal" href="#loginModal">Login</a></li>
+					<li><a data-toggle="modal" href="#loginModal"><?php echo _LOGIN?></a></li>
 					<li class="dropdown pull-right"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false">Register<span class="caret"></span></a>
+						aria-expanded="false"><?php echo _REGISTER?><span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a data-toggle="modal" href="#registerShipperModal">I am a shipper</a></li>
+							<li><a data-toggle="modal" href="#registerShipperModal"><?php echo _I_AM_A_SHIPPER?></a></li>
 							<li role="separator" class="divider"></li>
-							<li><a href="#">I am a customer</a></li>
+							<li><a data-toggle="modal" href="#registerCustomerModal"><?php echo _I_AM_A_CUSTOMER?></a></li>
 						</ul></li>
 				</ul>
 			</div>
@@ -42,7 +43,7 @@ require_once ('../ressources/templates/header.php');
 		style="display: none;">
 		<div class="modal-dialog">
 			<div class="loginmodal-container">
-				<h1>Login</h1>
+				<h1><?php echo _LOGIN?></h1>
 				<br>
 				<?php
 				$msg = isset ( $_SESSION ['msg'] ) ? '<span class="error">*' . $_SESSION ['msg'] . "</span>" : '';
@@ -61,152 +62,231 @@ require_once ('../ressources/templates/header.php');
 					if ($rank == - 1)
 						echo $msg;
 					?>
-					<input type="text" name="email" placeholder="Email">
-					<input type="password" name="pwd" placeholder="Password">
-					<input type="submit" name="action" class="login loginmodal-submit" value="Login">
+					<input type="text" name="email"
+						placeholder="<?php echo _US_EMAIL?>" required> <input
+						type="password" name="pwd" placeholder="<?php echo _US_PASSWORD?>"
+						required> <input type="submit" name="action"
+						class="login loginmodal-submit" value="<?php echo _LOGIN?>"
+						required>
 				</form>
-
-				<div class="login-help">
-					<a href="register.php">Register</a> - <a href="#">Forgot Password</a>
-				</div>
 			</div>
 		</div>
 	</div>
 
-<?php //Récupération infos / message d'erreur
-$rank = isset($_SESSION['rank']) ? $_SESSION['rank'] : 0;
-$msg = isset($_SESSION['msg']) ? '<span class="error">*'.$_SESSION['msg']."</span>" : '' ;
-$form_data_Shipper = isset($_SESSION['form_data']) ? $_SESSION['form_data'] : array('','','','','','','','','','','');
-$form_data_User = isset($_SESSION['form_data_user']) ? $_SESSION['form_data_user'] : array('','','','','','','','','','');
+<?php
+// Rï¿½cupï¿½ration infos / message d'erreur
+$rank = isset ( $_SESSION ['rank'] ) ? $_SESSION ['rank'] : 0;
+$msg = isset ( $_SESSION ['msg'] ) ? '<span class="error">*' . $_SESSION ['msg'] . "</span>" : '';
+$form_data_Shipper = isset ( $_SESSION ['form_data'] ) ? $_SESSION ['form_data'] : array (
+		'',
+		'',
+		'',
+		'',
+		'',
+		'',
+		'',
+		'',
+		'',
+		'',
+		'' 
+);
+$form_data_User = isset ( $_SESSION ['form_data_user'] ) ? $_SESSION ['form_data_user'] : array (
+		'',
+		'',
+		'',
+		'',
+		'',
+		'',
+		'',
+		'',
+		'',
+		'' 
+);
 ?>
-
+	
+	<!-- Register Shipper Modal -->
 	<div class="modal fade" id="registerShipperModal" tabindex="-1"
 		role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
 		style="display: none;">
 		<div class="modal-dialog">
 			<div class="loginmodal-container">
-				<h1>Register for Shipper</h1>
+				<h1><?php echo _REGISTER_FOR_SHIPPER?></h1>
 				<br>
 				<form method="post" action="../business/check_info_user.php">
-					<table>
-						<!-- Display message if registration is successful -->
+
+					<!-- Display message if registration is successful -->
 	<?php
 	
 	if ($rank == 'shipper_ok')
 		echo $msg;
 	?>
-			
-		<tr>
-							<td>Title :</td>
-							<td><input type="radio" name="title" value="Mister" />Mister</td>
-							<td><input type="radio" name="title" value="Miss" />Miss<?php
-							if ($rank == 5)
-								echo $msg;
-							?></td>
-						</tr>
-
+					<!-- Title -->
+					<table>
 						<tr>
-							<td>Society :</td>
-							<td><input type="text" name="society"
-								value="<?php echo $form_data_Shipper[10];?>" /><?php
-								if ($rank == 11)
-									echo $msg;
-								?></td>
-						</tr>
-
-						<tr>
-							<td>First name :</td>
-							<td><input type="text" name="firstname"
-								value="<?php echo $form_data_Shipper[0];?>" /><?php
-								if ($rank == 1)
-									echo $msg;
-								?></td>
-						</tr>
-
-						<tr>
-							<td>Last name :</td>
-							<td><input type="text" name="lastname"
-								value="<?php echo $form_data_Shipper[1];?>" /><?php
-								if ($rank == 2)
-									echo $msg;
-								?></td>
-						</tr>
-
-						<tr>
-							<td>Email :</td>
-							<td><input type="email" name="email"
-								value="<?php echo $form_data_Shipper[9];?>" /><?php
-								if ($rank == 10)
-									echo $msg;
-								?></td>
-						</tr>
-
-						<tr>
-							<td>Password :</td>
-							<td><input type="password" name="password"
-								value="<?php echo $form_data_Shipper[2];?>" /><?php
-								if ($rank == 4)
-									echo $msg;
-								?></td>
-						</tr>
-
-						<tr>
-							<td>Adress 1 :</td>
-							<td><input type="text" name="adress1"
-								value="<?php echo $form_data_Shipper[4];?>" /><?php
-								if ($rank == 6)
-									echo $msg;
-								?></td>
-						</tr>
-
-						<tr>
-							<td>Adress 2 :</td>
-							<td><input type="text" name="adress2"
-								value="<?php echo $form_data_Shipper[5];?>" /></td>
-						</tr>
-
-						<tr>
-							<td>Postcode :</td>
-							<td><input type="text" name="postCode"
-								value="<?php echo $form_data_Shipper[6];?>" /><?php
-								if ($rank == 8)
-									echo $msg;
-								?></td>
-						</tr>
-
-						<tr>
-							<td>City :</td>
-							<td><input type="text" name="cityName"
-								value="<?php echo $form_data_Shipper[7];?>" /><?php
-								if ($rank == 7)
-									echo $msg;
-								?></td>
-						</tr>
-
-						<tr>
-							<td>Country :</td>
-							<td><input type="text" name="country"
-								value="<?php echo $form_data_Shipper[8];?>" /><?php
-								if ($rank == 9)
-									echo $msg;
-								?></td>
-						</tr>
-
-						<tr>
-							<td colspan="2" align="right"><input type="submit" name="action"
-								value="Register as shipper"></td>
+							<td><input type="radio" name="title" value="mr" /><?php echo _MR?></td>
+							<td><input type="radio" name="title" value="ms" /><?php echo _MS?></td>
+							<?php if ($rank == 5) echo $msg;?>
 						</tr>
 					</table>
+
+					<!-- Society -->
+					<input type="text" placeholder="<?php echo _US_SOCIETY?>"
+						value="<?php echo $form_data_Shipper[10];?>" required>
+					<?php if ($rank == 11) echo $msg; ?>
+								
+					<!-- Firstname -->
+					<input type="text" placeholder="<?php echo _US_FIRSTNAME?>"
+						value="<?php echo $form_data_Shipper[0];?>" required>
+					<?php if ($rank == 1) echo $msg; ?>
+
+					<!-- Lastname -->
+					<input type="text" placeholder="<?php echo _US_LASTNAME?>"
+						value="<?php echo $form_data_Shipper[1];?>" required /><?php
+						if ($rank == 2)
+							echo $msg;
+						?>
+
+					<!-- Email -->
+					<input type="email" placeholder="<?php echo _US_EMAIL?>"
+						value="<?php echo $form_data_Shipper[9];?>" required /><?php
+						if ($rank == 10)
+							echo $msg;
+						?>
+
+					<!-- Password -->
+					<input type="password" placeholder="<?php echo _US_PASSWORD?>"
+						value="<?php echo $form_data_Shipper[2];?>" required /><?php
+						if ($rank == 4)
+							echo $msg;
+						?>
+
+					<!-- Address1 -->
+					<input type="text" placeholder="<?php echo _US_ADRESS1?>"
+						value="<?php echo $form_data_Shipper[4];?>" required /><?php
+						if ($rank == 6)
+							echo $msg;
+						?>
+
+					<!-- Address2 -->
+					<input type="text" placeholder="<?php echo _US_ADRESS2?>"
+						value="<?php echo $form_data_Shipper[5];?>" />
+
+					<!-- Postcode -->
+					<input type="text" placeholder="<?php echo _NIP?>"
+						value="<?php echo $form_data_Shipper[6];?>" required /><?php
+						if ($rank == 8)
+							echo $msg;
+						?>
+
+					<!-- City -->
+					<input type="text" placeholder="<?php echo _US_CITY?>"
+						value="<?php echo $form_data_Shipper[7];?>" required /><?php
+						if ($rank == 7)
+							echo $msg;
+						?>
+
+					<!-- Country -->
+					<input type="text" placeholder="<?php echo _CI_COUNTRY?>"
+						value="<?php echo $form_data_Shipper[8];?>" required /><?php
+						if ($rank == 9)
+							echo $msg;
+						?>
+
+					<!-- Create -->
+					<input type="submit" name="action" value="<?php echo _CREATE?>"
+						class="login loginmodal-submit">
 				</form>
-
-
 			</div>
 		</div>
 	</div>
 
+	<!-- Register Customer Modal -->
+	<div class="modal fade" id="registerCustomerModal" tabindex="-1"
+		role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+		style="display: none;">
+		<div class="modal-dialog">
+			<div class="loginmodal-container">
+				<h1><?php echo _REGISTER_FOR_CUSTOMER?></h1>
+				<br>
+				<form method="post" action="../business/check_info_user.php">
 
+					<!-- Display message if registration is successful -->
+				<?php if ($rank=='customer_ok') echo $msg ;?>
+			
+					<!-- Title -->
+					<table>
+						<tr>
+							<td><input type="radio" name="title" value="mr" /><?php echo _MR?></td>
+							<td><input type="radio" name="title" value="ms" /><?php echo _MS?></td>
+							<?php if ($rank==15) echo $msg ;?>
+						</tr>
+					</table>
 
+					<!-- Firstname -->
+					<input type="text" placeholder="<?php echo _US_FIRSTNAME?>"
+						value="<?php echo $form_data_User[0];?>" required>
+					<?php if ($rank==12) echo $msg ;?>
 
+					<!-- Lastname -->
+					<input type="text" placeholder="<?php echo _US_LASTNAME?>"
+						value="<?php echo $form_data_User[1];?>" required /><?php
+						if ($rank == 13)
+							echo $msg;
+						?>
+
+					<!-- Email -->
+					<input type="email" placeholder="<?php echo _US_EMAIL?>"
+						value="<?php echo $form_data_User[9];?>" required /><?php
+						if ($rank == 20)
+							echo $msg;
+						?>
+
+					<!-- Password -->
+					<input type="password" placeholder="<?php echo _US_PASSWORD?>"
+						value="<?php echo $form_data_User[2];?>" required /><?php
+						if ($rank == 14)
+							echo $msg;
+						?>
+
+					<!-- Address1 -->
+					<input type="text" placeholder="<?php echo _US_ADRESS1?>"
+						value="<?php echo $form_data_User[4];?>" required /><?php
+						if ($rank == 16)
+							echo $msg;
+						?>
+
+					<!-- Address2 -->
+					<input type="text" placeholder="<?php echo _US_ADRESS2?>"
+						value="<?php echo $form_data_User[5];?>" />
+
+					<!-- Postcode -->
+					<input type="text" placeholder="<?php echo _NIP?>"
+						value="<?php echo $form_data_User[6];?>" required /><?php
+						if ($rank == 18)
+							echo $msg;
+						?>
+
+					<!-- City -->
+					<input type="text" placeholder="<?php echo _US_CITY?>"
+						value="<?php echo $form_data_User[7];?>" required /><?php
+						if ($rank == 17)
+							echo $msg;
+						?>
+
+					<!-- Country -->
+					<input type="text" placeholder="<?php echo _CI_COUNTRY?>"
+						value="<?php echo $form_data_User[8];?>" required /><?php
+						if ($rank == 19)
+							echo $msg;
+						?>
+
+					<!-- Create -->
+					<input type="submit" name="action" value="<?php echo _CREATE?>"
+						class="login loginmodal-submit">
+				</form>
+			</div>
+		</div>
+	</div>
 
 	<!-- Carousel -->
 	<div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -414,8 +494,6 @@ $form_data_User = isset($_SESSION['form_data_user']) ? $_SESSION['form_data_user
 		    // Store hash
 		    var hash = this.hash;
 		
-		    // Using jQuery's animate() method to add smooth page scroll
-		    // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
 		    $('html, body').animate({
 		      scrollTop: $(hash).offset().top
 		    }, 900, function(){
