@@ -2,6 +2,7 @@
 require_once ('../ressources/templates/header.php');
 ?>
 <body>
+
 	<nav class="navbar navbar-full navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
@@ -78,8 +79,21 @@ $rank = isset($_SESSION['rank']) ? $_SESSION['rank'] : 0;
 $msg = isset($_SESSION['msg']) ? '<span class="error">*'.$_SESSION['msg']."</span>" : '' ;
 $form_data_Shipper = isset($_SESSION['form_data']) ? $_SESSION['form_data'] : array('','','','','','','','','','','');
 $form_data_User = isset($_SESSION['form_data_user']) ? $_SESSION['form_data_user'] : array('','','','','','','','','','');
-?>
-
+?>		
+ <?php
+	//if ($rank == 'shipper_ok'){?>
+	<!--<br>
+	<br>
+		<div class="alert alert-success" role="alert">
+		<strong>Success!</strong> Indicates a successful or positive action.
+		</div>-->
+	<?php
+	// }
+	//var_dump($rank);
+	//$rank=-1;
+	
+	?> 	
+	
 	<div class="modal fade" id="registerShipperModal" tabindex="-1"
 		role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
 		style="display: none;">
@@ -93,6 +107,7 @@ $form_data_User = isset($_SESSION['form_data_user']) ? $_SESSION['form_data_user
 	<?php
 	
 	if ($rank == 'shipper_ok')
+
 		echo $msg;
 	?>
 			
@@ -203,8 +218,6 @@ $form_data_User = isset($_SESSION['form_data_user']) ? $_SESSION['form_data_user
 			</div>
 		</div>
 	</div>
-
-
 
 
 
