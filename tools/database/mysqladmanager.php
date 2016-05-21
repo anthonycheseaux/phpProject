@@ -14,7 +14,7 @@
  \************************************************************/
 
 require_once 'mysqlconnection.php';
-require_once '../business/ad.php';
+require_once '../../business/ad.php';
 class MySqlAdManager {
 	
 	public function __construct() {
@@ -37,16 +37,21 @@ class MySqlAdManager {
 	}
 	
 	public function createAd(Ad $ad) {
-		$query = "INSERT INTO ad (" . $this::CATEGORY.", " . $this::DEPARTURE_CITY . ", " . $this::DESTINATION_CITY . ", " . $this::TITLE . ", " . $this::DESCRIPTION . ", " . $this::TOTAL_WEIGHT . ", " . $this::TOTAL_VOLUME . ", " . $this::DATE_BEGINNING . ", " . $this::DATE_END . ") 
-					VALUES (" . $ad->getCategory() .", " . $ad->getDeparture_city() . ", " . $ad->getDestination_city() . ", "  . $ad->getTitle() . ", "  . $ad->getDescription() . ", "  . $ad->getTotal_weight() . ", "  . $ad->getTotal_volume() . ", "  . $ad->getDate_beginning() . ", "  . $ad->getDate_end() . ");";
+		
+		$query = "INSERT INTO ad (" . $this::USER . ", " . $this::CATEGORY.", " . $this::DEPARTURE_CITY . ", " . $this::DESTINATION_CITY . ", " . $this::TITLE . ", " . $this::DESCRIPTION . ", " . $this::TOTAL_WEIGHT . ", " . $this::TOTAL_VOLUME . ", " . $this::DATE_BEGINNING . ", " . $this::DATE_END . ") 
+					VALUES ('" . $ad->getUser() ."', '" . $ad->getCategory() ."', '" . $ad->getDeparture_city() . "', '" . $ad->getDestination_city() . "', '"  . $ad->getTitle() . "', '"  . $ad->getDescription() . "', '"  . $ad->getTotal_weight() . "', '"  . $ad->getTotal_volume() . "', '"  . $ad->getDate_beginning() . "', '"  . $ad->getDate_end() . "');";
+		
 		
 		return $this->_conn->executeQuery($query);
+		
+		
 	}
 	
 	public function updateAd(Ad $ad) {
 		
 		$query = "UPDATE ad
 					SET " . $this::CATEGORY . " = " . $ad->getCategory() . ", " . 
+							$this::USER . " = " . $ad->getUser() . " , " .
 							$this::DEPARTURE_CITY . " = " . $ad->getDeparture_city() . ", " .
 							$this::DESTINATION_CITY . " = " . $ad->getDestination_city() . ", " .
 							$this::TITLE . " = " . $ad->getTitle() . ", " .
@@ -72,6 +77,7 @@ class MySqlAdManager {
 	
 	// Field names in the Data Base
 	const ID = "ad_id";
+	const USER = "ad_user";
 	const CATEGORY = "ad_category";
 	const DEPARTURE_CITY = "ad_departure_city";
 	const DESTINATION_CITY = "ad_destination_city";

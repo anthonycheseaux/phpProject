@@ -34,7 +34,7 @@ switch ($_SESSION ['lang']) {
 		$fichier_langage = "fichier_it.php";
 		break;
 }
-// include($fichier_langage);
+include($fichier_langage);
 
 // Configuration
 $config = array (
