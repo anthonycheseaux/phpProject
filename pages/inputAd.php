@@ -96,8 +96,8 @@ echo $form_data[_DATE_BEGINNING] . '**';
 		<!-- Catégorie de l'annonce -->
 		<tr>
 			<td><?php echo _AD_CATEGORY . " : "?></td>
-			<td><select name="category"><!-- optgroup label="<?php echo _CHOISIR_CATEGORIE . '... '?>" -->
-				<option value="" disabled="disabled" <?php if ($form_data[_CATEGORY] == 0) echo 'selected="selected"'?>"><?php echo _CHOISIR_CATEGORIE?></option>
+			<td><select name="category">
+				<option value="" disabled="disabled" <?php if ($form_data[_CATEGORY] == 0) echo 'selected="selected"'?>><?php echo _CHOISIR_CATEGORIE?></option>
 				<option value=1 <?php if ($form_data[_CATEGORY] == 1) echo 'selected="selected"'?>><?php echo _CATEGORIE_DEMENAGEMENT?></option>
 				<option value=2 <?php if ($form_data[_CATEGORY] == 2) echo 'selected="selected"'?>><?php echo _CATEGORIE_MOBILIER?></option>
 				<option value=3 <?php if ($form_data[_CATEGORY] == 3) echo 'selected="selected"'?>><?php echo _CATEGORIE_ELECTROMENAGER?></option>
@@ -108,7 +108,7 @@ echo $form_data[_DATE_BEGINNING] . '**';
 				<option value=8 <?php if ($form_data[_CATEGORY] == 8) echo 'selected="selected"'?>><?php echo _CATEGORIE_BATEAU?></option>
 				<option value=9 <?php if ($form_data[_CATEGORY] == 9) echo 'selected="selected"'?>><?php echo _CATEGORIE_ANIMAUX?></option>
 				<option value=10 <?php if ($form_data[_CATEGORY] == 10) echo 'selected="selected"'?>><?php echo _CATEGORIE_DIVERS?></option>
-			</optgroup></select><?php if ($rank == _CATEGORY) echo $msg;?></td>
+			</select><?php if ($rank == _CATEGORY) echo $msg;?></td>
 		</tr>
 		<!-- Localités de départ et d'arrivée -->
 		<tr>
