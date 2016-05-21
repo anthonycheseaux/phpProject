@@ -99,6 +99,13 @@ define("_MR", "Monsieur");
 define("_MS", "Madame");
 define("_NIP", "NPA");
 define("_CREATE", "Créer");
+define("_ALREADY_CLIENT", "Déjà client ?");
+define("_ALREADY_CLIENT_TEXT", "Que vous soyez un transporteur ou un demandeur de transport, accéder à votre espace personnel afin de profiter des incroyables services offerts par TEEMW !");
+define("_SUBSCRIBE_SHIPPER", "Vous êtes transporteur ?");
+define("_SUBSCRIBE_SHIPPER_TEXT", "N'hésitez plus et inscrivez-vous pour un tarif avantageux afin de faire valoir vos service auprès de nombreux demandeur qui postent quotidiennement des requêtes !");
+define("_SUBSCRIBE_CUSTOMER", "A la recherche d'un transporteur ?");
+define("_SUBSCRIBE_CUSTOMER_TEXT", "Créer un compte gratuitement et accéder à un espace dédié où vous pourrez poster vos demandes et recevrez des devis dans les plus brefs délais !");
+define("_OUR_SERVICES", "Nos services");
 
 /*
  * Traduction de Pages/inputAd.php

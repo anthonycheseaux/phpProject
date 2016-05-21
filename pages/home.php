@@ -17,8 +17,9 @@ require_once ('../ressources/config.php');
 			</div>
 			<div id="myNavbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<li><a class="page-scroll" href="#test1">Test 1</a></li>
+					<li><a class="page-scroll" href="#ourServices"><?php echo _OUR_SERVICES?></a></li>
 					<li><a class="page-scroll" href="#test2">Test 2</a></li>
+					<li><a class="page-scroll" href="#test3">Test 3</a></li>
 					<li><a class="page-scroll" href="#test3">Test 3</a></li>
 				</ul>
 
@@ -385,51 +386,36 @@ $form_data_User = isset ( $_SESSION ['form_data_user'] ) ? $_SESSION ['form_data
     ================================================== -->
 	<!-- Wrap the rest of the page in another container to center all the content. -->
 
-	<div class="container marketing">
+	<div class="container marketing" id="ourServices" style="padding-top:60px;">
 
 		<!-- Three columns of text below the carousel -->
 		<div class="row">
 			<div class="col-lg-4">
-				<img class="img-circle"
-					src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
-					alt="Generic placeholder image" width="140" height="140">
-				<h2>Heading</h2>
-				<p>Donec sed odio dui. Etiam porta sem malesuada magna mollis
-					euismod. Nullam id dolor id nibh ultricies vehicula ut id elit.
-					Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-					Praesent commodo cursus magna.</p>
+				<span class="glyphicon glyphicon-log-in" style="font-size: 5.5em; color: orange;"></span>
+				<h2><?php echo _ALREADY_CLIENT?></h2>
+				<p style="font-size: medium;"><?php echo _ALREADY_CLIENT_TEXT?></p>
 				<p>
-					<a class="btn btn-default" href="#" role="button">View details
+					<a class="btn btn-default" data-toggle="modal" href="#loginModal" role="button"><?php echo _LOGIN?>
 						&raquo;</a>
 				</p>
 			</div>
 			<!-- /.col-lg-4 -->
 			<div class="col-lg-4">
-				<img class="img-circle"
-					src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
-					alt="Generic placeholder image" width="140" height="140">
-				<h2>Heading</h2>
-				<p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula,
-					eget lacinia odio sem nec elit. Cras mattis consectetur purus sit
-					amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor
-					mauris condimentum nibh.</p>
+				<span class="fa fa-truck" style="font-size: 5.5em; color:green;"></span>
+				<h2><?php echo _SUBSCRIBE_SHIPPER?></h2>
+				<p style="font-size: medium;"><?php echo _SUBSCRIBE_SHIPPER_TEXT?></p>
 				<p>
-					<a class="btn btn-default" href="#" role="button">View details
+					<a class="btn btn-default" data-toggle="modal" href="#registerShipperModal" role="button"><?php echo _REGISTER_FOR_SHIPPER?>
 						&raquo;</a>
 				</p>
 			</div>
 			<!-- /.col-lg-4 -->
 			<div class="col-lg-4">
-				<img class="img-circle"
-					src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
-					alt="Generic placeholder image" width="140" height="140">
-				<h2>Heading</h2>
-				<p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in,
-					egestas eget quam. Vestibulum id ligula porta felis euismod semper.
-					Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum
-					nibh, ut fermentum massa justo sit amet risus.</p>
+				<span class="fa fa-user" style="font-size: 5.5em; color: orange;"></span>
+				<h2><?php echo _SUBSCRIBE_CUSTOMER?></h2>
+				<p><?php echo _SUBSCRIBE_CUSTOMER_TEXT?></p>
 				<p>
-					<a class="btn btn-default" href="#" role="button">View details
+					<a class="btn btn-default" data-toggle="modal" href="#registerCustomerModal" role="button"><?php echo _REGISTER_FOR_CUSTOMER?>
 						&raquo;</a>
 				</p>
 			</div>
