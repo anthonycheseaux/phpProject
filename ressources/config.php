@@ -11,9 +11,6 @@ if (! empty ( $_GET ['lang'] )) {
 		case "en" :
 			$_SESSION ['lang'] = "en";
 			break;
-		case "it" :
-			$_SESSION ['lang'] = "it";
-			break;
 		default :
 			$_SESSION ['lang'] = "fr"; // au cas ou quelqu'un rentre autre chose que fr/en ou it
 			break;
@@ -25,13 +22,10 @@ if (empty ( $_SESSION ['lang'] )) {
 
 switch ($_SESSION ['lang']) {
 	case "fr" :
-		$fichier_langage = "ressources/language/fichier_fr.php";
+		$fichier_langage = "language/fichier_fr.php";
 		break;
 	case "en" :
-		$fichier_langage = "ressources/language/fichier_en.php";
-		break;
-	case "it" :
-		$fichier_langage = "fichier_it.php";
+		$fichier_langage = "language/fichier_en.php";
 		break;
 }
 include($fichier_langage);

@@ -106,6 +106,13 @@ define("_SUBSCRIBE_SHIPPER_TEXT", "N'hésitez plus et inscrivez-vous pour un tar
 define("_SUBSCRIBE_CUSTOMER", "A la recherche d'un transporteur ?");
 define("_SUBSCRIBE_CUSTOMER_TEXT", "Créer un compte gratuitement et accéder à un espace dédié où vous pourrez poster vos demandes et recevrez des devis dans les plus brefs délais !");
 define("_OUR_SERVICES", "Nos services");
+define("_PRESTATION", "Presations");
+define("_GARANTY", "Garantie");
+define("_DEVIS", "Devis");
+define("_LEARN_MORE", "EN SAVOIR PLUS");
+define("_FILL", "Remplir");
+define("_RECIEVE", "Recevoir");
+define("_CHOOSE", "Choisir");
 
 /*
  * Traduction de Pages/inputAd.php

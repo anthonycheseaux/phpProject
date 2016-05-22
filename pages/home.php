@@ -18,9 +18,9 @@ require_once ('../ressources/config.php');
 			<div id="myNavbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
 					<li><a class="page-scroll" href="#ourServices"><?php echo _OUR_SERVICES?></a></li>
-					<li><a class="page-scroll" href="#test2">Test 2</a></li>
-					<li><a class="page-scroll" href="#test3">Test 3</a></li>
-					<li><a class="page-scroll" href="#test3">Test 3</a></li>
+					<li><a class="page-scroll" href="#fill"><?php echo _FILL?></a></li>
+					<li><a class="page-scroll" href="#recieve"><?php echo _RECIEVE?></a></li>
+					<li><a class="page-scroll" href="#choose"><?php echo _CHOOSE?></a></li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
@@ -106,7 +106,7 @@ $form_data_User = isset ( $_SESSION ['form_data_user'] ) ? $_SESSION ['form_data
 ?>
 	
 	 <?php
-	//if ($rank == 'shipper_ok'){?>
+		// if ($rank == 'shipper_ok'){ 		?>
 	<!--<br>
 	<br>
 		<div class="alert alert-success" role="alert">
@@ -114,8 +114,8 @@ $form_data_User = isset ( $_SESSION ['form_data_user'] ) ? $_SESSION ['form_data
 		</div>-->
 	<?php
 	// }
-	//var_dump($rank);
-	//$rank=-1;
+	// var_dump($rank);
+	// $rank=-1;
 	
 	?> 	
 	
@@ -145,63 +145,72 @@ $form_data_User = isset ( $_SESSION ['form_data_user'] ) ? $_SESSION ['form_data
 					</table>
 
 					<!-- Society -->
-					<input type="text" placeholder="<?php echo _US_SOCIETY?>"
+					<input type="text" name="society"
+						placeholder="<?php echo _US_SOCIETY?>"
 						value="<?php echo $form_data_Shipper[10];?>" required>
 					<?php if ($rank == 11) echo $msg; ?>
 								
 					<!-- Firstname -->
-					<input type="text" placeholder="<?php echo _US_FIRSTNAME?>"
+					<input type="text" name="firstname"
+						placeholder="<?php echo _US_FIRSTNAME?>"
 						value="<?php echo $form_data_Shipper[0];?>" required>
 					<?php if ($rank == 1) echo $msg; ?>
 
 					<!-- Lastname -->
-					<input type="text" placeholder="<?php echo _US_LASTNAME?>"
+					<input type="text" name="lastname"
+						placeholder="<?php echo _US_LASTNAME?>"
 						value="<?php echo $form_data_Shipper[1];?>" required /><?php
 						if ($rank == 2)
 							echo $msg;
 						?>
 
 					<!-- Email -->
-					<input type="email" placeholder="<?php echo _US_EMAIL?>"
+					<input type="email" name="email"
+						placeholder="<?php echo _US_EMAIL?>"
 						value="<?php echo $form_data_Shipper[9];?>" required /><?php
 						if ($rank == 10)
 							echo $msg;
 						?>
 
 					<!-- Password -->
-					<input type="password" placeholder="<?php echo _US_PASSWORD?>"
+					<input type="password" name="password"
+						placeholder="<?php echo _US_PASSWORD?>"
 						value="<?php echo $form_data_Shipper[2];?>" required /><?php
 						if ($rank == 4)
 							echo $msg;
 						?>
 
 					<!-- Address1 -->
-					<input type="text" placeholder="<?php echo _US_ADRESS1?>"
+					<input type="text" name="adress1"
+						placeholder="<?php echo _US_ADRESS1?>"
 						value="<?php echo $form_data_Shipper[4];?>" required /><?php
 						if ($rank == 6)
 							echo $msg;
 						?>
 
 					<!-- Address2 -->
-					<input type="text" placeholder="<?php echo _US_ADRESS2?>"
+					<input type="text" name="adress2"
+						placeholder="<?php echo _US_ADRESS2?>"
 						value="<?php echo $form_data_Shipper[5];?>" />
 
 					<!-- Postcode -->
-					<input type="text" placeholder="<?php echo _NIP?>"
+					<input type="text" name="postCode" placeholder="<?php echo _NIP?>"
 						value="<?php echo $form_data_Shipper[6];?>" required /><?php
 						if ($rank == 8)
 							echo $msg;
 						?>
 
 					<!-- City -->
-					<input type="text" placeholder="<?php echo _US_CITY?>"
+					<input type="text" name="cityName"
+						placeholder="<?php echo _US_CITY?>"
 						value="<?php echo $form_data_Shipper[7];?>" required /><?php
 						if ($rank == 7)
 							echo $msg;
 						?>
 
 					<!-- Country -->
-					<input type="text" placeholder="<?php echo _CI_COUNTRY?>"
+					<input type="text" name="country"
+						placeholder="<?php echo _CI_COUNTRY?>"
 						value="<?php echo $form_data_Shipper[8];?>" required /><?php
 						if ($rank == 9)
 							echo $msg;
@@ -238,58 +247,66 @@ $form_data_User = isset ( $_SESSION ['form_data_user'] ) ? $_SESSION ['form_data
 					</table>
 
 					<!-- Firstname -->
-					<input type="text" placeholder="<?php echo _US_FIRSTNAME?>"
+					<input type="text" name="firstname"
+						placeholder="<?php echo _US_FIRSTNAME?>"
 						value="<?php echo $form_data_User[0];?>" required>
 					<?php if ($rank==12) echo $msg ;?>
 
 					<!-- Lastname -->
-					<input type="text" placeholder="<?php echo _US_LASTNAME?>"
+					<input type="text" name="lastname"
+						placeholder="<?php echo _US_LASTNAME?>"
 						value="<?php echo $form_data_User[1];?>" required /><?php
 						if ($rank == 13)
 							echo $msg;
 						?>
 
 					<!-- Email -->
-					<input type="email" placeholder="<?php echo _US_EMAIL?>"
+					<input type="email" name="email"
+						placeholder="<?php echo _US_EMAIL?>"
 						value="<?php echo $form_data_User[9];?>" required /><?php
 						if ($rank == 20)
 							echo $msg;
 						?>
 
 					<!-- Password -->
-					<input type="password" placeholder="<?php echo _US_PASSWORD?>"
+					<input type="password" name="password"
+						placeholder="<?php echo _US_PASSWORD?>"
 						value="<?php echo $form_data_User[2];?>" required /><?php
 						if ($rank == 14)
 							echo $msg;
 						?>
 
 					<!-- Address1 -->
-					<input type="text" placeholder="<?php echo _US_ADRESS1?>"
+					<input type="text" name="adress1"
+						placeholder="<?php echo _US_ADRESS1?>"
 						value="<?php echo $form_data_User[4];?>" required /><?php
 						if ($rank == 16)
 							echo $msg;
 						?>
 
 					<!-- Address2 -->
-					<input type="text" placeholder="<?php echo _US_ADRESS2?>"
+					<input type="text" name="adress2"
+						placeholder="<?php echo _US_ADRESS2?>"
 						value="<?php echo $form_data_User[5];?>" />
 
 					<!-- Postcode -->
-					<input type="text" placeholder="<?php echo _NIP?>"
+					<input type="text" name="postCode" placeholder="<?php echo _NIP?>"
 						value="<?php echo $form_data_User[6];?>" required /><?php
 						if ($rank == 18)
 							echo $msg;
 						?>
 
 					<!-- City -->
-					<input type="text" placeholder="<?php echo _US_CITY?>"
+					<input type="text" name="cityName"
+						placeholder="<?php echo _US_CITY?>"
 						value="<?php echo $form_data_User[7];?>" required /><?php
 						if ($rank == 17)
 							echo $msg;
 						?>
 
 					<!-- Country -->
-					<input type="text" placeholder="<?php echo _CI_COUNTRY?>"
+					<input type="text" name="country"
+						placeholder="<?php echo _CI_COUNTRY?>"
 						value="<?php echo $form_data_User[8];?>" required /><?php
 						if ($rank == 19)
 							echo $msg;
@@ -313,57 +330,69 @@ $form_data_User = isset ( $_SESSION ['form_data_user'] ) ? $_SESSION ['form_data
 		</ol>
 		<div class="carousel-inner" role="listbox">
 			<div class="item active">
-				<img class="first-slide"
-					src="data:image/back.gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
-					alt="First slide">
+				<img class="first-slide" src="image/road.png" alt="First slide">
 				<div class="container">
 					<div class="carousel-caption">
-						<h1>Example headline.</h1>
-						<p>
-							Note: If you're viewing this page via a
-							<code>file://</code>
-							URL, the "next" and "previous" Glyphicon buttons on the left and
-							right might not load/display properly due to web browser security
-							rules.
-						</p>
-						<p>
-							<a class="btn btn-lg btn-primary" href="#" role="button">Sign up
-								today</a>
-						</p>
+						<h1><?php echo _PRESTATION?></h1>
+						<p>Hoc inmaturo interitu ipse quoque sui pertaesus excessit e vita
+							aetatis nono anno atque vicensimo cum quadriennio imperasset.
+							natus apud Tuscos in Massa Veternensi, patre Constantio
+							Constantini fratre imperatoris, matreque Galla sorore Rufini et
+							Cerealis, quos trabeae consulares nobilitarunt et praefecturae.</p>
+						<br>
+						<br>
+						<!-- <p>
+							<a class="btn btn-lg btn-primary" href="#" role="button"><?php echo _LEARN_MORE?></a>
+						</p> -->
+						<br>
+						<br>
+						<br>
+						<br>
 					</div>
 				</div>
 			</div>
 			<div class="item">
-				<img class="second-slide"
-					src="data:image/back.gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
+				<img class="second-slide" src="image/tricycle.png"
 					alt="Second slide">
 				<div class="container">
 					<div class="carousel-caption">
-						<h1>Another example headline.</h1>
-						<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam.
-							Donec id elit non mi porta gravida at eget metus. Nullam id dolor
-							id nibh ultricies vehicula ut id elit.</p>
-						<p>
-							<a class="btn btn-lg btn-primary" href="#" role="button">Learn
-								more</a>
-						</p>
+						<h1><?php echo _GARANTY?></h1>
+						<p>Hoc inmaturo interitu ipse quoque sui pertaesus excessit e vita
+							aetatis nono anno atque vicensimo cum quadriennio imperasset.
+							natus apud Tuscos in Massa Veternensi, patre Constantio
+							Constantini fratre imperatoris, matreque Galla sorore Rufini et
+							Cerealis, quos trabeae consulares nobilitarunt et praefecturae.</p>
+						<br>
+						<br>
+						<!-- <p>
+							<a class="btn btn-lg btn-primary" href="#" role="button"><?php echo _LEARN_MORE?></a>
+						</p> -->
+						<br>
+						<br>
+						<br>
+						<br>
 					</div>
 				</div>
 			</div>
 			<div class="item">
-				<img class="third-slide"
-					src="data:image/back.gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
-					alt="Third slide">
+				<img class="third-slide" src="image/truck.png" alt="Third slide">
 				<div class="container">
 					<div class="carousel-caption">
-						<h1>One more for good measure.</h1>
-						<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam.
-							Donec id elit non mi porta gravida at eget metus. Nullam id dolor
-							id nibh ultricies vehicula ut id elit.</p>
-						<p>
-							<a class="btn btn-lg btn-primary" href="#" role="button">Browse
-								gallery</a>
-						</p>
+						<h1><?php echo _DEVIS?></h1>
+						<p>Hoc inmaturo interitu ipse quoque sui pertaesus excessit e vita
+							aetatis nono anno atque vicensimo cum quadriennio imperasset.
+							natus apud Tuscos in Massa Veternensi, patre Constantio
+							Constantini fratre imperatoris, matreque Galla sorore Rufini et
+							Cerealis, quos trabeae consulares nobilitarunt et praefecturae.</p>
+						<br>
+						<br>
+						<!-- <p>
+							<a class="btn btn-lg btn-primary" href="#" role="button"><?php echo _LEARN_MORE?></a>
+						</p> -->
+						<br>
+						<br>
+						<br>
+						<br>
 					</div>
 				</div>
 			</div>
@@ -386,26 +415,30 @@ $form_data_User = isset ( $_SESSION ['form_data_user'] ) ? $_SESSION ['form_data
     ================================================== -->
 	<!-- Wrap the rest of the page in another container to center all the content. -->
 
-	<div class="container marketing" id="ourServices" style="padding-top:60px;">
+	<div class="container marketing" id="ourServices"
+		style="padding-top: 60px;">
 
 		<!-- Three columns of text below the carousel -->
-		<div class="row">
+		<div class="row" style="padding-top: 110px; padding-bottom: 110px;">
 			<div class="col-lg-4">
-				<span class="glyphicon glyphicon-log-in" style="font-size: 5.5em; color: orange;"></span>
+				<span class="glyphicon glyphicon-log-in"
+					style="font-size: 5.5em; color: orange;"></span>
 				<h2><?php echo _ALREADY_CLIENT?></h2>
 				<p style="font-size: medium;"><?php echo _ALREADY_CLIENT_TEXT?></p>
 				<p>
-					<a class="btn btn-default" data-toggle="modal" href="#loginModal" role="button"><?php echo _LOGIN?>
+					<a class="btn btn-default" data-toggle="modal" href="#loginModal"
+						role="button"><?php echo _LOGIN?>
 						&raquo;</a>
 				</p>
 			</div>
 			<!-- /.col-lg-4 -->
 			<div class="col-lg-4">
-				<span class="fa fa-truck" style="font-size: 5.5em; color:green;"></span>
+				<span class="fa fa-truck" style="font-size: 5.5em; color: green;"></span>
 				<h2><?php echo _SUBSCRIBE_SHIPPER?></h2>
 				<p style="font-size: medium;"><?php echo _SUBSCRIBE_SHIPPER_TEXT?></p>
 				<p>
-					<a class="btn btn-default" data-toggle="modal" href="#registerShipperModal" role="button"><?php echo _REGISTER_FOR_SHIPPER?>
+					<a class="btn btn-default" data-toggle="modal"
+						href="#registerShipperModal" role="button"><?php echo _REGISTER_FOR_SHIPPER?>
 						&raquo;</a>
 				</p>
 			</div>
@@ -413,9 +446,10 @@ $form_data_User = isset ( $_SESSION ['form_data_user'] ) ? $_SESSION ['form_data
 			<div class="col-lg-4">
 				<span class="fa fa-user" style="font-size: 5.5em; color: orange;"></span>
 				<h2><?php echo _SUBSCRIBE_CUSTOMER?></h2>
-				<p><?php echo _SUBSCRIBE_CUSTOMER_TEXT?></p>
+				<p style="font-size: medium;"><?php echo _SUBSCRIBE_CUSTOMER_TEXT?></p>
 				<p>
-					<a class="btn btn-default" data-toggle="modal" href="#registerCustomerModal" role="button"><?php echo _REGISTER_FOR_CUSTOMER?>
+					<a class="btn btn-default" data-toggle="modal"
+						href="#registerCustomerModal" role="button"><?php echo _REGISTER_FOR_CUSTOMER?>
 						&raquo;</a>
 				</p>
 			</div>
@@ -426,46 +460,58 @@ $form_data_User = isset ( $_SESSION ['form_data_user'] ) ? $_SESSION ['form_data
 
 		<!-- START THE FEATURETTES -->
 
-		<hr id="test1" class="featurette-divider">
+		<hr id="fill" class="featurette-divider">
 
 		<div class="row featurette">
 			<div class="col-md-7">
-				<h2 class="featurette-heading">
-					First featurette heading. <span class="text-muted">It'll blow your
-						mind.</span>
+				<h2 class="featurette-heading" style="text-transform : uppercase;">
+					<?php echo _FILL?> 
 				</h2>
 				<p class="lead">Donec ullamcorper nulla non metus auctor fringilla.
 					Vestibulum id ligula porta felis euismod semper. Praesent commodo
 					cursus magna, vel scelerisque nisl consectetur. Fusce dapibus,
 					tellus ac cursus commodo.</p>
 			</div>
+			<div class="col-md-5">
+				<span class="featurette-image img-responsive center-block text-muted fa fa-keyboard-o"
+					style="font-size: 26em;color: green;"></span>
+			</div>
 		</div>
 
-		<hr id="test2" class="featurette-divider">
+		<hr id="recieve" class="featurette-divider">
 
 		<div class="row featurette">
+		
 			<div class="col-md-7 col-md-push-5">
-				<h2 class="featurette-heading">
-					Oh yeah, it's that good. <span class="text-muted">See for yourself.</span>
+				<h2 class="featurette-heading" style="text-transform : uppercase;">
+					<?php echo _RECIEVE?>
 				</h2>
 				<p class="lead">Donec ullamcorper nulla non metus auctor fringilla.
 					Vestibulum id ligula porta felis euismod semper. Praesent commodo
 					cursus magna, vel scelerisque nisl consectetur. Fusce dapibus,
 					tellus ac cursus commodo.</p>
 			</div>
+			<div class="col-md-5 col-md-pull-7">
+				<span class="featurette-image img-responsive center-block fa fa-envelope-o"
+					style="font-size: 26em;color: orange;"></span>
+			</div>
 		</div>
 
-		<hr id="test3" class="featurette-divider">
+		<hr id="choose" class="featurette-divider">
 
 		<div class="row featurette">
 			<div class="col-md-7">
-				<h2 class="featurette-heading">
-					And lastly, this one. <span class="text-muted">Checkmate.</span>
+				<h2 class="featurette-heading" style="text-transform : uppercase;">
+					<?php echo _CHOOSE?>
 				</h2>
 				<p class="lead">Donec ullamcorper nulla non metus auctor fringilla.
 					Vestibulum id ligula porta felis euismod semper. Praesent commodo
 					cursus magna, vel scelerisque nisl consectetur. Fusce dapibus,
 					tellus ac cursus commodo.</p>
+			</div>
+			<div class="col-md-5">
+				<span class="featurette-image img-responsive center-block text-muted fa fa-file-text-o"
+					style="font-size: 26em; color: green;"></span>
 			</div>
 		</div>
 
