@@ -25,11 +25,12 @@ class MySqlAdManager {
 		$query = "SELECT * FROM ad WHERE ad_id = '$id'";
 		$result = $this->_conn->selectDB($query);
 		$row = $result->fetch();
-		if(!row) return null;
-		
-		return new Ad($row[$this::ID], $row[$this::CATEGORY], $row[$this::DEPARTURE_CITY], $row[$this::DESTINATION_CITY],
-				$row[$this::TITLE], $row[$this::DESCRIPTION], $row[$this::TOTAL_WEIGHT], $row[$this::TOTAL_VOLUME], 
-				$row[$this::DATE_BEGINNING], $row[$this::DATE_END]);
+		if(!$row) return null;
+		$ad = new Ad($row[$this::ID], $row[$this::USER], $row[$this::CATEGORY], 
+					$row[$this::DEPARTURE_CITY], $row[$this::DESTINATION_CITY], $row[$this::TITLE], 
+					$row[$this::DESCRIPTION], $row[$this::TOTAL_WEIGHT], $row[$this::OBJECTS_NUMBER], 
+					$row[$this::TOTAL_VOLUME], $row[$this::DATE_BEGINNING], $row[$this::DATE_END]);
+		return $ad;
 	}
 	
 	public function getAllAds() {

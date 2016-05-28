@@ -109,7 +109,7 @@ function registerAd($mysql) {
 	if(isset($rank)) {
 		$_SESSION['rank'] = $rank;
 		$_SESSION['msg'] = $msg;
-		$_SESSION['form_data'] = array(	'title' => $title, 
+		$_SESSION['ad_form_data'] = array(	'title' => $title, 
 										'category' => $category,
 										'departure_city' => $departure_city,
 										'destination_city' => $destination_city,
@@ -130,7 +130,6 @@ function registerAd($mysql) {
 	if(isset($_SESSION['user'])) {
 		$user = $_SESSION['user'];
 		$userId = $user->getId();
-		echo 'check_info_ad (l. 133) userId=' . $userId;
 	} 
 	if (!isset($userId) || $userId == 0) {
 		$userId = 1;
@@ -141,7 +140,7 @@ function registerAd($mysql) {
 	$result = $mysql->createAd($ad);
 	
 	// Vider ou adapter les variables de session
-	unset($_SESSION['form_data']);
+	unset($_SESSION['ad_form_data']);
 	$_SESSION["rank"] = "succeed";
 	$_SESSION["msg"] = _ANNONCE_ENREGISTREE;
 	

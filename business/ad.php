@@ -16,7 +16,7 @@
  \************************************************************/
 class Ad {
 	
-	public function __construct($id, $user, $category, $departure_city, $destination_city, $title, $description, $total_weight, $objects_number, $total_volume, $date_beginning, $date_end) {
+	public function __construct($id = NULL, $user = NULL, $category = NULL, $departure_city = NULL, $destination_city = NULL, $title = NULL, $description = NULL, $total_weight = NULL, $objects_number = NULL, $total_volume = NULL, $date_beginning = NULL, $date_end = NULL) {
 		$this->id = $id;
 		$this->user = $user;
 		$this->category = $category;
@@ -30,6 +30,7 @@ class Ad {
 		$this->date_beginning = $date_beginning;
 		$this->date_end = $date_end;
 	}
+	
 	public function getId() {
 		return $this->id;
 	}

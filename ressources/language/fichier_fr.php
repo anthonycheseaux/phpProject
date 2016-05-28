@@ -42,7 +42,7 @@ define("_PA_VALUE","Valeur");
  * Table "Estimate"
  */
 // define("_ES_AD","Estimate Ad");
-define("_ES_PRICE","Prix estimatif");
+define("_ES_PRICE","Prix devisé");
 
 
 /*
@@ -175,7 +175,15 @@ define("_CATEGORIE_BATEAU", "Bateaux");
 define("_CATEGORIE_ANIMAUX", "Animaux");
 define("_CATEGORIE_DIVERS", "Divers");
 
-
+/*
+ * Traduction de pages/inputEstimate.php
+ */
+define("_SAISIR_DEVIS", "Saisir un devis");
+define("_PRIX_PROPOSE", "Veuillez saisir un prix pour votre devis");
+define("_PAS_D_ANNONCE", "Il n'y a pas d'annonce");
+define("_PROPOSER_UN_DEVIS", "Soumettre un devis");
+define("_MANQUE_PRIX", "Vous devez indiquer un prix");
+define("_DEVIS_ENREGISTRE", "Le devis est enregistré");
 
 
 /*

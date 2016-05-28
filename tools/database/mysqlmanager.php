@@ -36,6 +36,17 @@ class MySqlManager
 		return new User($row['user_id'], $row['user_firstname'], $row['user_lastname'], $row['user_password'], $row['user_title'],
 				$row['user_adress1'], $row['user_adress2'], $row['user_city'], $row['user_role'], $row['user_email']);
 	}
+	
+	public function getUser($id){
+	
+		$query = "SELECT * FROM user WHERE user_id = '$id'";
+		$result = $this->_conn->selectDB($query);
+		$row = $result->fetch();
+		if(!$row) return false;
+	
+		return new User($row['user_id'], $row['user_firstname'], $row['user_lastname'], $row['user_password'], $row['user_title'],
+				$row['user_adress1'], $row['user_adress2'], $row['user_city'], $row['user_role'], $row['user_email'], $row['user_society'], $row['shipper_subscription_end']);
+	}
 
 	public function checkLoginShipper ($email, $pwd){
 		$pwd = sha1($pwd);

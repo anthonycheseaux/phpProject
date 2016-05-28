@@ -44,7 +44,7 @@ $config = array (
 				"baseUrl" => "" 
 		),
 		"paths" => array (
-				"resources" => "/resources",
+				"resources" => "/ressources",
 				"images" => array (
 						"content" => $_SERVER ["DOCUMENT_ROOT"] . "../img/content",
 						"layout" => $_SERVER ["DOCUMENT_ROOT"] . "../img/layout" 
