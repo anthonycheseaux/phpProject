@@ -9,9 +9,9 @@
  * Creation		20160425
  *
  * Project		teemw
- * Package		include
+ * Package		business
  *
- * Description	common header
+ * Description	classe objet Ad
  *
  \************************************************************/
 class Ad {
