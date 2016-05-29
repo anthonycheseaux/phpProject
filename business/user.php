@@ -180,6 +180,5 @@ public function __construct($id, $firstname, $lastname, $password, $title, $adre
 	private $role;
 	private $email;
 	private $endDateShipper;
-	//testModif
 }
 ?>

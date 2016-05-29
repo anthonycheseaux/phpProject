@@ -22,17 +22,20 @@ require_once '../tools/database/mysqlmanager.php';
 session_start();
 $mysql = new MySqlManager();
 
-
+echo "pass1";
 if(isset($_POST['action'])){
-	//Create account
-	if($_POST['action']=='Register as shipper'){
+	echo "pass2";
+	//Create account	
+	if($_POST['action']=='Créer'){
+		if(isset($_POST['society'])){
+			echo "pass3";
+			registerShipper($mysql);
+		}
+		else {
+			registerCustomer($mysql);
+		}
 
-		registerShipper($mysql);	
-	}
-	
-	if($_POST['action']=='Register as customer'){
-
-		registerCustomer($mysql);
+		
 	}
 	
 	//Authentication
@@ -284,7 +287,7 @@ function registerCustomer($mysql){
 		$_SESSION['msg'] = $msg;
 		$_SESSION['form_data_user'] = array($fname, $lname, $pwd, $title, $adress1, $adress2, $postCode, $cityName,  $country, $email); //To auto complete the fields no empty
 
-		header("location: ../pages/register.php");
+		header("location: ../pages/home.php");
 		exit();	
 	}
 
@@ -301,7 +304,7 @@ function registerCustomer($mysql){
 		$_SESSION['msg'] = 'Registration succeeded';
 	}
 
-	header("location: ../pages/register.php");
+	header("location: ../pages/home.php");
 	exit;
 }
 
