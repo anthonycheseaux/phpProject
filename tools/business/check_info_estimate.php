@@ -16,6 +16,7 @@ set_include_path(get_include_path() . PATH_SEPARATOR . dirname(__FILE__) . '/../
 require_once '../../ressources/config.php';
 require_once (LIBRARY_PATH . '/templateFunctions.php');
 require_once 'tools/database/mysqlestimatemanager.php';
+require_once '../../business/ad.php';
 
 $estimateManager = new MySqlEstimateManager();
 
@@ -27,6 +28,11 @@ define ( "SHIPPER", "shipper" );
 
 if (isset($_POST['action']) && $_POST['action'] == _PROPOSER_UN_DEVIS) {
 	registerEstimate($estimateManager);
+}
+
+if (isset($_POST['action']) && $_POST['action'] == "affiche devis") {
+	
+	displayEstimate($estimateManager);
 }
 
 function registerEstimate($estimateManager) {
@@ -64,4 +70,21 @@ function registerEstimate($estimateManager) {
 	
 	echo '<script type="text/javascript">window.alert("' . $result . '");</script>';
 
+}
+
+
+function displayEstimate($estimateManager){
+	
+	//$ad = unserialize($_SESSION[AD]);
+	$result = $estimateManager->getAllEstimatesByAd(3);
+	
+	$_SESSION['estimate'] = $result;
+	
+	header("location: ../../pages/infoUser.php");
+	exit();
+	
+}
+
+function validEstimate(){
+	
 }

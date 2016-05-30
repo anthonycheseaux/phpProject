@@ -16,6 +16,7 @@
  \************************************************************/
 include_once '../ressources/templates/header.php';
 require_once '../business/user.php';
+require_once '../business/estimate.php';
 ?>
 <?php
 
@@ -97,8 +98,32 @@ Update infos :<br>
 <a href="../business/check_info_user.php?action=logout">Logout</a>
 <?php 
 }
-
 ?>
+
+<!-- Essais d'afficher un devis -->
+Devis : <br>
+<form method="post" action ="../tools/business/check_info_estimate.php">
+<input type ="submit" name="action" value="affiche devis">
+</form>
+<?php 
+if(isset($_SESSION['estimate'])){
+	$estimate = $_SESSION['estimate'];
+	var_dump($estimate);
+	
+	foreach ($estimate as $element){
+		$element = unserialize($element);
+		//var_dump($element);
+		echo $element->getId().'<br>';
+		
+	}
+}
+
+	
+?>
+
+	
+
+
 
 <?php include_once '../ressources/templates/footer.php';?>	
 

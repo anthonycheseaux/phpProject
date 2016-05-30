@@ -50,6 +50,21 @@ class MySqlEstimateManager {
 		return $response;
 	}
 	
+	public function getAllEstimatesByAd($ad_id) {
+		$query = "SELECT * FROM estimate WHERE ". $this::AD. " = ". $ad_id.";";
+
+		$result = $this->_conn->selectDB($query);
+		if (!row) return null;
+	
+		while ($row = $result->fetch()) {
+			$estimate = new Estimate($row[$this::ID], $row[$this::AD], $row[$this::PRICE], $row[$this::SHIPPER]);
+			$response[] =serialize($estimate) ;
+			unset($estimate);
+		}
+	
+		return $response;
+	}
+	
 	// INSERT
 	public function createEstimate(Estimate $estimate) {
 		

@@ -22,13 +22,12 @@ require_once '../tools/database/mysqlmanager.php';
 session_start();
 $mysql = new MySqlManager();
 
-echo "pass1";
+
 if(isset($_POST['action'])){
-	echo "pass2";
 	//Create account	
 	if($_POST['action']=='Créer'){
 		if(isset($_POST['society'])){
-			echo "pass3";
+			
 			registerShipper($mysql);
 		}
 		else {
