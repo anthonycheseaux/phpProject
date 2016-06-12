@@ -35,6 +35,17 @@ if (isset($_POST['action']) && $_POST['action'] == "affiche devis") {
 	displayEstimate($estimateManager);
 }
 
+//Lorsque l'on choisi un devis.
+//TODO A améliorer !!!!
+if (isset($_POST['action']) && $_POST['action'] == "Select shipper") {
+
+	$temp = "a été séléctionné";
+	$temp2 = utf8_decode($temp);
+	//var_dump($_POST['id_shipper']);
+	echo 'le transporteur '.$_POST['id_shipper']. ' '.$temp2;;
+	exit();
+}
+
 function registerEstimate($estimateManager) {
 	$ad = htmlspecialchars($_SESSION[AD]);
 	$price = htmlspecialchars($_POST[PRICE]);
@@ -76,7 +87,7 @@ function registerEstimate($estimateManager) {
 function displayEstimate($estimateManager){
 	
 	//$ad = unserialize($_SESSION[AD]);
-	$result = $estimateManager->getAllEstimatesByAd(3);
+	$result = $estimateManager->getAllEstimatesByAd(2);
 	
 	$_SESSION['estimate'] = $result;
 	

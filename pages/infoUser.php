@@ -105,25 +105,35 @@ Devis : <br>
 <form method="post" action ="../tools/business/check_info_estimate.php">
 <input type ="submit" name="action" value="affiche devis">
 </form>
+
+
 <?php 
 if(isset($_SESSION['estimate'])){
 	$estimate = $_SESSION['estimate'];
-	var_dump($estimate);
-	
+	?>
+	<table width="360">
+  <tr>
+    <th>Shipper</th>
+    <th>Price</th>
+    <th>Selection</th>
+  </tr>
+  <!-- Pour chaque élément dans le tableau "$estimate" on crée un formulare avec les données du devis -->
+	<?php 
 	foreach ($estimate as $element){
 		$element = unserialize($element);
-		//var_dump($element);
-		echo $element->getId().'<br>';
 		
+		?>
+<form method="post" action="../tools/business/check_info_estimate.php">
+<tr>
+	<td><?php echo 'Shipper '.$element->getShipper()?></td>
+	<td><?php echo $element->getPrice().'.-'?></td>
+<!-- l'input "hidden" contient l'id du transporteur -->
+	<td><input type="submit" name="action" value="Select shipper"> </td><input type="hidden" name="id_shipper" value=<?php echo $element->getShipper();?>>
+</tr>
+</form>
+<?php 
 	}
-}
-
-	
-?>
-
-	
-
-
-
+}?>
+</table>
 <?php include_once '../ressources/templates/footer.php';?>	
 
