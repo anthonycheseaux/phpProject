@@ -81,9 +81,9 @@ class MySqlManager
 	}
 	
 
-	public function updateUser($id, $adress1, $adress2, $password, $society){
+	public function updateUser($id, $adress1, $adress2, $city, $password, $society){
 	
-		$query = "UPDATE user SET user_society = '$society', user_adress1 = '$adress1', user_adress2 = '$adress2', user_password = '$password' WHERE  user_id ='$id' ;";
+		$query = "UPDATE user SET user_society = '$society', user_adress1 = '$adress1', user_adress2 = '$adress2', user_city = '$city', user_password = '$password' WHERE  user_id ='$id' ;";
 		return $this->_conn->executeQuery($query);
 	
 	}

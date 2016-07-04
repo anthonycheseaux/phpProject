@@ -19,8 +19,10 @@
  \************************************************************/
 
 require_once '../tools/database/mysqlmanager.php';
+require_once '../tools/database/mysqlcitymanager.php';
 session_start();
 $mysql = new MySqlManager();
+$mysqlCity = new MySqlCityManager();
 
 
 if(isset($_POST['action'])){
@@ -28,10 +30,10 @@ if(isset($_POST['action'])){
 	if($_POST['action']=='Créer'){
 		if(isset($_POST['society'])){
 			
-			registerShipper($mysql);
+			registerShipper($mysql, $mysqlCity);
 		}
 		else {
-			registerCustomer($mysql);
+			registerCustomer($mysql, $mysqlCity);
 		}
 
 		
@@ -40,15 +42,15 @@ if(isset($_POST['action'])){
 	//Authentication
 	if($_POST['action']=='Login'){
 		
-		authenticateShipper($mysql);
+		authenticateShipper($mysql, $mysqlCity);
 	}
 	
 	if($_POST['action']=='Login'){
-		authenticateShipper($mysql);
+		authenticateShipper($mysql, $mysqlCity);
 	}
 	
 	if($_POST['action']=='Update your info'){
-		updateInfoUser($mysql);
+		updateInfoUser($mysql, $mysqlCity);
 	}
 
 }
@@ -68,7 +70,7 @@ function logout(){
 }
 
 //Login Shipper
-function authenticateShipper($mysql){
+function authenticateShipper($mysql, $mysqlCity){
 
 	$email = $_POST['email'];
 	$pwd = $_POST['pwd'];
@@ -83,16 +85,17 @@ function authenticateShipper($mysql){
 	
 	/*$_SESSION['msg'] = 'Welcome '. $result->getFirstname.' '.$result->getLastname;
 	$_SESSION['rank'] = 1;*/
-
+	
+	$resultCity = $mysqlCity->getCityById($result->getCity());
 	$_SESSION['user'] = serialize($result);
-
+	$_SESSION['city'] = serialize($resultCity);
 	header("location: ../pages/infoUser.php");
 	exit();
 }
 
 
 //Login Customer
-function authenticateCustomer($mysql){
+function authenticateCustomer($mysql, $mysqlCity){
 	$email = htmlspecialchars($_POST['email']);
 	$pwd = htmlspecialchars($_POST['pwd']);
 	$result = $mysql->checkLoginCustomer($email, $pwd);
@@ -113,7 +116,7 @@ function authenticateCustomer($mysql){
 }
 
 //Create new shipper account
-function registerShipper($mysql){
+function registerShipper($mysql, $mysqlCity){
 	$fname =htmlspecialchars($_POST['firstname']);
 	$lname = htmlspecialchars($_POST['lastname']);
 	$pwd = htmlspecialchars($_POST['password']);
@@ -128,7 +131,15 @@ function registerShipper($mysql){
 	$society = htmlspecialchars($_POST['society']);
 	$date = new DateTime();
 	
+	
+	//Search the city in database
+	$cityResult = $mysqlCity->searchCityByName($postCode, $cityName);
 	//Check wich field is empty and get a message error
+	
+	if($cityResult==false){
+		$rank = 21;
+		$msg = "This city does not exist";
+	}
 	
 	if(empty($society)){
 		$rank = 11;
@@ -194,7 +205,10 @@ function registerShipper($mysql){
 		exit();
 	}
 
-	$result = $mysql->saveShipper($fname, $lname, $pwd, $title, $adress1, $adress2, 1, $role, $email, $society);
+	$idCity = $cityResult->getId();
+	
+	$result = $mysql->saveShipper($fname, $lname, $pwd, $title, $adress1, $adress2, $idCity, $role, $email, $society);
+	//$result = $mysql->saveShipper($fname, $lname, $pwd, $title, $adress1, $adress2, 1, $role, $email, $society);
 	
 	//If username already exist
 	if($result == 'doublon'){
@@ -213,7 +227,7 @@ function registerShipper($mysql){
 
 
 //Create new customer account
-function registerCustomer($mysql){
+function registerCustomer($mysql, $mysqlCity){
 	$fname = htmlspecialchars($_POST['firstname']);
 	$lname = htmlspecialchars($_POST['lastname']);
 	
@@ -227,9 +241,17 @@ function registerCustomer($mysql){
 	$role = 2;
 	$email = htmlspecialchars($_POST['email']);
 	
-
+	//Search the city in database
+	$cityResult = $mysqlCity->searchCityByName($postCode, $cityName);
 	//Check wich field is empty and get a message error
 
+	
+	
+	if($cityResult==false){
+		$rank = 22;
+		$msg = "This city does not exist";
+	}
+	
 	if(preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $email)==0){
 		$rank = 20;
 		$msg = "Email structure is not correct";
@@ -290,7 +312,9 @@ function registerCustomer($mysql){
 		exit();	
 	}
 
-	$result = $mysql->saveCustomer($fname, $lname, $pwd, $title, $adress1, $adress2, 1, $role, $email);
+	$idCity = $cityResult->getId();
+	$result = $mysql->saveCustomer($fname, $lname, $pwd, $title, $adress1, $adress2, $idCity, $role, $email);
+	//$result = $mysql->saveCustomer($fname, $lname, $pwd, $title, $adress1, $adress2, 1, $role, $email);
 
 	//If username already exist
 	if($result == 'doublon'){
@@ -308,13 +332,19 @@ function registerCustomer($mysql){
 }
 
 //02.05.2016
-function updateInfoUser($mysql){
+function updateInfoUser($mysql, $mysqlCity){
 	$password = htmlspecialchars($_POST['updatePassword']);
 	$adress1 = htmlspecialchars($_POST['updateAdress1']);
 	$adress2 = htmlspecialchars($_POST['updateAdress2']);
-	$society = htmlspecialchars($_POST['updateSociety']);
+	$postCode = htmlspecialchars($_POST['updatePostcode']);
+	$city = htmlspecialchars($_POST['updateCity']);
 	$user = unserialize($_SESSION['user']);
-
+	$society = $user->getSociety();
+	if(isset($_POST['updateSociety'])){
+		$society = htmlspecialchars($_POST['updateSociety']);
+	}
+	$resultCity;
+	$newCityId = $user->getCity();
 	if(empty($password)){
 		$password = $user->getPassword();
 	}
@@ -329,12 +359,25 @@ function updateInfoUser($mysql){
 	if(empty($adress2)){
 		$adress2 = $user->getAddress2();
 	}
-
-	if(empty($society)){
-		$society = $user->getSociety();
+	
+	if(isset($postCode)){
+		if (isset($city)){
+			$resultCity = $mysqlCity->searchCityByName($postCode, $city);
+		}
 	}
 
-	$result = $mysql->updateUser($user->getId(), $adress1, $adress2, $password, $society);
+	/*if(empty($society)){
+		$society = $user->getSociety();
+	}*/
+
+	if($resultCity == false){
+		$_SESSION['rank'] = 31;
+		$_SESSION['msg'] = 'This city does not exist';
+		header("location: ../pages/infoUser.php");
+		exit();
+	}
+	$newCityId = $resultCity->getId();	
+	$result = $mysql->updateUser($user->getId(), $adress1, $adress2, $newCityId, $password, $society);
 
 	$_SESSION['rank']=30;
 	$_SESSION['msg']= 'Update succeeded, please logout and login again to apply update';

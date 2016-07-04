@@ -16,6 +16,7 @@
  \************************************************************/
 include_once '../ressources/templates/header.php';
 require_once '../business/user.php';
+require_once '../business/city.php';
 require_once '../business/estimate.php';
 ?>
 <?php
@@ -26,8 +27,11 @@ if(empty($_SESSION['user'])){
 }
 
 if (isset($_SESSION['user'])){
-	$user = unserialize($_SESSION['user']);
+	$user = unserialize($_SESSION['user']);}
 	
+if (isset($_SESSION['city'])){
+	$city = unserialize($_SESSION['city']);}
+
 	//var_dump($user);
 	if($user->getRole()==3){
 		echo 'Society : '.$user->getSociety().'</br>';
@@ -37,14 +41,21 @@ if (isset($_SESSION['user'])){
 	echo 'Lastname : '.$user->getLastname().'</br>';
 	echo 'Adress 1&2 : '.$user->getAddress1().',  ';
 	echo $user->getAddress2().'</br>';
+	echo 'Postcode : '.$city->getPostcode().'   '.$city->getCityName().'<br>';
+	echo 'State : '.$city->getState().'<br>';
+	
 	echo 'role : '.$user->getRole().'</br>';
 	echo 'Email : '.$user->getEmail().'</br>';
+
 	
 ?>
 <br>
 Update infos :<br>
 <?php if(isset($_SESSION['rank'])){
 	if ($_SESSION['rank'] == 30){
+		echo $_SESSION['msg'];
+	}
+	if ($_SESSION['rank'] == 31){
 		echo $_SESSION['msg'];
 	}
 }
@@ -77,6 +88,29 @@ Update infos :<br>
 		<input type="text" name="updateAdress2" value="">
 		</td>
 	</tr>
+	
+	<tr>
+		<td>
+		<b>New locality :</b>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		New postcode :
+		</td>
+		<td>
+		<input type="text" name="updatePostcode" value="">
+		</td>
+	</tr>
+	<tr>
+		<td>
+		New city :
+		</td>
+		<td>
+		<input type="text" name="updateCity" value="">
+		</td>
+	</tr>
+	
 	<?php 
 		if($user->getRole()==3){
 	?>
@@ -96,8 +130,9 @@ Update infos :<br>
 
 </form>
 <a href="../business/check_info_user.php?action=logout">Logout</a>
+
 <?php 
-}
+//}
 ?>
 
 <!-- Essais d'afficher un devis -->
@@ -136,4 +171,5 @@ if(isset($_SESSION['estimate'])){
 }?>
 </table>
 <?php include_once '../ressources/templates/footer.php';?>	
+
 

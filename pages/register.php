@@ -56,6 +56,8 @@ Register for Shipper :
 	
 	if ($rank == 'shipper_ok')
 		echo $msg;
+	if ($rank == 21)
+		echo $msg;
 	?>
 			
 		<tr>
@@ -133,6 +135,8 @@ Register for Shipper :
 				value="<?php echo $form_data_Shipper[6];?>" /><?php
 				if ($rank == 8)
 					echo $msg;
+				if ($rank == 21)
+					echo $msg;
 				?></td>
 		</tr>
 
@@ -141,6 +145,8 @@ Register for Shipper :
 			<td><input type="text" name="cityName"
 				value="<?php echo $form_data_Shipper[7];?>" /><?php
 				if ($rank == 7)
+					echo $msg;
+				if ($rank == 21)
 					echo $msg;
 				?></td>
 		</tr>
@@ -166,8 +172,11 @@ Register for Customer :
 	<table>
 		<!-- Display message if registration is successful -->
 	<?php
-	if ($rank == 'customer_ok')
-		echo $msg;
+	if ($rank == 'customer_ok'){
+		echo $msg;}
+		
+	if ($rank == 22){
+		echo $msg;}
 	?>
 			
 		<tr>
@@ -235,6 +244,8 @@ Register for Customer :
 				value="<?php echo $form_data_User[6];?>" /><?php
 				if ($rank == 18)
 					echo $msg;
+				if ($rank == 22)
+					echo $msg;
 				?></td>
 		</tr>
 
@@ -243,6 +254,8 @@ Register for Customer :
 			<td><input type="text" name="cityName"
 				value="<?php echo $form_data_User[7];?>" /><?php
 				if ($rank == 17)
+					echo $msg;
+				if ($rank == 22)
 					echo $msg;
 				?></td>
 		</tr>
