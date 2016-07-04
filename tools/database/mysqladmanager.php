@@ -33,8 +33,15 @@ class MySqlAdManager {
 		return $ad;
 	}
 	
-	public function getAllAds() {
-		$query = "SELECT * FROM ad";
+	/**
+	 * Default : getAllAds() will return only active ads, when getAllAds(false) will return all ads
+	 * @param string $onlyActiveAds
+	 */
+	public function getAllAds($onlyActiveAds = TRUE) {
+		if ($onlyActiveAds == TRUE)
+			$query = "SELECT * FROM ad WHERE " . $this::INACTIVE . " = false";		// returns only active ads
+		else 
+			$query = "SELECT * FROM ad";											// returns all ads
 		$result = $this->_conn->selectDB($query);
 		while($row = $result->fetch()) {
 			$ad = new Ad($row[$this::ID], $row[$this::USER], $row[$this::CATEGORY], 
@@ -99,5 +106,6 @@ class MySqlAdManager {
 	const TOTAL_VOLUME = "ad_total_volume";
 	const DATE_BEGINNING = "ad_date_beginning";
 	const DATE_END = "ad_date_end";
+	const INACTIVE = "ad_inactive";
 	
 }

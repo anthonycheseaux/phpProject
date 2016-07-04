@@ -48,7 +48,7 @@ if (! isset ( $ad ) || $ad == null) {
 }
 
 if (isset ( $_SESSION ['user'] ))
-	$user = $_SESSION ['user'];
+	$user = unserialize($_SESSION['user']);
 	
 	// TODO suppress those 2 lines
 $userManager = new MySqlManager ();

@@ -33,10 +33,15 @@ class MySqlEstimateManager {
 		return new Estimate($row[$this::ID], $row[$this::AD], $row[$this::PRICE], $row[$this::SHIPPER]);
 	}
 	
-	public function getAllEstimatesByCustomer($customer_id) {
+	public function getAllEstimatesByCustomer($customer_id, $onlyActiveEstimates = TRUE) {
+		$condition = "";
+		if ($onlyActiveEstimates = TRUE)
+			$condition = " AND " . $this::INACTIVE . " = false";
+		
 		$query = "SELECT * FROM estimate AS e, ad as a " .
 				"WHERE e." . $this::AD . " = " . MySqlAdManager::ID . " " .				// jointure estimate - ad
-				"AND a." . MySqlAdManager::USER . " = " . $customer_id . ";";
+				"AND a." . MySqlAdManager::USER . " = " . $customer_id . 
+				$condition . ";";
 		
 		$result = $this->_conn->executeQuery($query);
 		if (!row) return null;
@@ -50,8 +55,12 @@ class MySqlEstimateManager {
 		return $response;
 	}
 	
-	public function getAllEstimatesByAd($ad_id) {
-		$query = "SELECT * FROM estimate WHERE ". $this::AD. " = ". $ad_id.";";
+	public function getAllEstimatesByAd($ad_id, $onlyActiveEstimates = TRUE) {
+		$condition = "";
+		if ($onlyActiveEstimates = TRUE)
+			$condition = " AND " . $this::INACTIVE . " = false";
+		
+		$query = "SELECT * FROM estimate WHERE ". $this::AD. " = ". $ad_id . $condition . ";";
 
 		$result = $this->_conn->selectDB($query);
 		if (!row) return null;
@@ -101,4 +110,5 @@ class MySqlEstimateManager {
 	const AD = 'estimate_ad';
 	const PRICE = 'estimate_price';
 	const SHIPPER = 'estimate_shipper';
+	const INACTIVE = 'estimate_inactive';
 }

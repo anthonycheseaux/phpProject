@@ -16,3 +16,5 @@ echo 'Il y a ' . $nbAds . ' annonces' . '<br>';
 foreach ($tableau as $ad) {
 	echo $ad->getTitle() . '<br>';
 }
+
+
