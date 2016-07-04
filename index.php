@@ -14,7 +14,7 @@
  * Description	common header
  * 
  \************************************************************/
-require_once 'ressources/config.php';
+require 'ressources/config.php';
 
 require_once (LIBRARY_PATH . "/templateFunctions.php");
 

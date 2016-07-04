@@ -12,7 +12,7 @@ if (! empty ( $_GET ['lang'] )) {
 			$_SESSION ['lang'] = "en";
 			break;
 		default :
-			$_SESSION ['lang'] = "fr"; // au cas ou quelqu'un rentre autre chose que fr/en ou it
+			$_SESSION ['lang'] = "fr"; // au cas ou quelqu'un rentre autre chose que fr/en
 			break;
 	}
 }

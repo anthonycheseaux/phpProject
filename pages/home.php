@@ -1,6 +1,6 @@
 <?php
 require_once ('../ressources/templates/header.php');
-require_once ('../ressources/config.php');
+//require_once ('../ressources/config.php');
 ?>
 <body>
 	<nav class="navbar navbar-full navbar-inverse navbar-fixed-top">
@@ -15,12 +15,25 @@ require_once ('../ressources/config.php');
 				</button>
 				<a class="navbar-brand" href="#">TEEMW</a>
 			</div>
+			<div class="nav navbar-nav navbar-right">
+						<li class="dropdown pull-right"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false"><?php echo _LANGUAGE?><span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="?lang=fr"><img src="image/frenchFlag.png"></a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="?lang=en"><img src="image/britishFlag.png"></a></li>
+						</ul>
+					</li>
+			
+			</div>
 			<div id="myNavbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
 					<li><a class="page-scroll" href="#ourServices"><?php echo _OUR_SERVICES?></a></li>
 					<li><a class="page-scroll" href="#fill"><?php echo _FILL?></a></li>
 					<li><a class="page-scroll" href="#recieve"><?php echo _RECIEVE?></a></li>
 					<li><a class="page-scroll" href="#choose"><?php echo _CHOOSE?></a></li>
+
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
@@ -32,7 +45,8 @@ require_once ('../ressources/config.php');
 							<li><a data-toggle="modal" href="#registerShipperModal"><?php echo _I_AM_A_SHIPPER?></a></li>
 							<li role="separator" class="divider"></li>
 							<li><a data-toggle="modal" href="#registerCustomerModal"><?php echo _I_AM_A_CUSTOMER?></a></li>
-						</ul></li>
+						</ul>
+					</li>
 				</ul>
 			</div>
 		</div>

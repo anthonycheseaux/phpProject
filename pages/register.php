@@ -181,7 +181,7 @@ Register for Customer :
 			
 		<tr>
 			<td>Title :</td>
-			<td><input type="radio" name="title" value="Mister" />Mister
+			<td><input type="radio" name="title" value="Mister" />Mister</td>
 			
 			<td><input type="radio" name="title" value="Miss" />Miss</td>
 			<?php if ($rank==15) echo $msg ;?>

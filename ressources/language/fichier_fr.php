@@ -86,9 +86,7 @@ define("_AD_DATE_END","Date de fin");
  * 
  * Traduction de PAGES/HOME.PHP
  */
-define("_BIENVENUE","Bienvenue sur mon site web !");
-define("_BONNE_NAVIGATION","Je vous souhaite une bonne navigation.");
-
+define("_LANGUAGE","Langues");
 define("_LOGIN", "Login");
 define("_REGISTER", "S'enregistrer");
 define("_I_AM_A_SHIPPER", "Je suis un transporteur");
@@ -119,7 +117,7 @@ define("_CHOOSE", "Choisir");
  */
 define("_NOUVELLE_ANNONCE", "Nouvelle annonce");
 define("_SAISIR_ANNONCE", "Saisir une annonce");
-define("_CHOISIR_CATEGORIE", "Choisir une cat�gorie");
+define("_CHOISIR_CATEGORIE", "Choisir une catégorie");
 define("_SELECTION", "selection");
 define("_FERMER", "fermer");
 define("_CE_MOIS", "ce mois");
@@ -150,26 +148,26 @@ define("_DECEMBRE", "Decembre");
  * Traduction de tools/business/check_info_ad.php
  */
 define("_MANQUE_TITRE", "Saisissez un titre");
-define("_MANQUE_CATEGORIE", "S�lectionnez une cat�gorie");
-define("_MANQUE_LOCALITE_DEPART", "Choisissez une localit� de d�part");
-define("_MANQUE_LOCALITE_DESTINATION", "Choisissez une localit� d'arriv�e");
+define("_MANQUE_CATEGORIE", "Sélectionnez une catégorie");
+define("_MANQUE_LOCALITE_DEPART", "Choisissez une localité de départ");
+define("_MANQUE_LOCALITE_DESTINATION", "Choisissez une localité d'arrivée");
 define("_MANQUE_DESCRIPTION", "Veuillez saisir une description pour votre annonce");
 define("_MANQUE_POIDS_TOTAL", "Saisissez le poids total de la marchandise");
 define("_MANQUE_NOMBRE_D_OBJETS", "Saisissez le nombre total d'objets");
 define("_MANQUE_VOLUME_TOTAL", "Saisissez le volume total du transport");
-define("_MANQUE_DATE_DEBUT", "Il manque la date de d�but");
+define("_MANQUE_DATE_DEBUT", "Il manque la date de début");
 define("_MANQUE_DATE_FIN", "Il manque la date de fin");
-define("_DATES_FIN_DEBUT_INVERSEES", "Ne peut �tre ant�rieure � la date de d�but");
-define("_ANNONCE_ENREGISTREE", "Votre annonce est enregistr�e");
+define("_DATES_FIN_DEBUT_INVERSEES", "Ne peut être antérieure à la date de début");
+define("_ANNONCE_ENREGISTREE", "Votre annonce est enregistrée");
 /*
  * Traduction des cat�gories
  */
-define("_CATEGORIE_DEMENAGEMENT", "D�m�nagement");
+define("_CATEGORIE_DEMENAGEMENT", "Déménagement");
 define("_CATEGORIE_MOBILIER", "Mobilier");
-define("_CATEGORIE_ELECTROMENAGER", "Electrom�nager");
+define("_CATEGORIE_ELECTROMENAGER", "Electroménager");
 define("_CATEGORIE_CARTONS", "Cartons");
 define("_CATEGORIE_PALETTES", "Palettes");
-define("_CATEGORIE_VEHICULES", "V�hicules");
+define("_CATEGORIE_VEHICULES", "Véhicules");
 define("_CATEGORIE_DEUX_ROUES", "Deux-roues");
 define("_CATEGORIE_BATEAU", "Bateaux");
 define("_CATEGORIE_ANIMAUX", "Animaux");
