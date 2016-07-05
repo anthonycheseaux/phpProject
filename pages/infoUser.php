@@ -163,7 +163,7 @@ if(isset($_SESSION['estimate'])){
 	<td><?php echo 'Shipper '.$element->getShipper()?></td>
 	<td><?php echo $element->getPrice().'.-'?></td>
 <!-- l'input "hidden" contient l'id du transporteur -->
-	<td><input type="submit" name="action" value="Select shipper"> </td><input type="hidden" name="id_shipper" value=<?php echo $element->getShipper();?>>
+	<td><input type="submit" name="action" value="Select shipper"> </td><input type="hidden" name="id_estimate" value=<?php echo $element->getId();?>>
 </tr>
 </form>
 <?php 

@@ -13,7 +13,7 @@
  *
  \************************************************************/
 require_once 'mysqlconnection.php';
-require_once '/business/estimate.php';
+require_once '../../business/estimate.php';
 require_once 'mysqladmanager.php';
 
 class MySqlEstimateManager {
@@ -67,11 +67,30 @@ class MySqlEstimateManager {
 	
 		while ($row = $result->fetch()) {
 			$estimate = new Estimate($row[$this::ID], $row[$this::AD], $row[$this::PRICE], $row[$this::SHIPPER]);
-			$response[] =serialize($estimate) ;
+			$response[] = serialize($estimate) ;
 			unset($estimate);
 		}
 	
 		return $response;
+	}
+	
+	public function getAllEstimatesByAdAndState($ad_id, $state) {
+		$condition = "";
+		if ($onlyActiveEstimates = TRUE)
+			$condition = " AND " . $this::STATE . " = ".$state;
+	
+			$query = "SELECT * FROM estimate WHERE ". $this::AD. " = ". $ad_id . $condition . ";";
+		
+			$result = $this->_conn->selectDB($query);
+			if (!row) return null;
+
+			while ($row = $result->fetch()) {
+				$estimate = new Estimate($row[$this::ID], $row[$this::AD], $row[$this::PRICE], $row[$this::SHIPPER]);
+				$response[] =serialize($estimate) ;
+				unset($estimate);
+			}
+
+			return $response;
 	}
 	
 	// INSERT
@@ -94,6 +113,14 @@ class MySqlEstimateManager {
 		return $this->_conn->executeQuery($query);
 	}
 	
+	public function updateEstimateState($estimate_Id, $state) {
+		$query = "UPDATE estimate " .
+				"SET " .	$this::STATE . " = " . $state . " " .
+				"WHERE " . $this::ID . " = " . $estimate_Id . ";";
+	
+				return $this->_conn->executeQuery($query);
+	}
+	
 	// DELETE
 	public function deleteEstimate(Estimate $estimate) {
 		$query = "DELETE estimate WHERE " . $this::ID . " = " . $estimate->getId() . ";";
@@ -111,4 +138,5 @@ class MySqlEstimateManager {
 	const PRICE = 'estimate_price';
 	const SHIPPER = 'estimate_shipper';
 	const INACTIVE = 'estimate_inactive';
+	const STATE = 'estimate_state';
 }

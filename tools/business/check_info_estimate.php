@@ -31,7 +31,7 @@ if (isset($_POST['action']) && $_POST['action'] == _PROPOSER_UN_DEVIS) {
 }
 
 if (isset($_POST['action']) && $_POST['action'] == "affiche devis") {
-	
+	echo 'pass';
 	displayEstimate($estimateManager);
 }
 
@@ -39,11 +39,14 @@ if (isset($_POST['action']) && $_POST['action'] == "affiche devis") {
 //TODO A améliorer !!!!
 if (isset($_POST['action']) && $_POST['action'] == "Select shipper") {
 
-	$temp = "a été séléctionné";
+	
+	validEstimate($estimateManager, $_POST['id_estimate']);
+	/*$temp = "a été séléctionné";
 	$temp2 = utf8_decode($temp);
 	//var_dump($_POST['id_shipper']);
-	echo 'le transporteur '.$_POST['id_shipper']. ' '.$temp2;;
-	exit();
+	echo 'le devis '.$_POST['id_estimate']. ' '.$temp2;
+	$estimateManager-
+	exit();*/
 }
 
 function registerEstimate($estimateManager) {
@@ -87,7 +90,7 @@ function registerEstimate($estimateManager) {
 function displayEstimate($estimateManager){
 	
 	//$ad = unserialize($_SESSION[AD]);
-	$result = $estimateManager->getAllEstimatesByAd(2);
+	$result = $estimateManager->getAllEstimatesByAdAndState(2, 1);
 	
 	$_SESSION['estimate'] = $result;
 	
@@ -96,6 +99,20 @@ function displayEstimate($estimateManager){
 	
 }
 
-function validEstimate(){
+function validEstimate($estimateManager, $id){
+	$estimateManager->updateEstimateState($id, 2);
+	$estimateList = $_SESSION['estimate'];
 	
+	//Disable other estimate
+	foreach ($estimateList as $element) {
+		$element = unserialize($element);
+		if($element->getId()!=$id){
+			
+			$estimateManager->updateEstimateState($element->getId(), 5);
+		}
+	}
+	$_SESSION['estimate'] = null;
+	
+	header("location: ../../pages/infoUser.php");
+	exit();
 }

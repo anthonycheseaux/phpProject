@@ -66,3 +66,4 @@ class Estimate {
 	private $shipper;
 	
 }
+?>
