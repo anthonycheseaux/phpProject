@@ -5,7 +5,7 @@
  *
  * Language		PHP
  *
- * Author		Cyril Zufferey
+ * Author		Cyril Zufferey & Anthony Cheseaux
  * Creation		20160501
  *
  * Project		teemw
@@ -14,9 +14,10 @@
  * Description	common header
  * 
  \************************************************************/
-require_once 'ressources/config.php';
-
-require_once(LIBRARY_PATH . "/templateFunctions.php");
+//require_once 'ressources/config.php';
+require_once ('../ressources/templates/header.php');
+require_once ('../tools/database/mysqladmanager.php');
+//require_once(LIBRARY_PATH . "/templateFunctions.php");
 ?>
 
 <!DOCTYPE html>
@@ -66,7 +67,7 @@ require_once(LIBRARY_PATH . "/templateFunctions.php");
 		<script>
 		$(document).ready(function() { 
 		    $("table") 
-		    .tablesorter({widthFixed: true, widgets: ['zebra']}) 
+		    //.tablesorter({widthFixed: true, widgets: ['zebra']}) 
 		    .tablesorterPager({container: $("#pager")}); 
 		}); 
 		</script>
@@ -75,10 +76,9 @@ require_once(LIBRARY_PATH . "/templateFunctions.php");
 <body>
 
 	<div class="container-fluid">
-		<table id="myTable" class="display responsive nowrap" cellspacing="0" width="100%" data-order='[[ 5, "asc" ]]'>
+		<table id="myTable" class="display responsive nowrap table-striped" cellspacing="0" width="100%" data-order='[[ 5, "asc" ]]'>
 			<thead>
 				<tr>
-					<th></th>
 		            <?php echo '<th>' . _AD_TITLE . '</th>'?>
 		            <?php echo '<th>' . _AD_DEPARTURE_CI . '</th>'?>
 		            <?php echo '<th>' . _AD_DESTINATION_CI . '</th>'?>
@@ -89,7 +89,6 @@ require_once(LIBRARY_PATH . "/templateFunctions.php");
 			</thead>
 			<tfoot>
 				<tr>
-					<th></th>
 		            <?php echo '<th>' . _AD_TITLE . '</th>'?>
 		            <?php echo '<th>' . _AD_DEPARTURE_CI . '</th>'?>
 		            <?php echo '<th>' . _AD_DESTINATION_CI . '</th>'?>
@@ -107,12 +106,12 @@ require_once(LIBRARY_PATH . "/templateFunctions.php");
 			$pwd = '';
 			$error = 'Could not connect';
 			
-			$query = "SELECT ad.ad_id AS id, ad.ad_title AS title, ci1.city_name AS cityFrom, ci2.city_name AS cityTo,
+			/*$query =  "SELECT ad.ad_id AS id, ad.ad_title AS title, ci1.city_name AS cityFrom, ci2.city_name AS cityTo,
  							 ad.ad_total_weight AS weight, ad.ad_total_volume AS volume, ad.ad_date_beginning AS dateBeg
 						FROM AD ad INNER JOIN CITY ci1 ON (ad.ad_departure_city = ci1.city_id)
 		   						   INNER JOIN CITY ci2 ON (ad.ad_destination_city = ci2.city_id)";
 			
-			$query2 = "SELECT ad_id FROM AD";
+			$query2 = "SELECT ad_id FROM AD";*/
 			
 			$adinfo = array();
 			
@@ -120,22 +119,30 @@ require_once(LIBRARY_PATH . "/templateFunctions.php");
 				die($error);
 			}
 			
-			if($query_run = mysql_query($query)){				
+			mysql_query("SET NAMES UTF8");
+			
+			$adManager = new MySqlAdManager();
+			
+			/*if($query_run = mysql_query($query)){				
 				while($query_row = mysql_fetch_assoc($query_run)){
 					$adinfo[] = $query_row;
-				}
+				}*/
+			
+			if($adinfo = $adManager->getAllAdsFromToday(FALSE)){
+				if(!empty($adinfo)){
 				
 				foreach ($adinfo as $ad){	
-					$vard = 'style="cursor: pointer;" data-href="pages/home.php?id=' . $ad['id'] . '"';		
+					$vard = 'style="cursor: pointer;" data-href="pages/home.php?id=' . $ad->getId() . '"';		
 					echo '<tr> '
-								. '<td></td>'
-								 . '<td '.$vard.'>' . $ad['title'] . '</td>'
-								 . '<td '.$vard.'>' .$ad['cityFrom'] . '</td>'
-								 . '<td '.$vard.'>' .$ad['cityTo'] . '</td>'
-								 . '<td '.$vard.'>' .$ad['weight'] . '</td>'
-								 . '<td '.$vard.'>' .$ad['volume'] . '</td>'
-								 . '<td '.$vard.'>' .$ad['dateBeg'] . '</td> </tr>';
-				}													
+								 
+								 . '<td '.$vard.'>' . $ad->getTitle() . '</td>'
+								 . '<td '.$vard.'>' .$ad->getDeparture_city() . '</td>'
+								 . '<td '.$vard.'>' .$ad->getDestination_city() . '</td>'
+								 . '<td '.$vard.'>' .$ad->getTotal_volume() . '</td>'
+								 . '<td '.$vard.'>' .$ad->getTotal_weight() . '</td>'
+								 . '<td '.$vard.'>' .$ad->getDate_beginning() . '</td> </tr>';
+				}
+				}
 			}
 			else{
 				die($error);
@@ -149,4 +156,6 @@ require_once(LIBRARY_PATH . "/templateFunctions.php");
 	</div>
 	
 </body>
-</html>
+<?php
+require '../ressources/templates/footer.php';
+?>
