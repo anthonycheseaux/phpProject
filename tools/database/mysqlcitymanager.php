@@ -47,4 +47,16 @@ class MySqlCityManager
 	
 		return new City($row['city_id'], $row['city_name'], $row['city_postcode'], $row['city_state'], $row['city_country']);
 	}
+	
+	public function getAllCities(){
+		$query = "SELECT * FROM city";
+		$result = $this->_conn->selectDB($query);
+		while ($row = $result->fetch()) {
+			$city = new City($row['city_id'], $row['city_name'], $row['city_postcode'], $row['city_state'], $row['city_country']);
+			$response[] = $city;
+			unset($city);
+		}
+		
+		return $response;
+	}
 }

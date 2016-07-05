@@ -183,6 +183,24 @@ define("_PROPOSER_UN_DEVIS", "Submit an estimate");
 define("_MANQUE_PRIX", "You must specify a price");
 define("_DEVIS_ENREGISTRE", "The estimate has been saved");
 
+/*
+ * Traduction de check_info_user.php
+ */
+define("_MSG_CITY", "This city does not exist.");
+define("_MSG_SETSOCT", "Add a society");
+define("_MSG_ERROR_EMAIL", "This e-mail is not correct.");
+define("_MSG_SETMAIL", "Add an e-mail");
+define("_MSG_SETCOUNTRY", "Add a country");
+define("_MSG_SETPOSTCODE", "Add postal code");
+define("_MSG_SETCITY", "Add a ctiy");
+define("_MSG_SETADDRESS", "Add an address");
+define("_MSG_SETTITLE", "Add a title");
+define("_MSG_SETPASSWORD", "Add a password");
+define("_MSG_SETLNAME", "Add a lastname");
+define("_MSG_SETFNAME", "Add a firstname");
+define("_MSG_UPDATE_SUCCESS", "Update succeeded, please logout and login again to apply update.");
+degine("_MSG_REGISTRATION_SUCCESS","Registration succeeded");
+
 
 /*
  * Traduction de ...
