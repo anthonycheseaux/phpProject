@@ -199,7 +199,7 @@ define("_MSG_SETPASSWORD", "Ajouter un mot de passe");
 define("_MSG_SETLNAME", "Ajouter un nom de famille");
 define("_MSG_SETFNAME", "Ajouter un prénom");
 define("_MSG_UPDATE_SUCCESS", "La mise à jour est réussie. Décconectez-vous, puis recconectez-vous pour accèder à la mise à jour.");
-degine("_MSG_REGISTRATION_SUCCESS","Enregistrement réalisé avec succès.");
+define("_MSG_REGISTRATION_SUCCESS","Enregistrement réalisé avec succès.");
 
 /*
  * Traduction de ...
