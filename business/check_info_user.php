@@ -68,7 +68,7 @@ function authenticateShipper($mysql, $mysqlCity){
 	$result = $mysql->checkLoginShipper($email, $pwd);
 	if(!$result){
 		$_SESSION['from_data'] = array($email, $pwd);
-		$_SESSION['msg'] = 'Email or password incorrect';
+		$_SESSION['msg'] = _MSG_MAIL_PASSWORD_INCORRECT; //'Email or password incorrect';
 		$_SESSION['rank'] = -1;
 		header("location: ../pages/home.php");
 		exit();
@@ -90,7 +90,7 @@ function authenticateCustomer($mysql, $mysqlCity){
 	$result = $mysql->checkLoginCustomer($email, $pwd);
 	if(!$result){
 		$_SESSION['from_data'] = array($email, $pwd);
-		$_SESSION['msg'] = 'Email or password incorrect';
+		$_SESSION['msg'] = _MSG_MAIL_PASSWORD_INCORRECT; //'Email or password incorrect';
 		$_SESSION['rank'] = -1;
 		header("location: ../pages/home.php");
 		exit;
@@ -195,12 +195,12 @@ function registerShipper($mysql, $mysqlCity){
 	//If username already exist
 	if($result == 'doublon'){
 		$_SESSION['rank'] = 10;
-		$_SESSION['msg'] = 'Email already used';
+		$_SESSION['msg'] = _MSG_EMAIL_USED; //'Email already used';
 		$_SESSION['form_data'] = array($fname, $lname, $pwd, $title, $adress1, $adress2, $postCode, $cityName,  $country,  $email, $society);
 	}
 	else{
 		$_SESSION['rank'] = 'shipper_ok';
-		$_SESSION['msg'] = 'Registration succeeded';
+		$_SESSION['msg'] = _MSG_REGISTRATION_SUCCESS; //'Registration succeeded';
 	}
 	
 	header("location: ../pages/home.php");
@@ -288,7 +288,7 @@ function registerCustomer($mysql, $mysqlCity){
 	//If username already exist
 	if($result == 'doublon'){
 		$_SESSION['rank'] = 20;
-		$_SESSION['msg'] = 'Email already used';
+		$_SESSION['msg'] = _MSG_EMAIL_USED; // 'Email already used';
 		$_SESSION['form_data'] = array($fname, $lname, $pwd, $title, $adress1, $adress2, $postCode, $cityName,  $country, $email);
 	}
 	else{

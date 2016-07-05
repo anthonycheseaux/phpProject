@@ -200,6 +200,8 @@ define("_MSG_SETLNAME", "Ajouter un nom de famille");
 define("_MSG_SETFNAME", "Ajouter un prénom");
 define("_MSG_UPDATE_SUCCESS", "La mise à jour est réussie. Décconectez-vous, puis recconectez-vous pour accèder à la mise à jour.");
 define("_MSG_REGISTRATION_SUCCESS","Enregistrement réalisé avec succès.");
+define("_MSG_MAIL_PASSWORD_INCORRECT", "E-mail ou mot de passe incorrect !");
+define("_MSG_EMAIL_USED; ","E-mail déjà utilisé !");
 
 /*
  * Traduction de ...
