@@ -56,6 +56,7 @@ class MySqlCityManager
 			$response[] = $city;
 			unset($city);
 		}
+		
 		return $response;
 	}
 }
