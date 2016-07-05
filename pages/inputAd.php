@@ -16,6 +16,7 @@ set_include_path ( get_include_path () . PATH_SEPARATOR . dirname ( __FILE__ ) .
 require_once 'ressources/templates/header.php';
 require_once 'ressources/config.php';
 require_once (LIBRARY_PATH . "/templateFunctions.php");
+require_once 'tools/database/mysqlcitymanager.php';
 
 // constantes correspondant aux noms de champs utilisés dans l'array $form_data
 define ( "_ID", "id" );
@@ -47,6 +48,10 @@ $form_data = isset ( $_SESSION ['ad_form_data'] ) ? $_SESSION ['ad_form_data'] :
 );
 // TODO : supprimer l'array ad_form_data de la SESSION
 echo $form_data [_DATE_BEGINNING] . '**';
+
+// Récupération de la liste des localités
+$cityManager = new MySqlCityManager();
+$cities = $cityManager->getAllCities();
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN">
 <html>
@@ -119,15 +124,31 @@ echo $form_data [_DATE_BEGINNING] . '**';
 				</select><?php if ($rank == _CATEGORY) echo $msg;?></td>
 			</tr>
 			<!-- Localit�s de d�part et d'arriv�e -->
+			  
 			<tr>
 				<td><?php echo _AD_DEPARTURE_CI . ' : '?></td>
-				<td><input type="text" name="departure_city"
-					value="<?php echo $form_data[_DEPARTURE_CITY]?>" /><?php if ($rank == _DEPARTURE_CITY) echo $msg; ?></td>
+				<td>
+					<select name="departure_city">
+						<?php
+							foreach ($cities as $city) {
+								echo '<option value=' . $city->getId() . '>' . $city->getCityName() . ' ' . $city->getPostcode() . '</option>';
+							}
+						?>
+					</select>
+				</td>
 			</tr>
+			
 			<tr>
 				<td><?php echo _AD_DESTINATION_CI . ' : '?></td>
-				<td><input type="text" name="destination_city"
-					value="<?php echo $form_data[_DESTINATION_CITY]?>"><?php if ($rank == _DESTINATION_CITY) echo $msg; ?></td>
+				<td>
+					<select name="destination_city">
+						<?php
+							foreach ($cities as $city) {
+								echo '<option value=' . $city->getId() . '>' . $city->getCityName() . ' ' . $city->getPostcode() . '</option>';
+							}
+						?>
+					</select>
+				</td>
 			</tr>
 			<!-- Dates -->
 			<tr>
