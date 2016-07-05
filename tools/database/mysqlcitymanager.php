@@ -39,7 +39,6 @@ class MySqlCityManager
 	
 	
 	public function getCityById ($id){
-		$pwd = sha1($pwd);
 	
 		$query = "SELECT * FROM city WHERE city_id = '$id'";
 		$result = $this->_conn->selectDB($query);
