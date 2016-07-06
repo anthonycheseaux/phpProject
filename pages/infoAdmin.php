@@ -33,7 +33,7 @@ if ($user->getRole() != 1) {
 ?>
 <!-- Transporteurs en fin d'abonnement -->
 <form>
-	
+	 
 </form>
 <!-- Validation des devis sélectionnés pour envoi des coordonnées mutuelles -->
 <form>
