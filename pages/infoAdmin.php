@@ -47,7 +47,7 @@ $estimates = $estimateManager->getAllEstimatesByState(3);
 
 
 ?>
-<!-- Transporteurs dont l'abonnement est terminé -->
+<!-- Transporteurs dont l'abonnement est terminé --> 
 <h1><?php echo _SHIPPER_SUBSCRIPTION_FINISHED?></h1>
 <?php if (!empty($finishedSubscriptions)) { ?>
 <form method="post" action="../tools/business/check_info_admin.php">
