@@ -19,6 +19,8 @@ require_once 'tools/database/mysqlestimatemanager.php';
 require_once '../../business/ad.php';
 
 $estimateManager = new MySqlEstimateManager();
+const WAIT_TO_READ_ACCEPT = 2;
+const WAIT_TO_READ_REFUSED = 5;
 
 // constantes correspondant aux noms de champs
 define ( "ID", "id" );
@@ -36,17 +38,16 @@ if (isset($_POST['action']) && $_POST['action'] == "affiche devis") {
 }
 
 //Lorsque l'on choisi un devis.
-//TODO A améliorer !!!!
 if (isset($_POST['action']) && $_POST['action'] == "Select shipper") {
 
-	
 	validEstimate($estimateManager, $_POST['id_estimate']);
-	/*$temp = "a été séléctionné";
-	$temp2 = utf8_decode($temp);
-	//var_dump($_POST['id_shipper']);
-	echo 'le devis '.$_POST['id_estimate']. ' '.$temp2;
-	$estimateManager-
-	exit();*/
+}
+
+if (isset($_POST['action']) && $_POST['action'] == "OK") {
+
+	$estimate = urldecode($_POST['estimate']);
+	$estimate = unserialize($estimate);
+	readInfo($estimateManager, $estimate);
 }
 
 function registerEstimate($estimateManager) {
@@ -116,3 +117,43 @@ function validEstimate($estimateManager, $id){
 	header("location: ../../pages/infoUser.php");
 	exit();
 }
+
+
+function readInfo($estimateManager, $estimate){
+	//Go to the next state (4 or 6)
+	var_dump($estimate);
+	$state = $estimate->getState()+1;
+	$estimateManager->updateEstimateState($estimate->getId(), $state);
+	/*$estimateList = $_SESSION['estimate'];
+
+	//Disable other estimate
+	foreach ($estimateList as $element) {
+		$element = unserialize($element);
+		if($element->getId()!=$id){
+				
+			$estimateManager->updateEstimateState($element->getId(), 5);
+		}
+	}
+	$_SESSION['estimate'] = null;*/
+	
+	$estimateAccept = $estimateManager->getAllEstimatesByShipper($estimate->getShipper(), WAIT_TO_READ_ACCEPT );
+	$estimateRefused = $estimateManager->getAllEstimatesByShipper($estimate->getShipper(), WAIT_TO_READ_REFUSED );
+	
+	if($estimateAccept == null){
+		unset($_SESSION['estimate_accepted']);
+	} 
+	else{
+		$_SESSION['estimate_accepted'] = $estimateAccept;
+	}
+	 
+	if($estimateRefused == null){
+		unset($_SESSION['estimate_refused']);
+	}
+	else{
+		$_SESSION['estimate_refused'] = $estimateRefused;
+	}
+
+	header("location: ../../pages/infoUser.php");
+	exit();
+}
+

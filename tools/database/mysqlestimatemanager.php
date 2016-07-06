@@ -13,7 +13,7 @@
  *
  \************************************************************/
 require_once 'mysqlconnection.php';
-require_once '../../business/estimate.php';
+require_once '../business/estimate.php';
 require_once 'mysqladmanager.php';
 
 class MySqlEstimateManager {
@@ -55,6 +55,32 @@ class MySqlEstimateManager {
 		return $response;
 	}
 	
+	public function getAllEstimatesByShipper($shipper_id, $state) {
+	
+	
+		$condition = " AND " . $this::STATE . " = ".$state;
+	
+		$query = "SELECT * FROM estimate " .
+				"WHERE " . $this::SHIPPER . " = " . $shipper_id . $condition . ";";
+	
+		$result = $this->_conn->selectDB($query);
+
+		/*$row = $result->fetch();
+		if (!$row) return null;*/
+
+		$response = null;
+		while ($row = $result->fetch()) {
+			$estimate = new Estimate($row[$this::ID], $row[$this::AD], $row[$this::PRICE], $row[$this::SHIPPER], $row[$this::STATE]);
+			$response[] =serialize($estimate);
+			unset($estimate);
+		}
+		///if (!$row) return null; 
+
+		return $response;
+	}
+	
+
+	
 	public function getAllEstimatesByAd($ad_id, $onlyActiveEstimates = TRUE) {
 		$condition = "";
 		if ($onlyActiveEstimates = TRUE)
@@ -85,7 +111,7 @@ class MySqlEstimateManager {
 			if (!row) return null;
 
 			while ($row = $result->fetch()) {
-				$estimate = new Estimate($row[$this::ID], $row[$this::AD], $row[$this::PRICE], $row[$this::SHIPPER]);
+				$estimate = new Estimate($row[$this::ID], $row[$this::AD], $row[$this::PRICE], $row[$this::SHIPPER], $row[$this::STATE]);
 				$response[] =serialize($estimate) ;
 				unset($estimate);
 			}

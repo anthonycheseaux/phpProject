@@ -141,7 +141,7 @@ Devis : <br>
 <input type ="submit" name="action" value="affiche devis">
 </form>
 
-
+<!-- Display estimate -->
 <?php 
 if(isset($_SESSION['estimate'])){
 	$estimate = $_SESSION['estimate'];
@@ -164,6 +164,81 @@ if(isset($_SESSION['estimate'])){
 	<td><?php echo $element->getPrice().'.-'?></td>
 <!-- l'input "hidden" contient l'id du transporteur -->
 	<td><input type="submit" name="action" value="Select shipper"> </td><input type="hidden" name="id_estimate" value=<?php echo $element->getId();?>>
+</tr>
+</form>
+<?php 
+	}
+}?>
+</table>
+<br>
+<!-- Display estimate Accepted (for shipper) -->
+<?php 
+if(isset($_SESSION['estimate_accepted'])){
+	$estimate = $_SESSION['estimate_accepted'];
+	
+	?>
+	Accepted :
+	<br>
+	<table width="360">
+  <tr>
+    <th>Shipper</th>
+    <th>Price</th>
+    <th>Selection</th>
+  </tr>
+  <!-- Pour chaque élément dans le tableau "$estimate" on crée un formulare avec les données du devis -->
+	<?php 
+	foreach ($estimate as $element){
+		$element = unserialize($element);
+		//var_dump($element);
+		?>
+<form method="post" action="../tools/business/check_info_estimate.php">
+<tr>
+	<td><?php echo 'Id estimate '.$element->getId()?></td>
+	<td><?php echo $element->getPrice().'.-'?></td>
+<!-- l'input "hidden" contient le devis lu -->
+<?php
+$element = serialize($element);
+$element = urlencode($element);
+		?>
+	<td><input type="submit" name="action" value="OK"> </td><input type="hidden" name="estimate" value=<?php echo $element;?>>
+</tr>
+</form>
+<?php 
+	}
+}?>
+</table>
+
+
+<br>
+<!-- Display estimate Accepted (for shipper) -->
+<?php 
+if(isset($_SESSION['estimate_refused'])){
+	$estimate = $_SESSION['estimate_refused'];
+	?>
+	Refused :
+	<br>
+	<table width="360">
+  <tr>
+    <th>Shipper</th>
+    <th>Price</th>
+    <th>Selection</th>
+  </tr>
+  <!-- Pour chaque élément dans le tableau "$estimate" on crée un formulare avec les données du devis -->
+	<?php 
+	foreach ($estimate as $element){
+		$element = unserialize($element);
+		
+		?>
+<form method="post" action="../tools/business/check_info_estimate.php">
+<tr>
+	<td><?php echo 'Id estimate '.$element->getId()?></td>
+	<td><?php echo $element->getPrice().'.-'?></td>
+<!-- l'input "hidden" contient le devis lu -->
+<?php
+$element = serialize($element);
+$element = urlencode($element);
+		?>
+	<td><input type="submit" name="action" value="OK"> </td><input type="hidden" name="estimate" value=<?php echo $element;?>>
 </tr>
 </form>
 <?php 

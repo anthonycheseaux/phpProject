@@ -18,9 +18,14 @@
  \************************************************************/
 require_once '../tools/database/mysqlmanager.php';
 require_once '../tools/database/mysqlcitymanager.php';
+require_once '../tools/database/mysqlestimatemanager.php';
 session_start();
 $mysql = new MySqlManager();
 $mysqlCity = new MySqlCityManager();
+$mysqlEstimate = new MySqlEstimateManager();
+const WAIT_TO_READ_ACCEPT = 2;
+const WAIT_TO_READ_REFUSED = 5;
+
 if(isset($_POST['action'])){
 	//Create account	
 	if($_POST['action']=='Créer'){
@@ -37,7 +42,7 @@ if(isset($_POST['action'])){
 	//Authentication
 	if($_POST['action']=='Login'){
 		
-		authenticateShipper($mysql, $mysqlCity);
+		authenticateShipper($mysql, $mysqlCity, $mysqlEstimate);
 	}
 	
 	if($_POST['action']=='Login'){
@@ -62,7 +67,7 @@ function logout(){
 	exit;
 }
 //Login Shipper
-function authenticateShipper($mysql, $mysqlCity){
+function authenticateShipper($mysql, $mysqlCity, $mysqlEstimate){
 	$email = $_POST['email'];
 	$pwd = $_POST['pwd'];
 	$result = $mysql->checkLoginShipper($email, $pwd);
@@ -80,6 +85,20 @@ function authenticateShipper($mysql, $mysqlCity){
 	$resultCity = $mysqlCity->getCityById($result->getCity());
 	$_SESSION['user'] = serialize($result);
 	$_SESSION['city'] = serialize($resultCity);
+	if($result->getRole()==3){
+		
+		$estimatesAccept = $mysqlEstimate->getAllEstimatesByShipper($result->getId(), WAIT_TO_READ_ACCEPT );
+		$estimatesRefused = $mysqlEstimate->getAllEstimatesByShipper($result->getId(), WAIT_TO_READ_REFUSED );
+
+		if ($estimatesAccept != null){
+			$_SESSION['estimate_accepted'] = $estimatesAccept;
+		}
+		
+		if ($estimatesRefused != null){
+			$_SESSION['estimate_refused'] = $estimatesRefused;
+		}
+		
+	}
 	header("location: ../pages/infoUser.php");
 	exit();
 }
@@ -95,12 +114,14 @@ function authenticateCustomer($mysql, $mysqlCity){
 		header("location: ../pages/home.php");
 		exit;
 	}
+	
 	/*$_SESSION['msg'] = 'Welcome '. $result->firstname.' '.$result->lastname;
 	$_SESSION['rank'] = 1;*/
 	$_SESSION['user'] = serialize($result);
 	header("location: pages/infoUser.php");
 	exit;
 }
+
 //Create new shipper account
 function registerShipper($mysql, $mysqlCity){
 	$fname =htmlspecialchars($_POST['firstname']);
@@ -346,4 +367,6 @@ function updateInfoUser($mysql, $mysqlCity){
 	header("location: ../pages/infoUser.php");
 	exit();
 }
+
+
 ?>

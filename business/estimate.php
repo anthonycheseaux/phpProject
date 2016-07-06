@@ -17,12 +17,26 @@
  \************************************************************/
 class Estimate {
 	
-	public function __construct($id, $ad, $price, $shipper) {
+	public function __construct($id, $ad, $price, $shipper, $state) {
 		$this->id = $id;
 		$this->ad = $ad;
 		$this->price = $price;
 		$this->shipper = $shipper;
+		$this->state = $state;
 	}
+	
+	
+	public function getState()
+	{
+		return $this->state;
+	}
+	
+	public function setState($state)
+	{
+		$this->state = $state;
+	}
+	
+	
 	public function getShipper() 
 	{
 	  return $this->shipper;
@@ -64,6 +78,7 @@ class Estimate {
 	private $ad;
 	private $price;
 	private $shipper;
+	private $state;
 	
 }
 ?>
