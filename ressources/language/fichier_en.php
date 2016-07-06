@@ -204,8 +204,15 @@ define("_MSG_MAIL_PASSWORD_INCORRECT", "E-mail or password incorrect!");
 define("_MSG_EMAIL_USED; ","E-mail already used !");
 
 /*
- * Traduction de ...
+ * Traduction de infoAdmin.php
  */
+define("_ESTIMATE_NUMBER", "Estimate number");
+define("_ADVERTISER", "Advertiser");
+define("_SHIPPER", "Shipper");
+define("_PRICE", "Price");
+define("_NO_ESTIMATE", "No estimate to validate");
+define("_ESTIMATE_TO_VALIDATE", "Estimate to validate");
+define("_VALIDATE", "Validate");
 
 
 

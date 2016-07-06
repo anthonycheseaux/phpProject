@@ -12,9 +12,10 @@
  * Project			teemw
  *
  \************************************************************/
+set_include_path(get_include_path() . PATH_SEPARATOR . dirname(__FILE__) . '\..\..');
 require_once 'mysqlconnection.php';
-require_once '../business/estimate.php';
-require_once 'mysqladmanager.php';
+require_once '/business/estimate.php';
+require_once '/tools/database/mysqladmanager.php';
 
 class MySqlEstimateManager {
 	
@@ -28,9 +29,9 @@ class MySqlEstimateManager {
 		$query = "SELECT * FROM estimate WHERE " . self::ID . " = " . $id;
 		$result = $this->_conn->selectDB($query);
 		$row = $result->fetch();
-		if (!row) return null;
+		if (!$row) return null;
 		
-		return new Estimate($row[$this::ID], $row[$this::AD], $row[$this::PRICE], $row[$this::SHIPPER]);
+		return new Estimate($row[$this::ID], $row[$this::AD], $row[$this::PRICE], $row[$this::SHIPPER], $row[$this::STATE]);
 	}
 	
 	public function getAllEstimatesByCustomer($customer_id, $onlyActiveEstimates = TRUE) {
@@ -89,14 +90,13 @@ class MySqlEstimateManager {
 		$query = "SELECT * FROM estimate WHERE ". $this::AD. " = ". $ad_id . $condition . ";";
 
 		$result = $this->_conn->selectDB($query);
-		if (!row) return null;
-	
+		
 		while ($row = $result->fetch()) {
 			$estimate = new Estimate($row[$this::ID], $row[$this::AD], $row[$this::PRICE], $row[$this::SHIPPER]);
 			$response[] = serialize($estimate) ;
 			unset($estimate);
 		}
-	
+		
 		return $response;
 	}
 	
@@ -108,8 +108,7 @@ class MySqlEstimateManager {
 			$query = "SELECT * FROM estimate WHERE ". $this::AD. " = ". $ad_id . $condition . ";";
 		
 			$result = $this->_conn->selectDB($query);
-			if (!row) return null;
-
+			
 			while ($row = $result->fetch()) {
 				$estimate = new Estimate($row[$this::ID], $row[$this::AD], $row[$this::PRICE], $row[$this::SHIPPER], $row[$this::STATE]);
 				$response[] =serialize($estimate) ;
@@ -117,6 +116,24 @@ class MySqlEstimateManager {
 			}
 
 			return $response;
+	}
+	
+	public function getAllEstimatesByState($state) {
+		$query = "SELECT * FROM estimate WHERE " . $this::STATE . " = " . $state;
+		
+		$result = $this->_conn->selectDB($query);
+		
+		while ($row = $result->fetch()) {
+			$estimate = new Estimate($row[$this::ID], $row[$this::AD], $row[$this::PRICE], $row[$this::SHIPPER], $row[$this::STATE]);
+			
+			$response[] = $estimate;
+			unset($estimate);
+		}
+		
+		if (isset($response))
+			return $response;
+			
+		return null;
 	}
 	
 	// INSERT
@@ -131,11 +148,12 @@ class MySqlEstimateManager {
 	// UPDATE
 	public function updateEstimate(Estimate $estimate) {
 		$query = "UPDATE estimate " .
-				"SET " .	$this::AD . " = " . $estimate->getAd() . ", " .
-							$this::PRICE . " = " . $estimate->getPrice() . ", " . 
-							$this::SHIPPER . " = " . $estimate->getShipper() . " " .
+				"SET " .	$this::AD . " = '" . $estimate->getAd() . "', " .
+							$this::PRICE . " = '" . $estimate->getPrice() . "', " . 
+							$this::SHIPPER . " = '" . $estimate->getShipper() . "', " .
+							$this::STATE . " = '" . $estimate->getState() . "' " .
 				"WHERE " . $this::ID . " = " . $estimate->getId() . ";";
-		
+
 		return $this->_conn->executeQuery($query);
 	}
 	
