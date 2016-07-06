@@ -221,4 +221,9 @@ define("_PRICE", "Prix");
 define("_NO_ESTIMATE", "Pas de devis à valider");
 define("_ESTIMATE_TO_VALIDATE", "Devis à valider");
 define("_VALIDATE", "Valider");
+define("_SHIPPER_SUBSCRIPTION_FINISHED", "Abonnements de transporteur terminés");
+define("_SHIPPER_SUBSCRIPTION_END", "Abonnements de transporteur arrivant à échéance");
+define("_THERE_IS_NO_ONE", "Il n'y en a pas");
+define("_ONE_MORE_YEAR", "Prolonger d'un an");
+
 ?>
