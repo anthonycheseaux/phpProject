@@ -44,17 +44,13 @@ require_once ('../tools/database/mysqladmanager.php');
 		<script>
 			$(document).ready( function () {
 		    $('#myTable').DataTable();
-
 		    } );
-
 			$.extend( $.fn.dataTable.defaults, {
 			    searching: false
 			} );
-
 			$('#myTable').DataTable( {
 			    responsive: true
 			} );
-
 			$(document).on('click', '[data-href]', function () {
 			    var url = $(this).data('href');
 			    if (url && url.length > 0) {
@@ -132,7 +128,7 @@ require_once ('../tools/database/mysqladmanager.php');
 				if(!empty($adinfo)){
 				
 				foreach ($adinfo as $ad){	
-					$vard = 'style="cursor: pointer;" data-href="pages/home.php?id=' . $ad->getId() . '"';		
+					$vard = 'style="cursor: pointer;" data-href="adDetails.php?id=' . $ad->getId() . '"';		
 					echo '<tr> '
 								 
 								 . '<td '.$vard.'>' . $ad->getTitle() . '</td>'
