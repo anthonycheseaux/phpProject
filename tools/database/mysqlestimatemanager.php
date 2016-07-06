@@ -79,6 +79,33 @@ class MySqlEstimateManager {
 
 		return $response;
 	}
+	//test2
+	public function getAllEstimatesByShipperWithTitleAd($shipper_id, $state) {
+	
+	
+		$condition = " AND " . $this::STATE . " = ".$state;
+	
+		$query = "SELECT * FROM estimate e 
+				INNER JOIN ad a ON e.estimate_ad = a.ad_id 
+				WHERE e.estimate_shipper = ". $shipper_id." AND e.estimate_state = ".$state. ";";
+	
+		$result = $this->_conn->selectDB($query);
+	
+		/*$row = $result->fetch();
+			if (!$row) return null;*/
+	
+		$response = null;
+		while ($row = $result->fetch()) {
+			$estimate = new Estimate($row[$this::ID], $row[$this::AD], $row[$this::PRICE], $row[$this::SHIPPER], $row[$this::STATE]);
+			$estimate->setTitleAd($row[$this::TITLE_AD]);
+			$estimate->setBeginDate($row[$this::DATE_BEGIN_AD]);
+			$response[] =serialize($estimate);
+			unset($estimate);
+		}
+		///if (!$row) return null;
+	
+		return $response;
+	}
 	
 
 	
@@ -136,6 +163,9 @@ class MySqlEstimateManager {
 		return null;
 	}
 	
+	
+	
+	
 	// INSERT
 	public function createEstimate(Estimate $estimate) {
 		
@@ -183,4 +213,6 @@ class MySqlEstimateManager {
 	const SHIPPER = 'estimate_shipper';
 	const INACTIVE = 'estimate_inactive';
 	const STATE = 'estimate_state';
+	const TITLE_AD = 'ad_title';
+	const DATE_BEGIN_AD = 'ad_date_beginning';
 }
