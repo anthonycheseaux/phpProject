@@ -87,8 +87,11 @@ function authenticateShipper($mysql, $mysqlCity, $mysqlEstimate){
 	$_SESSION['city'] = serialize($resultCity);
 	if($result->getRole()==3){
 		
-		$estimatesAccept = $mysqlEstimate->getAllEstimatesByShipper($result->getId(), WAIT_TO_READ_ACCEPT );
-		$estimatesRefused = $mysqlEstimate->getAllEstimatesByShipper($result->getId(), WAIT_TO_READ_REFUSED );
+		/*$estimatesAccept = $mysqlEstimate->getAllEstimatesByShipper($result->getId(), WAIT_TO_READ_ACCEPT );
+		$estimatesRefused = $mysqlEstimate->getAllEstimatesByShipper($result->getId(), WAIT_TO_READ_REFUSED );*/
+		
+		$estimatesAccept = $mysqlEstimate->getAllEstimatesByShipperWithTitleAd($result->getId(), WAIT_TO_READ_ACCEPT );
+		$estimatesRefused = $mysqlEstimate->getAllEstimatesByShipperWithTitleAd($result->getId(), WAIT_TO_READ_REFUSED );
 
 		if ($estimatesAccept != null){
 			$_SESSION['estimate_accepted'] = $estimatesAccept;

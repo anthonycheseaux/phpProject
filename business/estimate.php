@@ -25,6 +25,25 @@ class Estimate {
 		$this->state = $state;
 	}
 	
+	public function getBeginDateAd()
+	{
+		return $this->beginDateAd;
+	}
+	
+	public function setBeginDate($date)
+	{
+		$this->beginDateAd = $date;
+	}
+	
+	public function getTitleAd()
+	{
+		return $this->titleAd;
+	}
+	
+	public function setTitleAd($title)
+	{
+		$this->titleAd = $title;
+	}
 	
 	public function getState()
 	{
@@ -79,6 +98,8 @@ class Estimate {
 	private $price;
 	private $shipper;
 	private $state;
+	private $titleAd;
+	private $beginDateAd;
 	
 }
 ?>

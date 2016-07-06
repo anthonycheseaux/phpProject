@@ -333,6 +333,8 @@ if(isset($_SESSION['estimate_accepted'])){
 	<table width="360">
   <tr>
     <th>Shipper</th>
+    <th>Title Ad</th>
+    <th>Date Ad</th>
     <th>Price</th>
     <th>Selection</th>
   </tr>
@@ -345,6 +347,8 @@ if(isset($_SESSION['estimate_accepted'])){
 <form method="post" action="../tools/business/check_info_estimate.php">
 <tr>
 	<td><?php echo 'Id estimate '.$element->getId()?></td>
+	<td><?php echo $element->getTitleAd()?></td>
+	<td><?php echo $element->getBeginDateAd()?></td>
 	<td><?php echo $element->getPrice().'.-'?></td>
 <!-- l'input "hidden" contient le devis lu -->
 <?php
@@ -371,6 +375,8 @@ if(isset($_SESSION['estimate_refused'])){
 	<table width="360">
   <tr>
     <th>Shipper</th>
+    <th>Title Ad</th>
+    <th>Date Ad</th>
     <th>Price</th>
     <th>Selection</th>
   </tr>
@@ -383,6 +389,8 @@ if(isset($_SESSION['estimate_refused'])){
 <form method="post" action="../tools/business/check_info_estimate.php">
 <tr>
 	<td><?php echo 'Id estimate '.$element->getId()?></td>
+		<td><?php echo $element->getTitleAd()?></td>
+	<td><?php echo $element->getBeginDateAd()?></td>
 	<td><?php echo $element->getPrice().'.-'?></td>
 <!-- l'input "hidden" contient le devis lu -->
 <?php
