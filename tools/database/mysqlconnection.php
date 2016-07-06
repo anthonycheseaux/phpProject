@@ -28,7 +28,8 @@ class MySqlConnection
 		try {
 			$this->_connection = new PDO('mysql:host='.self::HOST.
 											'; port='.self::port.
-											'; dbname='.self::database, self::user, self::pwd);
+											'; dbname='.self::database, self::user, self::pwd, array( PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+			
 		}
 		catch (PDOException $e) {
 			die ('Connection failed: '. $e->getMessage());
