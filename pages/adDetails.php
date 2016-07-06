@@ -22,23 +22,23 @@ require_once ('../tools/database/mysqladmanager.php');
 <body>
 
 	<div class="container">
-		<h2 style="text-align: center;">Détail de l'annonce</h2>
+	<div style="padding: 50px">
+		<h2 style="text-align: center;"><?php echo _AD_DETAILS?></h2>
 		<FORM><INPUT Type="button" VALUE="X" onClick="history.go(-1);return true;" class="buttonCloseAdDetails"></FORM>
 <?php
 
 $ad_id = $_GET ['id'];
 
-$namedb = 'grp1';
-$db = 'localhost';
-$user = 'root';
-$pwd = '';
-$error = 'Could not connect';
+// $namedb = 'grp1';
+// $db = 'localhost';
+// $user = 'root';
+// $pwd = '';
+// $error = 'Could not connect';
 
-if (! mysql_connect ( $db, $user, $pwd ) || ! mysql_select_db ( $namedb )) {
-	die ( $error );
-}
+// if (! mysql_connect ( $db, $user, $pwd ) || ! mysql_select_db ( $namedb )) {
+// 	die ( $error );
+// }
 
-mysql_query ( "SET NAMES UTF8" );
 
 $adManager = new MySqlAdManager ();
 
@@ -116,6 +116,6 @@ function chooseCategory($var) {
 				?></td>
 			</tr>
 </table>
-
+	</div>
 	</div>
 </body>

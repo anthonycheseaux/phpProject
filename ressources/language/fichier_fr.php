@@ -76,7 +76,8 @@ define("_AD_OBJECT_NUM","Nombre d'objets");
 define("_AD_TOTAL_VOLUME","Volume total");
 define("_AD_DATE_BEG","Date de début");
 define("_AD_DATE_END","Date de fin");
-
+define("_AD_DETAILS", "Détail de l'annonce");
+define("_AD_LIST", "Liste des annonces");
 
 
 /*
@@ -203,10 +204,12 @@ define("_MSG_REGISTRATION_SUCCESS","Enregistrement réalisé avec succès.");
 define("_MSG_MAIL_PASSWORD_INCORRECT", "E-mail ou mot de passe incorrect !");
 define("_MSG_EMAIL_USED; ","E-mail déjà utilisé !");
 
-/*
- * Traduction de ...
- */
 
+/*
+ * Traduction de info_user.php
+ */
+define("_INFO_USER", "Informations du compte");
+define("_CHANGE_INFO_USER", "Modifier les informations du compte");
 
 
 ?>

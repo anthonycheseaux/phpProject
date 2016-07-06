@@ -71,7 +71,8 @@ require_once ('../tools/database/mysqladmanager.php');
 	</head>
 <body>
 
-	<div class="container-fluid">
+	<div class="container-fluid" style="width: 70%">
+	<h2 style="text-align: center; padding: 20px; padding-bottom: 50px"><?php echo _AD_LIST?></h2>
 		<table id="myTable" class="display responsive nowrap table-striped" cellspacing="0" width="100%" data-order='[[ 5, "asc" ]]'>
 			<thead>
 				<tr>
@@ -96,11 +97,11 @@ require_once ('../tools/database/mysqladmanager.php');
 			<tbody>
 			
 			<?php
-			$namedb = 'grp1';
-			$db = 'localhost';
-			$user = 'root';
-			$pwd = '';
-			$error = 'Could not connect';
+// 			$namedb = 'grp1';
+// 			$db = 'localhost';
+// 			$user = 'root';
+// 			$pwd = '';
+// 			$error = 'Could not connect';
 			
 			/*$query =  "SELECT ad.ad_id AS id, ad.ad_title AS title, ci1.city_name AS cityFrom, ci2.city_name AS cityTo,
  							 ad.ad_total_weight AS weight, ad.ad_total_volume AS volume, ad.ad_date_beginning AS dateBeg
@@ -111,11 +112,10 @@ require_once ('../tools/database/mysqladmanager.php');
 			
 			$adinfo = array();
 			
-			if(!mysql_connect($db, $user, $pwd) || !mysql_select_db($namedb)){
-				die($error);
-			}
+// 			if(!mysql_connect($db, $user, $pwd) || !mysql_select_db($namedb)){
+// 				die($error);
+// 			}
 			
-			mysql_query("SET NAMES UTF8");
 			
 			$adManager = new MySqlAdManager();
 			
@@ -152,6 +152,3 @@ require_once ('../tools/database/mysqladmanager.php');
 	</div>
 	
 </body>
-<?php
-require '../ressources/templates/footer.php';
-?>
