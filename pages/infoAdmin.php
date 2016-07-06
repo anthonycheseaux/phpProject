@@ -1,7 +1,7 @@
 <?php
 /************************************************************\
  *
- * File			mysqladmanager.php
+ * File			infoAdmin.php
  *
  * Language		PHP
  *
