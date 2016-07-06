@@ -211,5 +211,14 @@ define("_MSG_EMAIL_USED; ","E-mail déjà utilisé !");
 define("_INFO_USER", "Informations du compte");
 define("_CHANGE_INFO_USER", "Modifier les informations du compte");
 
-
+/*
+ * Traduction de infoAdmin.php
+ */
+define("_ESTIMATE_NUMBER", "Numéro de devis");
+define("_ADVERTISER", "Annonceur");
+define("_SHIPPER", "Transporteur");
+define("_PRICE", "Prix");
+define("_NO_ESTIMATE", "Pas de devis à valider");
+define("_ESTIMATE_TO_VALIDATE", "Devis à valider");
+define("_VALIDATE", "Valider");
 ?>
