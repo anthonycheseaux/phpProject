@@ -14,7 +14,7 @@
  \************************************************************/
 set_include_path(get_include_path() . PATH_SEPARATOR . dirname(__FILE__) . '\..\..');
 require_once 'mysqlconnection.php';
-require_once 'business/ad.php';
+require_once '/business/ad.php';
 class MySqlAdManager {
 	public function __construct() {
 		$this->_conn = new MySqlConnection ();
