@@ -79,7 +79,7 @@ class MySqlEstimateManager {
 
 		return $response;
 	}
-	//test
+	//test2
 	public function getAllEstimatesByShipperWithTitleAd($shipper_id, $state) {
 	
 	
