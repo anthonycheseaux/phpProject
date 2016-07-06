@@ -28,6 +28,10 @@ if(empty($_SESSION['user'])){
 
 if (isset($_SESSION['user'])){
 	$user = unserialize($_SESSION['user']);}
+
+// Si l'utilisateur est un admin, le rediriger
+if ($user->getRole() == 1)
+	header("location:infoAdmin.php");
 	
 if (isset($_SESSION['city'])){
 	$city = unserialize($_SESSION['city']);}
