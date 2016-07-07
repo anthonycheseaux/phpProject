@@ -22,7 +22,9 @@ require_once '../tools/database/mysqlestimatemanager.php';
 require_once '../ressources/config.php';
 
 
-session_start();
+if (! isset ( $_SESSION )) {
+	session_start ();
+}
 $mysql = new MySqlManager();
 $mysqlCity = new MySqlCityManager();
 $mysqlEstimate = new MySqlEstimateManager();

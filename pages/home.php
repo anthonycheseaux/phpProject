@@ -1,6 +1,13 @@
 <?php
 require_once ('../ressources/templates/header.php');
 //require_once ('../ressources/config.php');
+if(isset($_SESSION['rank'])) {
+	$rank = $_SESSION['rank'];
+	$msg = $_SESSION['msg'];
+	echo '<script type="text/javascript">window.alert("' . $msg . '");</script>';
+	unset($_SESSION['rank']);
+}
+
 ?>
 <body>
 	<nav class="navbar navbar-full navbar-inverse navbar-fixed-top">
