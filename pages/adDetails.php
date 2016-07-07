@@ -23,7 +23,7 @@ if(isset($_SESSION['rank'])) {
 	echo '<script type="text/javascript">window.alert("' . $msg . '");</script>';
 	unset($_SESSION['rank']);
 }
- 
+
 ?>
 
 <body>
