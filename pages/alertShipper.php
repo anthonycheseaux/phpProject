@@ -27,7 +27,7 @@ if(isset($_SESSION['estimate_accepted'])){
 	foreach ($estimate as $element){
 		$element = unserialize($element);
 		//var_dump($element);
-		?>
+		?> 
 <form method="post" action="../tools/business/check_info_estimate.php">
 <tr>
 	<td><?php echo 'Id estimate '.$element->getId()?></td>
