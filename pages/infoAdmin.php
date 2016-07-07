@@ -12,7 +12,7 @@
  * Project		teemw
  *
  \************************************************************/
-include_once '../ressources/templates/header.php';
+require_once ('../ressources/templates/navbar-backoffice-admin.php');
 require_once '../business/user.php';
 require_once '../tools/database/mysqlestimatemanager.php';
 require_once '../tools/database/mysqlmanager.php';
@@ -48,7 +48,12 @@ $estimates = $estimateManager->getAllEstimatesByState(3);
 
 ?>
 <!-- Transporteurs dont l'abonnement est terminé --> 
-<h1><?php echo _SHIPPER_SUBSCRIPTION_FINISHED?></h1>
+<body>
+<div class="container">
+	<div style="text-align: center">
+		<h2 style="text-align: center;"><?php echo _SHIPPER_SUBSCRIPTION_FINISHED?></h2>
+		<br>
+
 <?php if (!empty($finishedSubscriptions)) { ?>
 	 <table>
 	 	<?php foreach ($finishedSubscriptions as $shipper) { ?>
@@ -66,7 +71,7 @@ echo '<em>' . _THERE_IS_NO_ONE . '</em>';
 }?>
 
 <!-- Transporteurs en fin d'abonnement -->
-<h1><?php echo _SHIPPER_SUBSCRIPTION_END?></h1>
+<h2><?php echo _SHIPPER_SUBSCRIPTION_END?></h2>
 <?php if (!empty($endingSubscriptions)) { ?>
 
 	 <table>
@@ -85,7 +90,7 @@ echo '<em>' . _THERE_IS_NO_ONE . '</em>';
 echo '<em>' . _THERE_IS_NO_ONE . '</em>';
 }?>
 <!-- Validation des devis sélectionnés pour envoi des coordonnées mutuelles -->
-<h1><?php echo _ESTIMATE_TO_VALIDATE;?></h1>
+<h2><?php echo _ESTIMATE_TO_VALIDATE;?></h2>
 <?php if (!empty($estimates)) {?>
 	<table>
 		<tr>
@@ -109,7 +114,8 @@ echo '<em>' . _THERE_IS_NO_ONE . '</em>';
 <?php } else {
 echo '<em>' . _NO_ESTIMATE . '</em>';
 }?>
-
+</div></div>
+</body>
 <?php
 require '../ressources/templates/footer-backoffice.php';
 ?>
