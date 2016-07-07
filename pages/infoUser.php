@@ -20,7 +20,7 @@ require_once '../business/estimate.php';
 ?>
 <?php
 
-//Controle si l'utilisateur est connecté
+//Controle si l'utilisateur est connecté 
 if(empty($_SESSION['user'])){
 	header("../pages/register.php");
 	exit();
