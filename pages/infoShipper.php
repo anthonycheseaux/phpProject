@@ -37,6 +37,7 @@ if (isset ( $_SESSION ['city'] )) {
 ?>
 
 <div class="container">
+
 	<h2 style="text-align: center; padding: 20px; padding-bottom: 50px"><?php echo _INFO_USER?></h2>
 	<table class="table-striped" id="user-info">
 

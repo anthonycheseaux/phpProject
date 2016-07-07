@@ -47,7 +47,7 @@ $form_data = isset ( $_SESSION ['ad_form_data'] ) ? $_SESSION ['ad_form_data'] :
 		'total_volume' => '' 
 );
 // TODO : supprimer l'array ad_form_data de la SESSION
-echo $form_data [_DATE_BEGINNING] . '**';
+echo $form_data [_DATE_BEGINNING] ;
 
 // Récupération de la liste des localités
 $cityManager = new MySqlCityManager();
@@ -85,10 +85,14 @@ $cities = $cityManager->getAllCities();
 <script type="text/javascript" src="../js/datePicker.js"></script>
 </head>
 <body>
-
-<?php echo _NOUVELLE_ANNONCE?>
-<form method="post" action="../tools/business/check_info_ad.php">
-		<table>
+	<div class="container">
+	<div style="text-align: center">
+		<h2 style="text-align: center;"><?php echo _AD_NEW?></h2>
+		<br>
+		<FORM><INPUT Type="button" VALUE="X" onClick="window.location.href='./adlist-advertiser.php';" class="buttonCloseAdDetails"></FORM>
+<div style="   margin:50px 0px; padding:0px; text-align:center;align:center;">
+<form method="post" action="../tools/business/check_info_ad.php" style="display: inline-block;text-align: center;">
+		<table class="table-striped" id="ad-create" style="text-align:left">
 			<!-- Titre de l'annonce -->
 			<tr>
 				<td><?php echo _AD_TITLE . " : "?></td>
@@ -181,7 +185,7 @@ $cities = $cityManager->getAllCities();
 			<?php if ($rank == _OBJECTS_NUM) echo $msg;?></td>
 			</tr>
 			<tr>
-				<td><?php echo _AD_TOTAL_VOLUME . ' [L] : '?></td>
+				<td><?php echo _AD_TOTAL_VOLUME . ' [m3] : '?></td>
 				<td><input type="text" name="total_volume"
 					value="<?php echo $form_data[_TOTAL_VOLUME]; ?>" />
 			<?php if ($rank == _TOTAL_VOLUME) echo $msg; ?></td>
@@ -192,12 +196,13 @@ $cities = $cityManager->getAllCities();
 				<td><textarea name="description" cols="30" rows="10"><?php echo $form_data[_DESCRIPTION]?></textarea>
 			<?php if ($rank == _DESCRIPTION) echo $msg; ?></td>
 			</tr>
-			<tr>
-				<td><input type="submit" name="action"
+			<tr style="text-align : center;">
+				<td colspan="2"><input type="submit" name="action"
 					value="<?php echo _ENREGISTRER_ANNONCE?>"></td>
 			</tr>
 		</table>
-	</form>
+	</form></div>
+	</div></div>
 </body>
 
 <?php

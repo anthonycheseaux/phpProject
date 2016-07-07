@@ -29,7 +29,7 @@ require_once ('../ressources/templates/header.php');
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">TEEMW &middot; <?php echo strtoupper(_ADVERTISER)?></a>
+				<a class="navbar-brand" href="#">TEEMW &middot; ADMIN</a>
 			</div>
 			
 			<!-- LANGUAGES -->
@@ -44,11 +44,7 @@ require_once ('../ressources/templates/header.php');
 					</ul></li>
 			</div>
 			<div id="myNavbar" class="navbar-collapse collapse">
-				<ul class="nav navbar-nav">
-					<li><a href="./infoAdvertiser.php"><?php echo _INFO_USER?></a></li>
-					<li><a href="./adlist.php"><?php echo _AD_LIST?></a></li>
-					<li><a href="./inputAd.php"><?php echo _AD_CREATE?></a></li>
-				</ul>
+
 				
 				<ul class="nav navbar-nav navbar-right">
 					<!-- LOGOUT -->	

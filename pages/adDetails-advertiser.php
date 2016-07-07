@@ -16,6 +16,7 @@
  \************************************************************/
 require_once ('../ressources/templates/header.php');
 require_once ('../tools/database/mysqladmanager.php');
+require_once ('../business/ad.php');
 
 if(isset($_SESSION['rank'])) {
 	$rank = $_SESSION['rank'];
@@ -57,12 +58,9 @@ if ($ad = $adManager->getAd ( $ad_id )) {
 }
 
 
-function chooseCategory($var) {
-	
-}
 ?>
 
-<table class="table-striped" id="ad-details">
+<table class="table-striped" id="ad-details" style="text-align: left">
 			<tr>
 				<td><?php echo _AD_TITLE ?></td>
 				<td><?php echo $ad->getTitle () ?></td>
@@ -124,6 +122,16 @@ function chooseCategory($var) {
 			</tr>
 </table>
 <br>
+<div style="    margin:50px 0px; padding:0px; text-align:center;align:center;">
+<form method="post" action="../tools/business/check_info_ad.php" style="display: inline-block;text-align: center;">
+		<table>
+			<tr><td>
+			<?php $_SESSION['ad'] = serialize($ad)?>
+			<input class="btn btn-default" type="submit" name="action" value="<?php echo _AD_DELETE?>">
+			</td></tr>
+		</table>
+	</form>
+	</div>
 	</div>
 	</div>
 </body>

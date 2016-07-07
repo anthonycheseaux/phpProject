@@ -62,7 +62,7 @@ function chooseCategory($var) {
 }
 ?>
 
-<table class="table-striped" id="ad-details">
+<table class="table-striped" id="ad-details" style="text-align: left">
 			<tr>
 				<td><?php echo _AD_TITLE ?></td>
 				<td><?php echo $ad->getTitle () ?></td>
@@ -124,7 +124,8 @@ function chooseCategory($var) {
 			</tr>
 </table>
 <br>
-<input class="btn btn-default" type="button" value="Créer un devis" onclick="window.location.href='./inputEstimate.php?ad=<?php echo $ad->getId();?>';" />
+<input class="btn btn-default" type="button" value="Créer un devis" 
+		onclick="window.location.href='./inputEstimate.php?ad=<?php echo $ad->getId();?>';" />
 	</div>
 	</div>
 </body>

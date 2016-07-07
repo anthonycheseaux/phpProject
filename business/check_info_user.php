@@ -119,7 +119,7 @@ function authenticateShipper($mysql, $mysqlCity, $mysqlEstimate, $mysqlAd){
 			$_SESSION['infoCustomer'] = $customer;
 		}
 		//Code pour rediriger sur la page du transporteur
-		//header("location: ../pages/infoShipper.php");
+		header("location: ../pages/infoShipper.php");
 		
 	}
 	
@@ -138,11 +138,11 @@ function authenticateShipper($mysql, $mysqlCity, $mysqlEstimate, $mysqlAd){
 		
 		}
 		//Code pour rediriger sur la page de l'annonceur
-		//header("location: ../pages/infoAdvertiser.php");
+		header("location: ../pages/infoAdvertiser.php");
 	}
 	
 	
-	header("location: ../pages/infoUser.php");
+	//header("location: ../pages/infoUser.php");
 	exit();
 }
 

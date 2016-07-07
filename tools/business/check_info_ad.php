@@ -16,9 +16,13 @@ set_include_path(get_include_path() . PATH_SEPARATOR . dirname(__FILE__) . '\..\
 require_once ('../../ressources/config.php');
 require_once (LIBRARY_PATH . "/templateFunctions.php");
 require_once 'tools/database/mysqlconnection.php';
-require_once 'tools/database/mysqladmanager.php';
+require_once 'tools/database/mysqlestimatemanager.php';
 require_once '../../business/user.php';
+require_once ('../../business/ad.php');
 $mysql = new MySqlAdManager();
+
+
+
 
 // constantes correspondant aux noms de champs
 define("_ID", "id");
@@ -37,6 +41,10 @@ define("_DATE_END", "date_end");
 if(isset($_POST['action'])) {
 	if($_POST['action']== _ENREGISTRER_ANNONCE) {
 		registerAd($mysql);
+	}
+	
+	if($_POST['action']== _AD_DELETE) {
+		deleteAd($mysql);
 	}
 }
 
@@ -128,7 +136,7 @@ function registerAd($mysql) {
 	
 	
 	if(isset($_SESSION['user'])) {
-		$user = $_SESSION['user'];
+		$user = unserialize($_SESSION['user']);
 		$userId = $user->getId();
 	} 
 	if (!isset($userId) || $userId == 0) {
@@ -145,6 +153,8 @@ function registerAd($mysql) {
 	$_SESSION["msg"] = _ANNONCE_ENREGISTREE;
 	
 	echo '<script type="text/javascript">window.alert("' . $result . '");</script>';
+	header("location: ../../pages/adlist-advertiser.php");
+	exit;
 }
 
 function dateScreenToMySql($screenDate) {
@@ -152,5 +162,24 @@ function dateScreenToMySql($screenDate) {
 			. substr($screenDate, 3, 2) . '-'
 			. substr($screenDate, 0 , 2);
 	return $mysqlDate;
+}
+
+function deleteAd($mysql) {
+	$ad = unserialize($_SESSION['ad']);
+	
+	$estimateManager = new MySqlEstimateManager();
+	
+	$result = $estimateManager->deleteEstimateByAdId($ad->getId());
+	
+	$result = $result . $mysql->deleteAd($ad);
+	
+	// Vider ou adapter les variables de session
+	unset($_SESSION['ad_form_data']);
+	$_SESSION["rank"] = "succeed";
+	$_SESSION["msg"] = _AD_DELETED;
+	
+	echo '<script type="text/javascript">window.alert("' . $result . '");</script>';
+	header("location: ../../pages/adlist-advertiser.php");
+	exit;
 }
 
