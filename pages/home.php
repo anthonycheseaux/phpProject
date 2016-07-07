@@ -1,6 +1,7 @@
 <?php
 require_once ('../ressources/templates/header.php');
 //require_once ('../ressources/config.php');
+require_once '../tools/database/mysqlcitymanager.php';
 if(isset($_SESSION['rank'])) {
 	$rank = $_SESSION['rank'];
 	$msg = $_SESSION['msg'];
@@ -164,11 +165,11 @@ $form_data_User = isset ( $_SESSION ['form_data_user'] ) ? $_SESSION ['form_data
 				<form method="post" action="../business/check_info_user.php">
 
 					<!-- Display message if registration is successful -->
-	<?php
-	
-	if ($rank == 'shipper_ok')
-		echo $msg;
-	?>
+					<?php
+					
+					if ($rank == 'shipper_ok')
+						echo $msg;
+					?>
 					<!-- Title -->
 					<table>
 						<tr>
@@ -226,30 +227,44 @@ $form_data_User = isset ( $_SESSION ['form_data_user'] ) ? $_SESSION ['form_data
 					<input type="text" name="adress2"
 						placeholder="<?php echo _US_ADRESS2?>"
 						value="<?php echo $form_data_Shipper[5];?>" />
-
-					<!-- Postcode -->
+					
+					<!-- City -->
+					<select name="city">
+						<?php
+						$cityManager = new MySqlCityManager();
+						$cities = $cityManager->getAllCities();
+							foreach ($cities as $city) {
+								echo '<option value=' . $city->getId() . '>' . $city->getCityName() . ' ' . $city->getPostcode() . '</option>';
+							}
+						?>
+					</select>
+					<?php
+						if ($rank == 7)
+							echo $msg;
+					?>
+					<!-- Postcode 
 					<input type="text" name="postCode" placeholder="<?php echo _NIP?>"
 						value="<?php echo $form_data_Shipper[6];?>" required /><?php
 						if ($rank == 8)
 							echo $msg;
 						?>
-
-					<!-- City -->
+					-->
+					<!-- City 
 					<input type="text" name="cityName"
 						placeholder="<?php echo _US_CITY?>"
 						value="<?php echo $form_data_Shipper[7];?>" required /><?php
 						if ($rank == 7)
 							echo $msg;
 						?>
-
-					<!-- Country -->
+					-->
+					<!-- Country 
 					<input type="text" name="country"
 						placeholder="<?php echo _CI_COUNTRY?>"
 						value="<?php echo $form_data_Shipper[8];?>" required /><?php
 						if ($rank == 9)
 							echo $msg;
 						?>
-
+					-->
 					<!-- Create -->
 					<input type="submit" name="action" value="<?php echo _CREATE?>"
 						class="login loginmodal-submit">
@@ -322,30 +337,45 @@ $form_data_User = isset ( $_SESSION ['form_data_user'] ) ? $_SESSION ['form_data
 					<input type="text" name="adress2"
 						placeholder="<?php echo _US_ADRESS2?>"
 						value="<?php echo $form_data_User[5];?>" />
-
-					<!-- Postcode -->
+					
+					<!-- City -->
+					<select name="city">
+						<?php
+						$cityManager = new MySqlCityManager();
+						$cities = $cityManager->getAllCities();
+							foreach ($cities as $city) {
+								echo '<option value=' . $city->getId() . '>' . $city->getCityName() . ' ' . $city->getPostcode() . '</option>';
+							}
+						?>
+					</select>
+					<?php
+						if ($rank == 17)
+							echo $msg;
+					?>
+					
+					<!-- Postcode 
 					<input type="text" name="postCode" placeholder="<?php echo _NIP?>"
 						value="<?php echo $form_data_User[6];?>" required /><?php
 						if ($rank == 18)
 							echo $msg;
 						?>
-
-					<!-- City -->
+					-->
+					<!-- City 
 					<input type="text" name="cityName"
 						placeholder="<?php echo _US_CITY?>"
 						value="<?php echo $form_data_User[7];?>" required /><?php
 						if ($rank == 17)
 							echo $msg;
 						?>
-
-					<!-- Country -->
+					-->
+					<!-- Country 
 					<input type="text" name="country"
 						placeholder="<?php echo _CI_COUNTRY?>"
 						value="<?php echo $form_data_User[8];?>" required /><?php
 						if ($rank == 19)
 							echo $msg;
 						?>
-
+					-->
 					<!-- Create -->
 					<input type="submit" name="action" value="<?php echo _CREATE?>"
 						class="login loginmodal-submit">
