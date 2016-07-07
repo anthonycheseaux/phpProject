@@ -74,7 +74,7 @@ $error = '';
 		<script>
 		$(document).ready(function() { 
 		    $("table") 
-		    //.tablesorter({widthFixed: true, widgets: ['zebra']}) 
+		    .tablesorter({widthFixed: true, widgets: ['zebra']}) 
 		    .tablesorterPager({container: $("#pager")}); 
 		}); 
 		</script>
