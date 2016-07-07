@@ -405,6 +405,45 @@ $element = urlencode($element);
 }?>
 </table>
 
+
+<!-- Essais d'afficher info sur le transporteur -->
+Devis : <br>
+<form method="post" action ="../tools/business/check_info_estimate.php">
+<input type ="submit" name="action" value="info shipper">
+</form>
+
+<!-- Display estimate -->
+<?php 
+if(isset($_SESSION['infoShipper'])){
+	$shipper = $_SESSION['infoShipper'];
+	?>
+	<table width="560">
+  <tr>
+    <th>Title AD</th>
+    <th>Society</th>
+    <th>Email</th>
+  </tr>
+  <!-- Pour chaque élément dans le tableau "$estimate" on crée un formulare avec les données du devis -->
+	<?php 
+	foreach ($shipper as $element){
+		$element = unserialize($element);
+		//Provisoir
+		if($element!=null){
+		?>
+
+<form method="post" action="../tools/business/check_info_estimate.php">
+<tr>
+	<td><?php echo $element->getTitleAd();?></td>
+	<td><?php echo $element->getSociety();?></td>
+	<td><?php echo $element->getEmail();?></td>
+
+</tr>
+</form>
+<?php 
+		}
+	}
+}?>
+
 </div>
 
 </body>

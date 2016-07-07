@@ -168,6 +168,16 @@ public function __construct($id, $firstname, $lastname, $password, $title, $adre
 		$this->inactive = $inactive;
 	}
 	
+	public function getTitleAd()
+	{
+		return $this->titleAd;
+	}
+	
+	public function setTitleAd($title)
+	{
+		$this->titleAd = $title;
+	}
+	
 	private $id;
 	private $firstname;
 	private $lastname;
@@ -181,5 +191,7 @@ public function __construct($id, $firstname, $lastname, $password, $title, $adre
 	private $email;
 	private $endDateShipper;
 	private $inactive;
+	
+	private $titleAd;
 }
 ?>

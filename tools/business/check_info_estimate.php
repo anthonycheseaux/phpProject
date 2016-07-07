@@ -19,8 +19,10 @@ require_once 'tools/database/mysqlestimatemanager.php';
 require_once '../../business/ad.php';
 
 $estimateManager = new MySqlEstimateManager();
+$adManager = new MySqlAdManager();
 const WAIT_TO_READ_ACCEPT = 2;
 const WAIT_TO_READ_REFUSED = 5;
+const ESTIMATE_PAID = 4;
 
 // constantes correspondant aux noms de champs
 define ( "ID", "id" );
@@ -48,6 +50,11 @@ if (isset($_POST['action']) && $_POST['action'] == "OK") {
 	$estimate = urldecode($_POST['estimate']);
 	$estimate = unserialize($estimate);
 	readInfo($estimateManager, $estimate);
+}
+
+if (isset($_POST['action']) && $_POST['action'] == "info shipper") {
+
+	displayInfoShipper($estimateManager, $adManager);
 }
 
 function registerEstimate($estimateManager) {
@@ -155,5 +162,22 @@ function readInfo($estimateManager, $estimate){
 
 	header("location: ../../pages/infoUser.php");
 	exit();
+}
+
+function displayInfoShipper($estimateManager, $adManager){
+	$user = unserialize($_SESSION['user']);
+	$listAd = $adManager->getAdByCustomer($user->getId());
+
+	$shipper = null;
+	foreach ($listAd as $element){
+		$shipper[] = $estimateManager->getInfoShipperByEstimateState($element->getId(), ESTIMATE_PAID);
+	}
+
+	if($shipper!=null){
+		$_SESSION['infoShipper'] = $shipper;
+		
+	}
+	
+	header("location: ../../pages/infoUser.php");
 }
 

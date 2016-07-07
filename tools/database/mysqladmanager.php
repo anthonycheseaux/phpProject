@@ -186,6 +186,36 @@ class MySqlAdManager {
 			return null;
 	}
 	
+	
+	public function getAdByCustomer($id) {
+		
+		$query = "SELECT * FROM ad WHERE ad_user = ".$id. " AND " . $this::INACTIVE . " = ". 0 .";";
+
+		$result = $this->_conn->selectDB ( $query );			
+			$response = null;
+			while ($row = $result->fetch()) {
+					
+				$ad = new Ad (
+					$row [$this::ID],
+					$row [$this::USER],
+					$row [$this::CATEGORY],
+					$row [$this::DEPARTURE_CITY],
+					$row [$this::DESTINATION_CITY],
+					$row [$this::TITLE],
+					$row [$this::DESCRIPTION],
+					$row [$this::TOTAL_WEIGHT],
+					$row [$this::OBJECTS_NUMBER],
+					$row [$this::TOTAL_VOLUME],
+					$row [$this::DATE_BEGINNING],
+					$row [$this::DATE_END] );
+				$response[] = $ad;
+				unset($ad);
+			}
+			
+			return $response;
+	}
+	
+	
 	public function createAd(Ad $ad) {
 		$query = "INSERT INTO ad (" . $this::USER . ", " . $this::CATEGORY . ", " . $this::DEPARTURE_CITY . ", " . $this::DESTINATION_CITY . ", " . $this::TITLE . ", " . $this::DESCRIPTION . ", " . $this::TOTAL_WEIGHT . ", " . $this::TOTAL_VOLUME . ", " . $this::DATE_BEGINNING . ", " . $this::DATE_END . ") 
 					VALUES ('" . $ad->getUser () . "', '" . $ad->getCategory () . "', '" . $ad->getDeparture_city () . "', '" . $ad->getDestination_city () . "', '" . $ad->getTitle () . "', '" . $ad->getDescription () . "', '" . $ad->getTotal_weight () . "', '" . $ad->getTotal_volume () . "', '" . $ad->getDate_beginning () . "', '" . $ad->getDate_end () . "');";

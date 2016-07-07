@@ -15,6 +15,7 @@
 set_include_path(get_include_path() . PATH_SEPARATOR . dirname(__FILE__) . '\..\..');
 require_once 'mysqlconnection.php';
 require_once '/business/estimate.php';
+require_once '/business/user.php';
 require_once '/tools/database/mysqladmanager.php';
 
 class MySqlEstimateManager {
@@ -165,6 +166,28 @@ class MySqlEstimateManager {
 	
 	
 	
+	public function getInfoShipperByEstimateState($idAd, $state) {
+	
+		$condition = " AND " . $this::AD. " = ".$idAd;
+	
+		$query = "SELECT * FROM estimate e
+				INNER JOIN user u ON e.estimate_shipper = u.user_id
+				INNER JOIN ad a ON e.estimate_ad = a.ad_id
+				WHERE e.estimate_state = ". $state.$condition.";";
+	
+		$result = $this->_conn->selectDB($query);
+	
+		$row = $result->fetch ();
+		if (! $row)
+			return null;
+		
+			$shipper = new User($row[$this::USER_ID], $row[$this::FIRSTNAME], $row[$this::LASTNAME],0, $row[$this::USER_TITLE],$row[$this::ADDRESS1], $row[$this::ADDRESS2],
+					$row[$this::CITY],0, $row[$this::EMAIL],$row[$this::SOCIETY],0);
+			$shipper->setTitleAd($row[$this::TITLE_AD]);
+			$shipper = serialize($shipper);
+		return $shipper;
+	}
+	
 	
 	// INSERT
 	public function createEstimate(Estimate $estimate) {
@@ -215,4 +238,16 @@ class MySqlEstimateManager {
 	const STATE = 'estimate_state';
 	const TITLE_AD = 'ad_title';
 	const DATE_BEGIN_AD = 'ad_date_beginning';
+	
+	//Field names in table "user"
+	const USER_ID ='user_id';
+	const USER_TITLE = 'user_title';
+	const FIRSTNAME = 'user_firstname';
+	const LASTNAME = 'user_lastname';
+	const SOCIETY = 'user_society';
+	const ADDRESS1 = 'user_adress1';
+	const ADDRESS2 = 'user_adress2';
+	const CITY = 'user_city';
+	const EMAIL = 'user_email';
+	
 }
