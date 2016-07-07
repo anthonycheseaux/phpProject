@@ -19,7 +19,8 @@
 require_once '../tools/database/mysqlmanager.php';
 require_once '../tools/database/mysqlcitymanager.php';
 require_once '../tools/database/mysqlestimatemanager.php';
-require_once(__DIR__.'/../config.php');
+require_once '../ressources/config.php';
+
 
 session_start();
 $mysql = new MySqlManager();
