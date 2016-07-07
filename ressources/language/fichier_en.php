@@ -213,6 +213,10 @@ define("_PRICE", "Price");
 define("_NO_ESTIMATE", "No estimate to validate");
 define("_ESTIMATE_TO_VALIDATE", "Estimate to validate");
 define("_VALIDATE", "Validate");
+define("_SHIPPER_SUBSCRIPTION_FINISHED", "Finished shipper subscriptions");
+define("_SHIPPER_SUBSCRIPTION_END", "Shipper subscriptions ending");
+define("_THERE_IS_NO_ONE", "There is no one");
+define("_ONE_MORE_YEAR", "One more year");
 
 
 

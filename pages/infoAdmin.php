@@ -1,7 +1,7 @@
 <?php
 /************************************************************\
  *
- * File			mysqladmanager.php
+ * File			infoAdmin.php
  *
  * Language		PHP
  *
@@ -36,16 +36,52 @@ if ($user->getRole() != 1) {
 $userManager = new MySqlManager();
 $adManager = new MySqlAdManager();
 
+// Récupérer les transporteurs dont les abos se terminent
+$in14days = date("Y-m-d", strtotime("+14 days"));
+$endingSubscriptions = $userManager->getShipperSubscriptionByDate(date("Y-m-d"), $in14days);
+$finishedSubscriptions = $userManager->getShipperSubscriptionByDate("1900-01-01", date("Y-m-d", strtotime("-1 days")));
+
 // Récupérer les devis à facturer
 $estimateManager = new MySqlEstimateManager();
 $estimates = $estimateManager->getAllEstimatesByState(3);
 
 
 ?>
-<!-- Transporteurs en fin d'abonnement -->
-<form>
-	 
+<!-- Transporteurs dont l'abonnement est terminé --> 
+<h1><?php echo _SHIPPER_SUBSCRIPTION_FINISHED?></h1>
+<?php if (!empty($finishedSubscriptions)) { ?>
+<form method="post" action="../tools/business/check_info_admin.php">
+	 <table>
+	 	<?php foreach ($finishedSubscriptions as $shipper) { ?>
+	 		<tr>
+	 			<td><?php echo $shipper->getSociety()?></td>
+	 			<td><?php echo $shipper->getEndDateShipper()?></td>
+	 			<td><input type="submit" name="onemoreyear" value="<?php echo _ONE_MORE_YEAR;?>"><input type="hidden" name="shipper_id" value="<?php echo $shipper->getId();?>"></td>
+	 		</tr>
+	 	<?php }?>
+	 </table>
 </form>
+<?php } else {
+echo '<em>' . _THERE_IS_NO_ONE . '</em>';
+}?>
+
+<!-- Transporteurs en fin d'abonnement -->
+<h1><?php echo _SHIPPER_SUBSCRIPTION_END?></h1>
+<?php if (!empty($endingSubscriptions)) { ?>
+<form method="post" action="../tools/business/check_info_admin.php">
+	 <table>
+	 	<?php foreach ($endingSubscriptions as $shipper) { ?>
+	 		<tr>
+	 			<td><?php echo $shipper->getSociety()?></td>
+	 			<td><?php echo $shipper->getEndDateShipper()?></td>
+	 			<td><input type="submit" name="onemoreyear" value="<?php echo _ONE_MORE_YEAR;?>"><input type="hidden" name="shipper_id" value="<?php echo $shipper->getId();?>"></td>
+	 		</tr>
+	 	<?php }?>
+	 </table>
+</form>
+<?php } else {
+echo '<em>' . _THERE_IS_NO_ONE . '</em>';
+}?>
 <!-- Validation des devis sélectionnés pour envoi des coordonnées mutuelles -->
 <h1><?php echo _ESTIMATE_TO_VALIDATE;?></h1>
 <?php if (!empty($estimates)) {?>
