@@ -20,6 +20,7 @@ require_once '../tools/database/mysqlmanager.php';
 require_once '../tools/database/mysqlcitymanager.php';
 require_once '../tools/database/mysqlestimatemanager.php';
 require_once '../ressources/config.php';
+require_once '../business/ad.php';
 
  
 if (! isset ( $_SESSION )) {
@@ -28,6 +29,7 @@ if (! isset ( $_SESSION )) {
 $mysql = new MySqlManager();
 $mysqlCity = new MySqlCityManager();
 $mysqlEstimate = new MySqlEstimateManager();
+$adManager = new MySqlAdManager();
 const WAIT_TO_READ_ACCEPT = 2;
 const WAIT_TO_READ_REFUSED = 5;
 const ESTIMATE_PAID = 4;
@@ -48,12 +50,12 @@ if(isset($_POST['action'])){
 	//Authentication
 	if($_POST['action']==_LOGIN){
 		
-		authenticateShipper($mysql, $mysqlCity, $mysqlEstimate);
+		authenticateShipper($mysql, $mysqlCity, $mysqlEstimate, $adManager);
 	}
 	
-	if($_POST['action']==_LOGIN){
+	/*if($_POST['action']==_LOGIN){
 		authenticateShipper($mysql, $mysqlCity);
-	}
+	}*/
 	
 	if($_POST['action']==_CHANGE_INFO_USER){
 		updateInfoUser($mysql, $mysqlCity);
@@ -73,7 +75,7 @@ function logout(){
 	exit;
 }
 //Login Shipper
-function authenticateShipper($mysql, $mysqlCity, $mysqlEstimate){
+function authenticateShipper($mysql, $mysqlCity, $mysqlEstimate, $mysqlAd){
 	$email = $_POST['email'];
 	$pwd = $_POST['pwd'];
 	$result = $mysql->checkLoginShipper($email, $pwd);
@@ -91,6 +93,7 @@ function authenticateShipper($mysql, $mysqlCity, $mysqlEstimate){
 	$resultCity = $mysqlCity->getCityById($result->getCity());
 	$_SESSION['user'] = serialize($result);
 	$_SESSION['city'] = serialize($resultCity);
+	//Gestion des notification quand un transporteur se connect
 	if($result->getRole()==3){
 		
 		/*$estimatesAccept = $mysqlEstimate->getAllEstimatesByShipper($result->getId(), WAIT_TO_READ_ACCEPT );
@@ -100,6 +103,7 @@ function authenticateShipper($mysql, $mysqlCity, $mysqlEstimate){
 		$estimatesRefused = $mysqlEstimate->getAllEstimatesByShipperWithTitleAd($result->getId(), WAIT_TO_READ_REFUSED );
 
 		if ($estimatesAccept != null){
+
 			$_SESSION['estimate_accepted'] = $estimatesAccept;
 		}
 		
@@ -114,25 +118,36 @@ function authenticateShipper($mysql, $mysqlCity, $mysqlEstimate){
 		
 			$_SESSION['infoCustomer'] = $customer;
 		}
+		//Code pour rediriger sur la page du transporteur
+		//header("location: ../pages/infoShipper.php");
 		
 	}
 	
+	//Gestion des notification quand un anonceur se connect
 	if($result->getRole()==2){
 		
-		$customer = $mysqlEstimate->getAdByEstimateState($result->getId(), ESTIMATE_PAID);
-	
-		if($customer!=null){
-	
-			$_SESSION['infoCustomer'] = $customer;
+		$listAd = $mysqlAd->getAdByCustomer($result->getId());
+
+		$shipper = null;
+		foreach ($listAd as $element){
+			$shipper[] = $mysqlEstimate->getInfoShipperByEstimateState($element->getId(), ESTIMATE_PAID);
 		}
-	
+
+		if($shipper!=null){
+			$_SESSION['infoShipper'] = $shipper;
+		
+		}
+		//Code pour rediriger sur la page de l'annonceur
+		//header("location: ../pages/infoAdvertiser.php");
 	}
 	
 	
 	header("location: ../pages/infoUser.php");
 	exit();
 }
+
 //Login Customer
+/*
 function authenticateCustomer($mysql, $mysqlCity){
 	$email = htmlspecialchars($_POST['email']);
 	$pwd = htmlspecialchars($_POST['pwd']);
@@ -147,10 +162,10 @@ function authenticateCustomer($mysql, $mysqlCity){
 	
 	/*$_SESSION['msg'] = 'Welcome '. $result->firstname.' '.$result->lastname;
 	$_SESSION['rank'] = 1;*/
-	$_SESSION['user'] = serialize($result);
+	/*$_SESSION['user'] = serialize($result);
 	header("location: pages/infoUser.php");
 	exit;
-}
+}*/
 
 //Create new shipper account
 function registerShipper($mysql, $mysqlCity){

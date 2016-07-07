@@ -27,25 +27,25 @@ if(empty($_SESSION['user'])){
 }
 
 //Redirection en cas de notification à afficher pour le transporteur
-/*if(isset($_SESSION['estimate_accepted'])){
-	header("../pages/alertShipper.php");
+if(isset($_SESSION['estimate_accepted'])){
+	header("location: ../pages/alertShipper.php");
 }
 if(isset($_SESSION['estimate_refuser'])){
-	header("../pages/alertShipper.php");
+	header("location: ../pages/alertShipper.php");
 }
 if(isset($_SESSION['infoCustomer'])){
-	header("../pages/alertShipper.php");
+	header("location: ../pages/alertShipper.php");
 }
 
 //Redirection en cas de notification à afficher pour l'advertiser
 if (isset($_SESSION['estimate'])){
-	header("../pages/alertAdvertiser.php");
+	header("location: ../pages/alertAdvertiser.php");
 }
 
 if(isset($_SESSION['infoShipper'])){
-	header("../pages/alertAdvertiser.php");
+	header("location: ../pages/alertAdvertiser.php");
 }
-*/
+
 
 if (isset($_SESSION['user'])){
 	$user = unserialize($_SESSION['user']);}

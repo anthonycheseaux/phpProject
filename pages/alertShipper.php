@@ -3,6 +3,11 @@
 
 <!-- Display estimate Accepted (for shipper) -->
 <?php 
+require_once ('../ressources/templates/navbar-backoffice-shipper.php');
+require_once '../business/user.php';
+require_once '../business/city.php';
+require_once '../business/estimate.php';
+
 if(isset($_SESSION['estimate_accepted'])){
 	$estimate = $_SESSION['estimate_accepted'];
 	
@@ -55,7 +60,7 @@ if(isset($_SESSION['estimate_refused'])){
   <tr>
   	<th><?php echo _SHIPPER?></th>
     <th><?php echo _TITLE?></th>
-    <th><?php echo _DATE_BEGINNING?></th>
+    <th><?php echo _DATE?></th>
     <th><?php echo _PRICE?></th>
     <th><?php echo _SELECTION?></th>
   </tr>
@@ -83,18 +88,6 @@ $element = urlencode($element);
 	}
 }?>
 </table>
-
-
-<!-- Essais d'afficher info sur le transporteur -->
-<?php _TR_ESTIMATE?><br>
-<form method="post" action ="../tools/business/check_info_estimate.php">
-<input type ="submit" name="action" value="info shipper">
-</form>
-
-
-
-
-
 
 
 <!-- Essais d'afficher info sur le client -->
