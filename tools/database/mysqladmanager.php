@@ -187,6 +187,85 @@ class MySqlAdManager {
 	}
 	
 	
+	
+	/**
+	 * Default : getAllAds() will return only active ads which end date is today or later,
+	 * when getAllAds(false) will return all ads which end date is today or later
+	 *
+	 * @param string $onlyActiveAds
+	 */
+	public function getAllAdsFromTodayByAdvertiser($onlyActiveAds = TRUE, $advertiserId) {
+		if ($onlyActiveAds == TRUE)
+			$query = "SELECT ad.ad_id,
+							 ad.ad_user,
+							 cat.category_name as ad_category,
+							 ad.ad_title,
+							 ad.ad_description,
+							 ad.ad_objects_number,
+							 ci1.city_name AS ad_departure_city,
+							 ci2.city_name AS ad_destination_city,
+	 						 ad.ad_total_weight,
+	 						 ad.ad_total_volume,
+	 						 ad.ad_date_beginning,
+	 						 ad.ad_date_end
+	
+						FROM AD ad
+						INNER JOIN CITY ci1 ON (ad.ad_departure_city = ci1.city_id)
+		   				INNER JOIN CITY ci2 ON (ad.ad_destination_city = ci2.city_id)
+		   				INNER JOIN CATEGORY cat ON (ad.ad_category = cat.category_id)
+			
+					WHERE " . $this::INACTIVE . " = false" . " 
+							AND DATE(" . $this::DATE_END . ") >= CURDATE()
+							AND ad.ad_user = ". $advertiserId; // returns only active ads
+			else
+				$query = "SELECT ad.ad_id,
+							 ad.ad_user,
+							 cat.category_name as ad_category,
+							 ad.ad_title,
+							 ad.ad_description,
+							 ad.ad_objects_number,
+							 ci1.city_name AS ad_departure_city,
+							 ci2.city_name AS ad_destination_city,
+	 						 ad.ad_total_weight,
+	 						 ad.ad_total_volume,
+	 						 ad.ad_date_beginning,
+	 						 ad.ad_date_end
+	
+						FROM AD ad
+						INNER JOIN CITY ci1 ON (ad.ad_departure_city = ci1.city_id)
+		   				INNER JOIN CITY ci2 ON (ad.ad_destination_city = ci2.city_id)
+		   				INNER JOIN CATEGORY cat ON (ad.ad_category = cat.category_id)
+			
+					WHERE DATE(" . $this::DATE_END . ") >= CURDATE()
+					AND ad.ad_user = ". $advertiserId; // returns all ads
+	
+				$result = $this->_conn->selectDB ( $query );
+	
+				while ( $row = $result->fetch () ) {
+					$ad = new Ad( $row [$this::ID],
+							$row [$this::USER],
+							$row [$this::CATEGORY],
+							$row [$this::DEPARTURE_CITY],
+							$row [$this::DESTINATION_CITY],
+							$row [$this::TITLE],
+							$row [$this::DESCRIPTION],
+							$row [$this::TOTAL_WEIGHT],
+							$row [$this::OBJECTS_NUMBER],
+							$row [$this::TOTAL_VOLUME],
+							$row [$this::DATE_BEGINNING],
+							$row [$this::DATE_END] );
+						
+					$response [] = $ad;
+					unset ( $ad );
+				}
+	
+				if (! empty ( $response ))
+					return $response;
+					else
+						return null;
+	}
+	
+	
 	public function getAdByCustomer($id) {
 		
 		$query = "SELECT * FROM ad WHERE ad_user = ".$id. " AND " . $this::INACTIVE . " = ". 0 .";";

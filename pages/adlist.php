@@ -18,6 +18,15 @@
 require_once ('../ressources/templates/navbar-backoffice-shipper.php');
 require_once ('../tools/database/mysqladmanager.php');
 //require_once(LIBRARY_PATH . "/templateFunctions.php");
+
+$error = '';
+
+if(isset($_SESSION['rank'])) {
+	$rank = $_SESSION['rank'];
+	$msg = $_SESSION['msg'];
+	echo '<script type="text/javascript">window.alert("' . $msg . '");</script>';
+	unset($_SESSION['rank']);
+}
 ?>
 
 <!DOCTYPE html>
