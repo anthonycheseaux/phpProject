@@ -94,7 +94,7 @@ echo '<em>' . _THERE_IS_NO_ONE . '</em>';
 			<th><?php echo _SHIPPER?></th>
 			<th><?php echo _PRICE?></th>
 		</tr>
-		<?php foreach ($estimates as $estimate) { ?>
+		<?php foreach ($estimates as $estimate) { var_dump($estimate)?>
 			<tr>
 				<form method="post" action="../tools/business/check_info_admin.php">
 					<td><?php echo $estimate->getId()?></td>
