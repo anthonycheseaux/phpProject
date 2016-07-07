@@ -57,6 +57,12 @@ if (isset($_POST['action']) && $_POST['action'] == "info shipper") {
 	displayInfoShipper($estimateManager, $adManager);
 }
 
+if (isset($_POST['action']) && $_POST['action'] == "info customer") {
+
+
+	displayInfoCustommer($estimateManager);
+}
+
 function registerEstimate($estimateManager) {
 	$ad = htmlspecialchars($_SESSION[AD]);
 	$price = htmlspecialchars($_POST[PRICE]);
@@ -178,6 +184,25 @@ function displayInfoShipper($estimateManager, $adManager){
 		
 	}
 	
+	header("location: ../../pages/infoUser.php");
+}
+
+
+
+function displayInfoCustommer($estimateManager){
+	$user = unserialize($_SESSION['user']);
+	//$listAd = $adManager->getAdByCustomer($user->getId());
+
+	$customer = null;
+
+	$customer = $estimateManager->getAdByEstimateState($user->getId(), ESTIMATE_PAID);
+	
+	
+	if($customer!=null){
+
+		$_SESSION['infoCustomer'] = $customer;
+	}
+
 	header("location: ../../pages/infoUser.php");
 }
 

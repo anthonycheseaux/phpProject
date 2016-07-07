@@ -443,6 +443,47 @@ if(isset($_SESSION['infoShipper'])){
 	}
 }?>
 
+
+<!-- Essais d'afficher info sur le client -->
+Devis : <br>
+<form method="post" action ="../tools/business/check_info_estimate.php">
+<input type ="submit" name="action" value="info customer">
+</form>
+
+
+<?php 
+if(isset($_SESSION['infoCustomer'])){
+	$customer = $_SESSION['infoCustomer'];
+	?>
+	<table width="560">
+  <tr>
+    <th>Title AD</th>
+    <th>Name</th>
+    <th>Firstname</th>
+    <th>Email</th>
+  </tr>
+  <!-- Pour chaque élément dans le tableau "$estimate" on crée un formulare avec les données du devis -->
+	<?php 
+	foreach ($customer as $element){
+		$element = unserialize($element);
+		//Provisoir
+		if($element!=null){
+		?>
+
+<form method="post" action="../tools/business/check_info_estimate.php">
+<tr>
+	<td><?php echo $element->getTitleAd();?></td>
+	<td><?php echo $element->getLastname();?></td>
+	<td><?php echo $element->getFirstname();?></td>
+	<td><?php echo $element->getEmail();?></td>
+
+</tr>
+</form>
+<?php 
+		}
+	}
+}?>
+
 </div>
 
 </body>
