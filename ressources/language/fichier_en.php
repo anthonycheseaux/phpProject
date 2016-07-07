@@ -168,6 +168,7 @@ define("_ANNONCE_ENREGISTREE", "Your ad has been saved !");
 define("_ACCEPTE", "Accepted :");
 define("_REFUSE", "Refused");
 define("_UPDATE_INFO", "Update contact information :");
+define("_DATE", "Date");
 
 /*
  * Traduction des catégories
@@ -250,7 +251,6 @@ define("_INFO_CUSTOMER", "Customer information");
 /*
  * Traduction home.php
  */
-
 define("_TXT_PRESTATIONS", "Got a piano to ship ? You're a shipper looking for clients ?
 		<br>TEEMW is the site you need. We connect shippers and their customers.");
 define("_TXT_ESTIMATE", "Need to carry a heavy piece of furniture ? Put an ad on our website!
@@ -261,6 +261,21 @@ define("_TXT_GARANTIE", "Qualified shippers at your service.
 define("_TXT_REMPLIR", "You are customer? Fill your transport demand in seconds and submit it to our well-known shippers.");
 define("_TXT_RECEVOIR", "As a shipper, receive a list of ads that can be answered in a few clicks . A quick way to put you in touch with a customer.");
 define("_TXT_CHOISIR", "Surely you will receive multiple estimates for your requests for offers. Choose the most affordable estimate or the one that best suits your needs. Once you have chosen, prepare your boxes, the shipper is on its way to help!");
+
+
+/*
+ * Traduction CGV
+ */
+define("_CGV", "Terms & conditions");
+define("_CGV_APPLICATION", "Scope of applications"); //
+define("_CGV_COMMANDE", "Order");
+define("_CGV_CONCLUSION", "Conclusion of Contract");
+define("_CGV_PRIX", "Price");
+define("_CGV_LIVRAISON", "Delivery");
+define("_CGV_EXPEDITION", "Shipping and risks");
+define("_CGV_RESERVE", "Retention of title");
+define("_CGV_PAIEMENT", "Payment");
+define("_CGV_GARANTIE", "Guarantee");
 
 
 ?>
