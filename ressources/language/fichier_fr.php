@@ -211,7 +211,7 @@ define("_MSG_SETFNAME", "Ajouter un prénom");
 define("_MSG_UPDATE_SUCCESS", "La mise à jour est réussie. Décconectez-vous, puis recconectez-vous pour accèder à la mise à jour.");
 define("_MSG_REGISTRATION_SUCCESS","Enregistrement réalisé avec succès.");
 define("_MSG_MAIL_PASSWORD_INCORRECT", "E-mail ou mot de passe incorrect !");
-define("_MSG_EMAIL_USED","E-mail déjà utilisé !");
+define("_MSG_EMAIL_USED; ","E-mail déjà utilisé !");
 
 
 /*
@@ -235,5 +235,31 @@ define("_SHIPPER_SUBSCRIPTION_FINISHED", "Abonnements de transporteur terminés"
 define("_SHIPPER_SUBSCRIPTION_END", "Abonnements de transporteur arrivant à échéance");
 define("_THERE_IS_NO_ONE", "Il n'y en a pas");
 define("_ONE_MORE_YEAR", "Prolonger d'un an");
+
+
+/*
+ * Traduction des buttons
+ */
+define("_AFFICHE_DEVIS", "Affichez les devis");
+define("_SELECT_TRANSPORTEUR", "Choisir ce transporteur");
+define("_OK", "Ok");
+define("_INFO_TRANSPORTEUR", "Infos du transporteur");
+define("_INFO_CUSTOMER", "Infos du client");
+
+
+/*
+ * Traduction home.php
+ */
+define("_TXT_PRESTATIONS", "Vous avez un piano à transporter ? Vous êtes un tansporteurs cherchant des clients ?
+		<br>TEEMW est le site dont vous avez besoin. Nous réunissons clients et transporteurs.");
+define("_TXT_ESTIMATE", "Besoin de transporter de lourds meubles ? Ajoutez une annonce sur notre site !
+		<br>Nos partenaires de transport intéressés vont rapidement vous soumettre un devis.");
+define("_TXT_GARANTIE", "Des transporteurs qualifiés à votre service !
+		<br>Nos transporteurs ont obtenu notre sceau de qualité. Ils sont certifiés TeemW et se réjouissent de répondre à vos demandes.");
+
+define("_TXT_REMPLIR", "Vous êtes clients ? Remplissez votre demande de transport en quelques secondes et soumettez-la à nos transporteurs recconus.");
+define("_TXT_RECEVOIR", "En tant que transporteur, recevez une liste d'annonces auxquelles vous pourrez répondre en quelques clics. Un moyen rapide de vous mettre en relation avec un client.");
+define("_TXT_CHOISIR", "Assurément, vous recevrez plusieurs devis pour vos demandes d'offre. Choissisez le devis le plus abordable ou celui qui convient le mieux à vos attentes. Une fois, le devis choisi, préparez vos cartons, le transporteur est en route pour vous aider !");
+
 
 ?>

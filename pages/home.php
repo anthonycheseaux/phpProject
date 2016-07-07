@@ -23,6 +23,17 @@ if(isset($_SESSION['rank'])) {
 				<a class="navbar-brand" href="#">TEEMW</a>
 			</div>
 			
+			<!-- LANGUAGES -->
+			<div class="nav navbar-nav navbar-right">
+				<li class="dropdown pull-right"><a href="#" class="dropdown-toggle"
+					data-toggle="dropdown" role="button" aria-haspopup="true"
+					aria-expanded="false"><?php echo _LANGUAGE?><span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="?lang=fr"><img src="image/frenchFlag.png"></a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="?lang=en"><img src="image/britishFlag.png"></a></li>
+					</ul></li>
+			</div>
 			<div id="myNavbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
 					<li><a class="page-scroll" href="#ourServices"><?php echo _OUR_SERVICES?></a></li>
@@ -56,20 +67,7 @@ if(isset($_SESSION['rank'])) {
 						</ul>
 					</li>
 						
-					<!-- LANGUAGES -->
-					<li class="dropdown pull-right"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false"><?php echo _LANGUAGE?><span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="?lang=fr"><img src="image/frenchFlag.png"></a></li>
-							<li role="separator" class="divider"></li>
-							<li><a href="?lang=en"><img src="image/britishFlag.png"></a></li>
-						</ul>
-					</li>
 				</ul>
-				
-
-				
 			</div>
 		</div>
 	</nav>
@@ -370,11 +368,7 @@ $form_data_User = isset ( $_SESSION ['form_data_user'] ) ? $_SESSION ['form_data
 				<div class="container">
 					<div class="carousel-caption">
 						<h1><?php echo _PRESTATION?></h1>
-						<p>Hoc inmaturo interitu ipse quoque sui pertaesus excessit e vita
-							aetatis nono anno atque vicensimo cum quadriennio imperasset.
-							natus apud Tuscos in Massa Veternensi, patre Constantio
-							Constantini fratre imperatoris, matreque Galla sorore Rufini et
-							Cerealis, quos trabeae consulares nobilitarunt et praefecturae.</p>
+						<p><?php echo _TXT_PRESTATIONS?></p>
 						<br>
 						<br>
 						<!-- <p>
@@ -393,11 +387,7 @@ $form_data_User = isset ( $_SESSION ['form_data_user'] ) ? $_SESSION ['form_data
 				<div class="container">
 					<div class="carousel-caption">
 						<h1><?php echo _GARANTY?></h1>
-						<p>Hoc inmaturo interitu ipse quoque sui pertaesus excessit e vita
-							aetatis nono anno atque vicensimo cum quadriennio imperasset.
-							natus apud Tuscos in Massa Veternensi, patre Constantio
-							Constantini fratre imperatoris, matreque Galla sorore Rufini et
-							Cerealis, quos trabeae consulares nobilitarunt et praefecturae.</p>
+						<p><?php echo _TXT_GARANTIE?></p>
 						<br>
 						<br>
 						<!-- <p>
@@ -415,11 +405,7 @@ $form_data_User = isset ( $_SESSION ['form_data_user'] ) ? $_SESSION ['form_data
 				<div class="container">
 					<div class="carousel-caption">
 						<h1><?php echo _DEVIS?></h1>
-						<p>Hoc inmaturo interitu ipse quoque sui pertaesus excessit e vita
-							aetatis nono anno atque vicensimo cum quadriennio imperasset.
-							natus apud Tuscos in Massa Veternensi, patre Constantio
-							Constantini fratre imperatoris, matreque Galla sorore Rufini et
-							Cerealis, quos trabeae consulares nobilitarunt et praefecturae.</p>
+						<p><?php echo _TXT_ESTIMATE?></p>
 						<br>
 						<br>
 						<!-- <p>
@@ -503,10 +489,7 @@ $form_data_User = isset ( $_SESSION ['form_data_user'] ) ? $_SESSION ['form_data
 				<h2 class="featurette-heading" style="text-transform : uppercase;">
 					<?php echo _FILL?> 
 				</h2>
-				<p class="lead">Donec ullamcorper nulla non metus auctor fringilla.
-					Vestibulum id ligula porta felis euismod semper. Praesent commodo
-					cursus magna, vel scelerisque nisl consectetur. Fusce dapibus,
-					tellus ac cursus commodo.</p>
+				<p class="lead"><?php echo _TXT_REMPLIR?></p>
 			</div>
 			<div class="col-md-5">
 				<span class="featurette-image img-responsive center-block text-muted fa fa-keyboard-o"
@@ -522,10 +505,7 @@ $form_data_User = isset ( $_SESSION ['form_data_user'] ) ? $_SESSION ['form_data
 				<h2 class="featurette-heading" style="text-transform : uppercase;">
 					<?php echo _RECIEVE?>
 				</h2>
-				<p class="lead">Donec ullamcorper nulla non metus auctor fringilla.
-					Vestibulum id ligula porta felis euismod semper. Praesent commodo
-					cursus magna, vel scelerisque nisl consectetur. Fusce dapibus,
-					tellus ac cursus commodo.</p>
+				<p class="lead"><?php echo _TXT_RECEVOIR?></p>
 			</div>
 			<div class="col-md-5 col-md-pull-7">
 				<span class="featurette-image img-responsive center-block fa fa-envelope-o"
@@ -540,10 +520,7 @@ $form_data_User = isset ( $_SESSION ['form_data_user'] ) ? $_SESSION ['form_data
 				<h2 class="featurette-heading" style="text-transform : uppercase;">
 					<?php echo _CHOOSE?>
 				</h2>
-				<p class="lead">Donec ullamcorper nulla non metus auctor fringilla.
-					Vestibulum id ligula porta felis euismod semper. Praesent commodo
-					cursus magna, vel scelerisque nisl consectetur. Fusce dapibus,
-					tellus ac cursus commodo.</p>
+				<p class="lead"><?php echo _TXT_CHOISIR?></p>
 			</div>
 			<div class="col-md-5">
 				<span class="featurette-image img-responsive center-block text-muted fa fa-file-text-o"
