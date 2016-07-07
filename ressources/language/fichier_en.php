@@ -265,7 +265,7 @@ define("_TXT_REMPLIR", "You are customer? Fill your transport demand in seconds 
 define("_TITRE_RECEVOIR", "RECEIVE");
 define("_TXT_RECEVOIR", "As a shipper, receive a list of ads that can be answered in a few clicks . A quick way to put you in touch with a customer.");
 define("_TITRE_CHOISIR", "MAKE A CHOICE");
-define("_TXT_CHOISIR", "Surely you will receive multiple estimates for your requests for offers. Choose the most affordable estimate or the one that best suits your needs. Once you have chosen, prepare your boxes, the supplyer is on its way to help!");
+define("_TXT_CHOISIR", "Surely you will receive multiple estimates for your requests for offers. Choose the most affordable estimate or the one that best suits your needs. Once you have chosen, prepare your boxes, the shipper is on its way to help!");
 
 
 ?>
