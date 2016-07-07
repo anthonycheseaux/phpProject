@@ -57,32 +57,40 @@ $user = $userManager->getUser ( 2 );
 $_SESSION[SHIPPER] = $user->getId();
 
 ?>
-<!DOCTYPE unspecified PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta content="text/html; charset=Cp1252" http-equiv="Content-Type">
-<title><?php echo _SAISIR_DEVIS;?></title>
-</head>
+
 <body>
-	<h1><?php echo _SAISIR_DEVIS?></h1>
-	<form method="post" action="../tools/business/check_info_estimate.php">
-		<table>
-			<!-- Titre de l'annonce -->
-			<tr>
-				<h2><?php echo $ad->getTitle();?></h2>
-			</tr>
+
+	<div class="container">
+			<FORM><INPUT Type="button" VALUE="X" onClick="window.location.href='./adDetails.php?id=<?php echo $ad->getId();?>';" class="buttonCloseAdDetails"></FORM>
+	
+	<div style="text-align: center">
+		<h2 style="text-align: center;"><?php echo _SAISIR_DEVIS?></h2>
+		<br>
+		
+		<h3 style="text-align: center;"><?php echo "Annonce: " . $ad->getTitle();?></h3>
+		<br>
+		<div style="width: 50%; ">
+		<form method="post" action="../tools/business/check_info_estimate.php">
+
+		<table id="estimate" >
+
 			<tr>
 				<!-- Prix proposé -->
 				<td><?php echo _PRIX_PROPOSE . ' : '?></td>
 				<td><input type="text" name="price"
 					value="<?php echo $form_data[PRICE];?>" /><?php if ($rank == PRICE) echo $msg;?></td>
 			</tr>
+
 			<tr>
-				<td><input type="submit" name="action"
+				<td colspan="2"><input type="submit" name="action"
 					value="<?php echo _PROPOSER_UN_DEVIS ?>" /></td>
 			</tr>
+			
 		</table>
-	</form>
+	</form></div>
+	
+	</div>
+	</div>
 </body>
 </html>
 

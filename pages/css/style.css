@@ -256,6 +256,19 @@ body {
 	width:30%
 }
 
+#estimate {
+	font-size: 20px;
+    table-layout: fixed;
+    word-wrap: break-word;
+    margin: 0 auto !important;
+  	float: none !important;
+}
+
+#estimate td {
+	padding: 10px;
+	width:30%
+}
+
 #user-info {
 	font-size: 20px;
     table-layout: fixed;
