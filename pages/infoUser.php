@@ -20,10 +20,32 @@ require_once '../business/estimate.php';
 ?>
 <?php
 
+//Controle si l'utilisateur est connecté
 if(empty($_SESSION['user'])){
 	header("../pages/register.php");
 	exit();
 }
+
+//Redirection en cas de notification à afficher pour le transporteur
+if(isset($_SESSION['estimate_accepted'])){
+	header("../pages/alertShipper.php");
+}
+if(isset($_SESSION['estimate_refuser'])){
+	header("../pages/alertShipper.php");
+}
+if(isset($_SESSION['infoCustomer'])){
+	header("../pages/alertShipper.php");
+}
+
+//Redirection en cas de notification à afficher pour l'advertiser
+if (isset($_SESSION['estimate'])){
+	header("../pages/alertAdvertiser.php");
+}
+
+if(isset($_SESSION['infoShipper'])){
+	header("../pages/alertAdvertiser.php");
+}
+
 
 if (isset($_SESSION['user'])){
 	$user = unserialize($_SESSION['user']);}
