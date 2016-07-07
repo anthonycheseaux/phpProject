@@ -30,6 +30,7 @@ $mysqlCity = new MySqlCityManager();
 $mysqlEstimate = new MySqlEstimateManager();
 const WAIT_TO_READ_ACCEPT = 2;
 const WAIT_TO_READ_REFUSED = 5;
+const ESTIMATE_PAID = 4;
 
 if(isset($_POST['action'])){
 	//Create account	
@@ -106,7 +107,28 @@ function authenticateShipper($mysql, $mysqlCity, $mysqlEstimate){
 			$_SESSION['estimate_refused'] = $estimatesRefused;
 		}
 		
+				
+		$customer = $estimateManager->getAdByEstimateState($result->getId(), ESTIMATE_PAID);
+		
+		if($customer!=null){
+		
+			$_SESSION['infoCustomer'] = $customer;
+		}
+		
 	}
+	
+	if($result->getRole()==2){
+		
+		$customer = $estimateManager->getAdByEstimateState($result->getId(), ESTIMATE_PAID);
+	
+		if($customer!=null){
+	
+			$_SESSION['infoCustomer'] = $customer;
+		}
+	
+	}
+	
+	
 	header("location: ../pages/infoUser.php");
 	exit();
 }

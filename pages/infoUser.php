@@ -27,7 +27,7 @@ if(empty($_SESSION['user'])){
 }
 
 //Redirection en cas de notification à afficher pour le transporteur
-if(isset($_SESSION['estimate_accepted'])){
+/*if(isset($_SESSION['estimate_accepted'])){
 	header("../pages/alertShipper.php");
 }
 if(isset($_SESSION['estimate_refuser'])){
@@ -45,7 +45,7 @@ if (isset($_SESSION['estimate'])){
 if(isset($_SESSION['infoShipper'])){
 	header("../pages/alertAdvertiser.php");
 }
-
+*/
 
 if (isset($_SESSION['user'])){
 	$user = unserialize($_SESSION['user']);}

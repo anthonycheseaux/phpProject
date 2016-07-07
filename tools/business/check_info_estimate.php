@@ -133,7 +133,7 @@ function validEstimate($estimateManager, $id){
 
 function readInfo($estimateManager, $estimate){
 	//Go to the next state (4 or 6)
-	var_dump($estimate);
+	
 	$state = $estimate->getState()+1;
 	$estimateManager->updateEstimateState($estimate->getId(), $state);
 	/*$estimateList = $_SESSION['estimate'];
