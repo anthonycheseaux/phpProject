@@ -78,6 +78,10 @@ define("_AD_DATE_BEG","Starting date");
 define("_AD_DATE_END","Ending date");
 define("_AD_DETAILS", "Details of the ad ");
 define("_AD_LIST", "List of ads");
+define("_AD_DELETE", "Delete the ad");
+define("_AD_DELETED", "Ad deleted");
+define("_AD_CREATE", "Create an ad");
+define("_AD_NEW", "New ad");
 
 
 /*

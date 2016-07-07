@@ -309,7 +309,7 @@ class MySqlAdManager {
 		return $this->_conn->executeQuery ( $query );
 	}
 	public function deleteAd(Ad $ad) {
-		$query = "DELETE ad WHERE " . $this::ID . " = " . $ad->getId ();
+		$query = "DELETE FROM ad WHERE " . $this::ID . " = " . $ad->getId ();
 		
 		return $this->_conn->executeQuery ( $query );
 	}

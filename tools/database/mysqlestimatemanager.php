@@ -17,6 +17,7 @@ require_once 'mysqlconnection.php';
 require_once '/business/estimate.php';
 require_once '/business/user.php';
 require_once '/tools/database/mysqladmanager.php';
+require_once '/tools/database/mysqlestimatemanager.php';
 
 class MySqlEstimateManager {
 	
@@ -258,6 +259,12 @@ class MySqlEstimateManager {
 		return $this->_conn->executeQuery($query);
 	}
 	
+
+	
+	public function deleteEstimateByAdId($adId) {
+		$query = "DELETE FROM estimate WHERE " . $this::AD . " = " . $adId . ";";
+		return $this->_conn->executeQuery($query);
+	}
 	
 	
 	// Connection

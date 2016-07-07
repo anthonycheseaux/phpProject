@@ -87,20 +87,22 @@ if(isset($_SESSION['rank'])) {
 				<tr>
 		            <?php echo '<th>' . _AD_TITLE . '</th>'?>
 		            <?php echo '<th>' . _AD_DEPARTURE_CI . '</th>'?>
+		            <?php echo '<th>' . _AD_DATE_BEG . '</th>'?>
 		            <?php echo '<th>' . _AD_DESTINATION_CI . '</th>'?>
+		            <?php echo '<th>' . _AD_DATE_END . '</th>'?>
 		            <?php echo '<th>' . _AD_TOTAL_VOLUME . '</th>'?>
 		            <?php echo '<th>' . _AD_TOTAL_WEIGHT . '</th>'?>
-		            <?php echo '<th>' . _AD_DATE_BEG . '</th>'?>
 				</tr>
 			</thead>
 			<tfoot>
 				<tr>
 		            <?php echo '<th>' . _AD_TITLE . '</th>'?>
 		            <?php echo '<th>' . _AD_DEPARTURE_CI . '</th>'?>
+		            <?php echo '<th>' . _AD_DATE_BEG . '</th>'?>
 		            <?php echo '<th>' . _AD_DESTINATION_CI . '</th>'?>
+		            <?php echo '<th>' . _AD_DATE_END . '</th>'?>
 		            <?php echo '<th>' . _AD_TOTAL_VOLUME . '</th>'?>
 		            <?php echo '<th>' . _AD_TOTAL_WEIGHT . '</th>'?>
-		            <?php echo '<th>' . _AD_DATE_BEG . '</th>'?>
 				</tr>
 			</tfoot>
 			<tbody>
@@ -138,14 +140,15 @@ if(isset($_SESSION['rank'])) {
 				
 				foreach ($adinfo as $ad){	
 					$vard = 'style="cursor: pointer;" data-href="adDetails.php?id=' . $ad->getId() . '"';		
-					echo '<tr> '
+					echo '<tr style="text-align:center;"> '
 								 
 								 . '<td '.$vard.'>' . $ad->getTitle() . '</td>'
 								 . '<td '.$vard.'>' .$ad->getDeparture_city() . '</td>'
+								 . '<td '.$vard.'>' .$ad->getDate_beginning() . '</td>'
 								 . '<td '.$vard.'>' .$ad->getDestination_city() . '</td>'
-								 . '<td '.$vard.'>' .$ad->getTotal_volume() . '</td>'
-								 . '<td '.$vard.'>' .$ad->getTotal_weight() . '</td>'
-								 . '<td '.$vard.'>' .$ad->getDate_beginning() . '</td> </tr>';
+								 . '<td '.$vard.'>' .$ad->getDate_end() . '</td>'
+								 . '<td '.$vard.'>' .$ad->getTotal_volume() . ' m3</td>'
+								 . '<td '.$vard.'>' .$ad->getTotal_weight() . ' kg</td></tr>';
 				}
 				}
 			}

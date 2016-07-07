@@ -84,25 +84,33 @@ $error = '';
 
 	<div class="container-fluid" style="width: 70%">
 	<h2 style="text-align: center; padding: 20px; padding-bottom: 50px"><?php echo _AD_LIST?></h2>
+	
+	<input class="btn btn-default" type="button" value="<?php echo _AD_CREATE?>" 
+		onclick="window.location.href='./inputAd.php';" />
+		
+	<div style="width: 100%; height: 50px"></div>
+	
 		<table id="myTable" class="display responsive nowrap table-striped" cellspacing="0" width="100%" data-order='[[ 5, "asc" ]]'>
 			<thead>
 				<tr>
 		            <?php echo '<th>' . _AD_TITLE . '</th>'?>
 		            <?php echo '<th>' . _AD_DEPARTURE_CI . '</th>'?>
+		            <?php echo '<th>' . _AD_DATE_BEG . '</th>'?>
 		            <?php echo '<th>' . _AD_DESTINATION_CI . '</th>'?>
+		            <?php echo '<th>' . _AD_DATE_END . '</th>'?>
 		            <?php echo '<th>' . _AD_TOTAL_VOLUME . '</th>'?>
 		            <?php echo '<th>' . _AD_TOTAL_WEIGHT . '</th>'?>
-		            <?php echo '<th>' . _AD_DATE_BEG . '</th>'?>
 				</tr>
 			</thead>
 			<tfoot>
 				<tr>
 		            <?php echo '<th>' . _AD_TITLE . '</th>'?>
 		            <?php echo '<th>' . _AD_DEPARTURE_CI . '</th>'?>
+		            <?php echo '<th>' . _AD_DATE_BEG . '</th>'?>
 		            <?php echo '<th>' . _AD_DESTINATION_CI . '</th>'?>
+		            <?php echo '<th>' . _AD_DATE_END . '</th>'?>
 		            <?php echo '<th>' . _AD_TOTAL_VOLUME . '</th>'?>
 		            <?php echo '<th>' . _AD_TOTAL_WEIGHT . '</th>'?>
-		            <?php echo '<th>' . _AD_DATE_BEG . '</th>'?>
 				</tr>
 			</tfoot>
 			<tbody>
@@ -144,14 +152,15 @@ $error = '';
 				
 				foreach ($adinfo as $ad){	
 					$vard = 'style="cursor: pointer;" data-href="adDetails-advertiser.php?id=' . $ad->getId() . '"';		
-					echo '<tr> '
+					echo '<tr style="text-align:center;"> '
 								 
 								 . '<td '.$vard.'>' . $ad->getTitle() . '</td>'
 								 . '<td '.$vard.'>' .$ad->getDeparture_city() . '</td>'
+								 . '<td '.$vard.'>' .$ad->getDate_beginning() . '</td>'
 								 . '<td '.$vard.'>' .$ad->getDestination_city() . '</td>'
-								 . '<td '.$vard.'>' .$ad->getTotal_volume() . '</td>'
-								 . '<td '.$vard.'>' .$ad->getTotal_weight() . '</td>'
-								 . '<td '.$vard.'>' .$ad->getDate_beginning() . '</td> </tr>';
+								 . '<td '.$vard.'>' .$ad->getDate_end() . '</td>'
+								 . '<td '.$vard.'>' .$ad->getTotal_volume() . ' m3</td>'
+								 . '<td '.$vard.'>' .$ad->getTotal_weight() . ' kg</td></tr>';
 				}
 				}
 			}
