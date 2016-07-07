@@ -52,7 +52,6 @@ if ($ad = $adManager->getAd ( $ad_id )) {
 function chooseCategory($var) {
 	
 }
-
 ?>
 
 <table class="table-striped" id="ad-details">

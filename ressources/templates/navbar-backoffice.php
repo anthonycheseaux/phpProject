@@ -21,10 +21,10 @@ require_once ('../ressources/templates/header.php');
 	<nav class="navbar navbar-full navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="./backoffice.php">BACKOFFICE TEEMW</a>
+				<a class="navbar-brand" href="./adlist.php">BACKOFFICE TEEMW</a>
 			</div>
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="./infoUser.php"><?php echo _INFO_USER?></a></li>
+				<li><a href="./infoUser.php"><?php echo _INFO_USER?></a></li>
 				<li><a href="./adlist.php"><?php echo _AD_LIST?></a></li>
 			</ul>
 			<div class="nav navbar-nav navbar-right">
