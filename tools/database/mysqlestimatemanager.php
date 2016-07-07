@@ -188,6 +188,40 @@ class MySqlEstimateManager {
 		return $shipper;
 	}
 	
+	//Utilisé pour récupérer les info des client grace à l'id dans la table "ad"
+	public function getAdByEstimateState($idShipper, $state) {
+	
+		$condition = " AND " . $this::SHIPPER. " = ".$idShipper;
+	
+		$query = "SELECT * FROM estimate e
+				INNER JOIN ad a ON e.estimate_ad = a.ad_id
+				INNER JOIN user u ON a.ad_user = u.user_id
+				WHERE e.estimate_state = ". $state.$condition.";";
+	
+		$result = $this->_conn->selectDB($query);
+
+			
+		while ($row = $result->fetch()) {
+			$user = new User($row[$this::USER_ID], $row[$this::FIRSTNAME], $row[$this::LASTNAME],0, $row[$this::USER_TITLE],$row[$this::ADDRESS1], $row[$this::ADDRESS2],
+					$row[$this::CITY],0, $row[$this::EMAIL],$row[$this::SOCIETY],0);
+			$user->setTitleAd($row[$this::TITLE_AD]);
+			$response[] = serialize($user);
+			unset($estimate);
+		}
+		
+			/*while ($row = $result->fetch()) {
+				$adId = $row[$this::AD_USER];
+				$response[] =$adId;
+				unset($estimate);
+			}*/
+		
+			
+			if(isset($response)){
+				return $response;
+			}
+			return null;
+	}
+	
 	
 	// INSERT
 	public function createEstimate(Estimate $estimate) {
@@ -249,5 +283,7 @@ class MySqlEstimateManager {
 	const ADDRESS2 = 'user_adress2';
 	const CITY = 'user_city';
 	const EMAIL = 'user_email';
+	
+	const AD_USER = 'ad_user';
 	
 }
