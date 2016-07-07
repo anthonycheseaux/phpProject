@@ -271,7 +271,7 @@ define("_CGV_APPLICATION", "Champ d'application"); //
 define("_CGV_COMMANDE", "Commande");
 define("_CGV_CONCLUSION", "Conclusion du contrat");
 define("_CGV_PRIX", "Prix");
-define("CGV_LIVRAISON", "Livraison");
+define("_CGV_LIVRAISON", "Livraison");
 define("_CGV_EXPEDITION", "Expédition et risques");
 define("_CGV_RESERVE", "Réserve de propriété");
 define("_CGV_PAIEMENT", "Paiement");
