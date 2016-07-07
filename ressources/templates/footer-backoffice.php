@@ -1,6 +1,7 @@
 <footer>
+
 	<div class="container text-center">
-	<br><br><br>
+	<hr><br>
 		<p>
 			<a href="#contactModal" data-toggle="modal">Contact</a> <br> &copy;
 			2016 HES-SO Valais

@@ -162,7 +162,7 @@ if (isset ( $_SESSION ['city'] )) {
 						</tr>
 	<?php }?>
 	<tr>
-							<td colspan="2" align="right"><input type="submit" name="action"
+							<td colspan="2" align="right"><input class="btn btn-default" type="submit" name="action"
 								value="<?php echo _CHANGE_INFO_USER?>"></td>
 						</tr>
 					</table>

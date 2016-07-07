@@ -20,32 +20,10 @@ require_once '../business/estimate.php';
 ?>
 <?php
 
-//Controle si l'utilisateur est connecté 
 if(empty($_SESSION['user'])){
 	header("../pages/register.php");
 	exit();
 }
-
-//Redirection en cas de notification à afficher pour le transporteur (A placer au début de "infoShipper")
-if(isset($_SESSION['estimate_accepted'])){
-	header("location: ../pages/alertShipper.php");
-}
-if(isset($_SESSION['estimate_refused'])){
-	header("location: ../pages/alertShipper.php");
-}
-if(isset($_SESSION['infoCustomer'])){
-	header("location: ../pages/alertShipper.php");
-}
-
-//Redirection en cas de notification à afficher pour l'annonceur (A placer au début de "infoAdvertiser")
-if (isset($_SESSION['estimate'])){
-	header("location: ../pages/alertAdvertiser.php");
-}
-
-if(isset($_SESSION['infoShipper'])){
-	header("location: ../pages/alertAdvertiser.php");
-}
-
 
 if (isset($_SESSION['user'])){
 	$user = unserialize($_SESSION['user']);}
@@ -75,240 +53,8 @@ if (isset($_SESSION['city'])){
 	
 ?>
 
-
-
-<div class="container">
-	<h2 style="text-align: center; padding: 20px; padding-bottom: 50px"><?php echo _INFO_USER?></h2>
-<table class="table-striped" id="user-info">
-	<?php echo var_dump($user)?>
-		<?php 	
-			if($user->getRole()==3){
-				echo '<tr><td>' . _US_SOCIETY . ':</td><td>'.$user->getSociety().'</td></tr>';
-			}
-		?>
-	<tr>
-		<td><?php echo _US_FIRSTNAME . ' & ' . _US_LASTNAME ?></td>
-		<td>
-		<?php 
-			echo ': ' . strtoupper($user->getTitle()).' '.$user->getFirstname().' '.$user->getLastname();
-		?>
-		</td>
-	</tr>
-	<tr>
-		<td>
-		<?php 
-			echo $user->getAddress1(). ' ' . $user->getAddress2();
-		?>
-		</td>
-	</tr>
-	<tr>
-		<td>
-		<?php 
-			echo $city->getPostcode().'   '.$city->getCityName();
-		?>
-		</td>
-	</tr>
-	<tr>
-		<td>
-		<?php 
-			echo $city->getState();
-			
-			
-		?>
-		</td>
-	</tr>
-	<tr>
-		<td>
-		<?php 
-			echo $user->getEmail();
-		?>
-		</td>
-	</tr>
-
-</table>
-</div>
-
-<a class="btn btn-default" data-toggle="modal" href="#changeInfoModal"role="button"><?php echo _CHANGE_INFO_USER?>&raquo;</a>
-
-<!-- Register Customer Modal -->
-	<div class="modal fade" id="changeInfoModal" tabindex="-1"
-		role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
-		style="display: none;">
-		<div class="modal-dialog">
-			<div class="loginmodal-container">
-				<h1><?php echo _CHANGE_INFO_USER?></h1>
-				<br>
-				<?php if(isset($_SESSION['rank'])){
-	if ($_SESSION['rank'] == 30){
-		echo $_SESSION['msg'];
-	}
-	if ($_SESSION['rank'] == 31){
-		echo $_SESSION['msg'];
-	}
-}
-?>
-<br>
-<form method="post" action="../business/check_info_user.php">
-<table>
-	<tr>
-		<td>
-		<?php echo _US_PASSWORD?>
-		</td>
-		<td>
-		<input type="password" name="updatePassword" value="">
-		</td>
-	</tr>
-
-	<tr>
-		<td>
-		<?php echo _US_ADRESS1?>
-		</td>
-		<td>
-		<input type="text" name="updateAdress1" value="">
-		</td>
-	</tr>
-	<tr>
-		<td>
-		<?php echo _US_ADRESS2?>
-		</td>
-		<td>
-		<input type="text" name="updateAdress2" value="">
-		</td>
-	</tr>
-	
-	<tr>
-		<td>
-		<b><?php echo _US_CITY?></b>
-		</td>
-	</tr>
-	<tr>
-		<td>
-		<?php echo _CI_POSTCODE?>
-		</td>
-		<td>
-		<input type="text" name="updatePostcode" value="">
-		</td>
-	</tr>
-	<tr>
-		<td>
-		<?php echo _US_CITY?>
-		</td>
-		<td>
-		<input type="text" name="updateCity" value="">
-		</td>
-	</tr>
-	
-	<?php 
-		if($user->getRole()==3){
-	?>
-	<tr>
-		<td>
-		<?php echo _US_SOCIETY?>
-		</td>
-		<td>
-		<input type="text" name="updateSociety" value="">
-		</td>
-	</tr>
-	<?php }?>
-	<tr>
-		<td colspan="2" align="right"> <input type="submit" name="action" value="Update your info"></td>			
-	</tr>
-</table>
-
-</form>
-			</div>
-		</div>
-	</div>
-
-<br>
-<?php echo _UPDATE_INFO?><br>
-<?php if(isset($_SESSION['rank'])){
-	if ($_SESSION['rank'] == 30){
-		echo $_SESSION['msg'];
-	}
-	if ($_SESSION['rank'] == 31){
-		echo $_SESSION['msg'];
-	}
-}
-?>
-<br>
-<form method="post" action="../business/check_info_user.php">
-<table>
-	<tr>
-		<td>
-		<?php echo _US_PASSWORD?>
-		</td>
-		<td>
-		<input type="password" name="updatePassword" value="">
-		</td>
-	</tr>
-
-	<tr>
-		<td>
-		<?php echo _US_ADRESS1?>
-		</td>
-		<td>
-		<input type="text" name="updateAdress1" value="">
-		</td>
-	</tr>
-	<tr>
-		<td>
-		<?php echo _US_ADRESS2?>
-		</td>
-		<td>
-		<input type="text" name="updateAdress2" value="">
-		</td>
-	</tr>
-	
-	<tr>
-		<td>
-		<b><?php echo _US_CITY?></b>
-		</td>
-	</tr>
-	<tr>
-		<td>
-		<?php echo _CI_POSTCODE?>
-		</td>
-		<td>
-		<input type="text" name="updatePostcode" value="">
-		</td>
-	</tr>
-	<tr>
-		<td>
-		<?php echo _US_CITY?>
-		New city :
-		</td>
-		<td>
-		<input type="text" name="updateCity" value="">
-		</td>
-	</tr>
-	
-	<?php 
-		if($user->getRole()==3){
-	?>
-	<tr>
-		<td>
-		<?php echo _US_SOCIETY?>
-		</td>
-		<td>
-		<input type="text" name="updateSociety" value="">
-		</td>
-	</tr>
-	<?php }?>
-	<tr>
-		<td colspan="2" align="right"> <input type="submit" name="action" value="Update your info"></td>			
-	</tr>
-</table>
-
-</form>
-<a href="../business/check_info_user.php?action=logout">Logout</a>
-
-<?php 
-//}
-?>
-
 <!-- Essais d'afficher un devis -->
-<?php echo _TR_ESTIMATE?> <br>
+Devis : <br>
 <form method="post" action ="../tools/business/check_info_estimate.php">
 <input type ="submit" name="action" value="affiche devis">
 </form>
@@ -320,9 +66,9 @@ if(isset($_SESSION['estimate'])){
 	?>
 	<table width="360">
   <tr>
-    <th><?php echo _SHIPPER?></th>
-    <th><?php echo _PRICE?></th>
-    <th><?php echo _SELECTION?></th>
+    <th>Shipper</th>
+    <th>Price</th>
+    <th>Selection</th>
   </tr>
   <!-- Pour chaque élément dans le tableau "$estimate" on crée un formulare avec les données du devis -->
 	<?php 
@@ -349,15 +95,15 @@ if(isset($_SESSION['estimate_accepted'])){
 	$estimate = $_SESSION['estimate_accepted'];
 	
 	?>
-	<?php echo _ACCEPTE?>
+	Accepted :
 	<br>
 	<table width="360">
-  <tr>  
-    <th><?php echo _SHIPPER?></th>
-    <th><?php echo _US_TITLE?></th>
-    <th><?php echo _DATE?></th>
-    <th><?php echo _PRICE?></th>
-    <th><?php echo _SELECTION?></th>
+  <tr>
+    <th>Shipper</th>
+    <th>Title Ad</th>
+    <th>Date Ad</th>
+    <th>Price</th>
+    <th>Selection</th>
   </tr>
   <!-- Pour chaque élément dans le tableau "$estimate" on crée un formulare avec les données du devis -->
 	<?php 
@@ -391,15 +137,15 @@ $element = urlencode($element);
 if(isset($_SESSION['estimate_refused'])){
 	$estimate = $_SESSION['estimate_refused'];
 	?>
-	<?php echo _REFUSE?>
+	Refused :
 	<br>
 	<table width="360">
   <tr>
-  	<th><?php echo _SHIPPER?></th>
-    <th><?php echo _US_TITLE?></th>
-    <th><?php echo _DATE?></th>
-    <th><?php echo _PRICE?></th>
-    <th><?php echo _SELECTION?></th>
+    <th>Shipper</th>
+    <th>Title Ad</th>
+    <th>Date Ad</th>
+    <th>Price</th>
+    <th>Selection</th>
   </tr>
   <!-- Pour chaque élément dans le tableau "$estimate" on crée un formulare avec les données du devis -->
 	<?php 
@@ -428,7 +174,7 @@ $element = urlencode($element);
 
 
 <!-- Essais d'afficher info sur le transporteur -->
-<?php _TR_ESTIMATE?><br>
+Devis : <br>
 <form method="post" action ="../tools/business/check_info_estimate.php">
 <input type ="submit" name="action" value="info shipper">
 </form>
@@ -440,9 +186,9 @@ if(isset($_SESSION['infoShipper'])){
 	?>
 	<table width="560">
   <tr>
-    <th><?php echo _US_TITLE?></th>
-    <th><?php echo _US_SOCIETY?></th>
-    <th><?php echo _US_EMAIL?></th>
+    <th>Title AD</th>
+    <th>Society</th>
+    <th>Email</th>
   </tr>
   <!-- Pour chaque élément dans le tableau "$estimate" on crée un formulare avec les données du devis -->
 	<?php 
@@ -467,7 +213,7 @@ if(isset($_SESSION['infoShipper'])){
 
 
 <!-- Essais d'afficher info sur le client -->
-<?php _TR_ESTIMATE?><br>
+Devis : <br>
 <form method="post" action ="../tools/business/check_info_estimate.php">
 <input type ="submit" name="action" value="info customer">
 </form>
@@ -479,10 +225,10 @@ if(isset($_SESSION['infoCustomer'])){
 	?>
 	<table width="560">
   <tr>
-    <th><?php echo _US_TITLE?></th>
-    <th><?php echo _US_LASTNAME?></th>
-    <th><?php echo _US_FIRSTNAME?></th>
-    <th><?php echo _US_EMAIL?></th>
+    <th>Title AD</th>
+    <th>Name</th>
+    <th>Firstname</th>
+    <th>Email</th>
   </tr>
   <!-- Pour chaque élément dans le tableau "$estimate" on crée un formulare avec les données du devis -->
 	<?php 

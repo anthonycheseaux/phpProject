@@ -121,17 +121,53 @@ if ($ad = $adManager->getAd ( $ad_id )) {
 				?></td>
 			</tr>
 </table>
-<br>
+
 <div style="    margin:50px 0px; padding:0px; text-align:center;align:center;">
 <form method="post" action="../tools/business/check_info_ad.php" style="display: inline-block;text-align: center;">
 		<table>
 			<tr><td>
-			<?php $_SESSION['ad'] = serialize($ad)?>
 			<input class="btn btn-default" type="submit" name="action" value="<?php echo _AD_DELETE?>">
 			</td></tr>
 		</table>
 	</form>
-	</div>
+	<br>
+	<hr>
+	<!-- Essais d'afficher un devis -->
+Devis : <br>
+<form method="post" action ="../tools/business/check_info_estimate.php">
+<input type ="submit" name="action" value="affiche devis">
+</form>
+	<!-- Display estimate -->
+<?php 
+if(isset($_SESSION['estimate'])){
+	$estimate = $_SESSION['estimate'];
+	?>
+	<table width="360">
+  <tr>
+    <th>Shipper</th>
+    <th>Price</th>
+    <th>Selection</th>
+  </tr>
+  <!-- Pour chaque élément dans le tableau "$estimate" on crée un formulare avec les données du devis -->
+	<?php 
+	foreach ($estimate as $element){
+		$element = unserialize($element);
+		
+		?>
+<form method="post" action="../tools/business/check_info_estimate.php">
+<tr>
+	<td><?php echo 'Shipper '.$element->getShipper()?></td>
+	<td><?php echo $element->getPrice().'.-'?></td>
+<!-- l'input "hidden" contient l'id du transporteur -->
+	<td><input type="submit" name="action" value="Select shipper"> </td><input type="hidden" name="id_estimate" value=<?php echo $element->getId();?>>
+</tr>
+</form>
+<?php 
+	}
+}?>
+</table>
+	
+</div>
 	</div>
 	</div>
 </body>
