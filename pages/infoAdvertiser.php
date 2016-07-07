@@ -1,4 +1,6 @@
-
+<?php
+require '../ressources/templates/nav-backoffice-advertiser.php';
+?>
 
 
 <?php
