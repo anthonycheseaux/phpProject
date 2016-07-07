@@ -25,7 +25,7 @@ require_once ('../tools/database/mysqladmanager.php');
 	<div style="text-align: center">
 		<h2 style="text-align: center;"><?php echo _AD_DETAILS?></h2>
 		<br>
-		<FORM><INPUT Type="button" VALUE="X" onClick="history.go(-1);return true;" class="buttonCloseAdDetails"></FORM>
+		<FORM><INPUT Type="button" VALUE="X" onClick="window.location.href='./adlist.php';" class="buttonCloseAdDetails"></FORM>
 <?php
 
 $ad_id = $_GET ['id'];
@@ -117,7 +117,7 @@ function chooseCategory($var) {
 			</tr>
 </table>
 <br>
-<input type="button" value="Créer un devis" onclick="window.location.href='./inputEstimate.php?ad=<?php echo $ad->getId();?>';" />
+<input class="btn btn-default" type="button" value="Créer un devis" onclick="window.location.href='./inputEstimate.php?ad=<?php echo $ad->getId();?>';" />
 	</div>
 	</div>
 </body>
