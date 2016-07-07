@@ -222,6 +222,32 @@ class MySqlEstimateManager {
 			return null;
 	}
 	
+	//Utilisé pour récupérer les info des client grace à l'id dans la table "ad"
+	public function getEstimateStateByAdvetiser($idAdvertiser, $state) {
+	
+		//$condition = " AND " . $this::SHIPPER. " = ".$idShipper;
+	
+		$query = "SELECT * FROM estimate e
+				INNER JOIN ad a ON e.estimate_ad = a.ad_id
+				INNER JOIN user u ON a.ad_user = u.user_id
+				WHERE e.estimate_state = ". $state." AND a.ad_user =".$idAdvertiser.";";
+	
+		$result = $this->_conn->selectDB($query);
+	
+			
+		while ($row = $result->fetch()) {
+			$estimate = new Estimate($row[$this::ID], $row[$this::AD], $row[$this::PRICE], $row[$this::SHIPPER], $row[$this::STATE]);
+			$estimate->setTitleAd($row[$this::TITLE_AD]);
+			$estimate->setBeginDate($row[$this::DATE_BEGIN_AD]);
+			$response[] = serialize($estimate);
+			unset($estimate);
+		}
+			
+		if(isset($response)){
+			return $response;
+		}
+		return null;
+	}
 	
 	// INSERT
 	public function createEstimate(Estimate $estimate) {
