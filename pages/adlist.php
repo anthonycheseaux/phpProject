@@ -15,7 +15,7 @@
  * 
  \************************************************************/
 //require_once 'ressources/config.php';
-require_once ('../ressources/templates/navbar-backoffice.php');
+require_once ('../ressources/templates/navbar-backoffice-shipper.php');
 require_once ('../tools/database/mysqladmanager.php');
 //require_once(LIBRARY_PATH . "/templateFunctions.php");
 ?>

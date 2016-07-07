@@ -1,4 +1,3 @@
-
 <?php 
 
 /************************************************************\
@@ -14,7 +13,7 @@
  * Project		teemw
  *
  \************************************************************/
-require_once ('../ressources/templates/navbar-backoffice.php');
+require_once ('../ressources/templates/navbar-backoffice-shipper.php');
 require_once '../business/user.php';
 require_once '../business/city.php';
 require_once '../business/estimate.php';

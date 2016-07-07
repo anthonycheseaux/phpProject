@@ -15,18 +15,7 @@ require_once ('../ressources/templates/header.php');
 				</button>
 				<a class="navbar-brand" href="#">TEEMW</a>
 			</div>
-			<div class="nav navbar-nav navbar-right">
-						<li class="dropdown pull-right"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false"><?php echo _LANGUAGE?><span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="?lang=fr"><img src="image/frenchFlag.png"></a></li>
-							<li role="separator" class="divider"></li>
-							<li><a href="?lang=en"><img src="image/britishFlag.png"></a></li>
-						</ul>
-					</li>
 			
-			</div>
 			<div id="myNavbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
 					<li><a class="page-scroll" href="#ourServices"><?php echo _OUR_SERVICES?></a></li>
@@ -35,9 +24,21 @@ require_once ('../ressources/templates/header.php');
 					<li><a class="page-scroll" href="#choose"><?php echo _CHOOSE?></a></li>
 
 				</ul>
+				
+								<ul class="nav navbar-nav navbar-right">
+					
+					<!-- LOGIN -->
+					<li><a data-toggle="modal" href="#loginModal"><span
+						class="glyphicon glyphicon-log-in"></span> <?php echo _LOGIN?></a></li>
+						
+					<!-- LOGOUT -->	
+					<li><a href="../business/check_info_user.php?action=logout"><span
+						class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+					
+				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
-					<li><a data-toggle="modal" href="#loginModal"><?php echo _LOGIN?></a></li>
+					<!-- REGISTER -->
 					<li class="dropdown pull-right"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-haspopup="true"
 						aria-expanded="false"><?php echo _REGISTER?><span class="caret"></span></a>
@@ -47,7 +48,21 @@ require_once ('../ressources/templates/header.php');
 							<li><a data-toggle="modal" href="#registerCustomerModal"><?php echo _I_AM_A_CUSTOMER?></a></li>
 						</ul>
 					</li>
+						
+					<!-- LANGUAGES -->
+					<li class="dropdown pull-right"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false"><?php echo _LANGUAGE?><span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="?lang=fr"><img src="image/frenchFlag.png"></a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="?lang=en"><img src="image/britishFlag.png"></a></li>
+						</ul>
+					</li>
 				</ul>
+				
+
+				
 			</div>
 		</div>
 	</nav>
