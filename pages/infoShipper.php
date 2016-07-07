@@ -132,7 +132,7 @@ if (isset ( $_SESSION ['city'] )) {
 
 						<tr>
 							<td>New locality :</td>
-												<td><select name="destination_city">
+												<td><select name="updateCity">
 						<?php
 						$cityManager = new MySqlCityManager();
 						$cities = $cityManager->getAllCities();
@@ -142,6 +142,7 @@ if (isset ( $_SESSION ['city'] )) {
 						?>
 					</select></td>
 						</tr>
+						<!--  
 						<tr>
 							<td>New postcode :</td>
 							<td><input type="text" name="updatePostcode" value=""></td>
@@ -150,7 +151,7 @@ if (isset ( $_SESSION ['city'] )) {
 							<td>New city :</td>
 							<td><input type="text" name="updateCity" value=""></td>
 						</tr>
-	
+						-->
 	<?php
 	if ($user->getRole () == 3) {
 		?>

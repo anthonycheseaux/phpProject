@@ -54,7 +54,7 @@ if(isset($_POST['action'])){
 		authenticateShipper($mysql, $mysqlCity);
 	}
 	
-	if($_POST['action']=='Update your info'){
+	if($_POST['action']==_CHANGE_INFO_USER){
 		updateInfoUser($mysql, $mysqlCity);
 	}
 }
@@ -332,15 +332,15 @@ function updateInfoUser($mysql, $mysqlCity){
 	$password = htmlspecialchars($_POST['updatePassword']);
 	$adress1 = htmlspecialchars($_POST['updateAdress1']);
 	$adress2 = htmlspecialchars($_POST['updateAdress2']);
-	$postCode = htmlspecialchars($_POST['updatePostcode']);
+	//$postCode = htmlspecialchars($_POST['updatePostcode']);
 	$city = htmlspecialchars($_POST['updateCity']);
 	$user = unserialize($_SESSION['user']);
 	$society = $user->getSociety();
 	if(isset($_POST['updateSociety'])){
 		$society = htmlspecialchars($_POST['updateSociety']);
 	}
-	$resultCity;
-	$newCityId = $user->getCity();
+	//$resultCity;
+	//$newCityId = $user->getCity();
 	if(empty($password)){
 		$password = $user->getPassword();
 	}
@@ -353,23 +353,11 @@ function updateInfoUser($mysql, $mysqlCity){
 	if(empty($adress2)){
 		$adress2 = $user->getAddress2();
 	}
-	
-	if(isset($postCode)){
-		if (isset($city)){
-			$resultCity = $mysqlCity->searchCityByName($postCode, $city);
-		}
-	}
+	echo '*'.$city.' ' . $user->getId();
 	/*if(empty($society)){
 		$society = $user->getSociety();
 	}*/
-	if($resultCity == false){
-		$_SESSION['rank'] = 31;
-		$_SESSION['msg'] = _MSG_CITY; //'This city does not exist';
-		header("location: ../pages/infoUser.php");
-		exit();
-	}
-	$newCityId = $resultCity->getId();	
-	$result = $mysql->updateUser($user->getId(), $adress1, $adress2, $newCityId, $password, $society);
+	$result = $mysql->updateUser($user->getId(), $adress1, $adress2, $city, $password, $society);
 	$_SESSION['rank']=30;
 	$_SESSION['msg']= _MSG_UPDATE_SUCCESS; //'Update succeeded, please logout and login again to apply update';
 	header("location: ../pages/infoUser.php");
