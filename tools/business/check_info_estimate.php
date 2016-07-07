@@ -96,8 +96,7 @@ function registerEstimate($estimateManager) {
 	$_SESSION['rank'] = "succeed";
 	$_SESSION['msg'] = _DEVIS_ENREGISTRE;
 	
-	echo '<script type="text/javascript">window.alert("' . $result . '");</script>';
-
+	header("location: ../../pages/adDetails.php?id=" . $ad);
 }
 
 
