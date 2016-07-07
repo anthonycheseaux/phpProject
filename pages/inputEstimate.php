@@ -92,5 +92,7 @@ $_SESSION[SHIPPER] = $user->getId();
 	</div>
 	</div>
 </body>
-</html>
 
+<?php
+require '../ressources/templates/footer-backoffice.php';
+?>

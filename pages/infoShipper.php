@@ -172,3 +172,7 @@ if (isset ( $_SESSION ['city'] )) {
 	</div>
 
 </div>
+
+<?php
+require '../ressources/templates/footer-backoffice.php';
+?>

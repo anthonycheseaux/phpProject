@@ -161,3 +161,7 @@ if(isset($_SESSION['rank'])) {
 	</div>
 	
 </body>
+
+<?php
+require '../ressources/templates/footer-backoffice.php';
+?>

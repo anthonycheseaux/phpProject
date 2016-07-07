@@ -128,3 +128,7 @@ function chooseCategory($var) {
 	</div>
 	</div>
 </body>
+
+<?php
+require '../ressources/templates/footer-backoffice.php';
+?>

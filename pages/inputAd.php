@@ -199,4 +199,7 @@ $cities = $cityManager->getAllCities();
 		</table>
 	</form>
 </body>
-</html>
+
+<?php
+require '../ressources/templates/footer-backoffice.php';
+?>

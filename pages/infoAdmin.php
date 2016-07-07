@@ -109,3 +109,7 @@ echo '<em>' . _THERE_IS_NO_ONE . '</em>';
 <?php } else {
 echo '<em>' . _NO_ESTIMATE . '</em>';
 }?>
+
+<?php
+require '../ressources/templates/footer-backoffice.php';
+?>

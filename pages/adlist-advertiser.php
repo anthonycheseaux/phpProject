@@ -167,3 +167,7 @@ $error = '';
 	</div>
 	
 </body>
+
+<?php
+require '../ressources/templates/footer-backoffice.php';
+?>

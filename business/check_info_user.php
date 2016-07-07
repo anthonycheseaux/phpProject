@@ -108,7 +108,7 @@ function authenticateShipper($mysql, $mysqlCity, $mysqlEstimate){
 		}
 		
 				
-		$customer = $estimateManager->getAdByEstimateState($result->getId(), ESTIMATE_PAID);
+		$customer = $mysqlEstimate->getAdByEstimateState($result->getId(), ESTIMATE_PAID);
 		
 		if($customer!=null){
 		
@@ -119,7 +119,7 @@ function authenticateShipper($mysql, $mysqlCity, $mysqlEstimate){
 	
 	if($result->getRole()==2){
 		
-		$customer = $estimateManager->getAdByEstimateState($result->getId(), ESTIMATE_PAID);
+		$customer = $mysqlEstimate->getAdByEstimateState($result->getId(), ESTIMATE_PAID);
 	
 		if($customer!=null){
 	
