@@ -130,7 +130,7 @@ if (isset($_SESSION['city'])){
 <table>
 	<tr>
 		<td>
-		Change password :
+		<?php echo _US_PASSWORD?>
 		</td>
 		<td>
 		<input type="password" name="updatePassword" value="">
@@ -139,7 +139,7 @@ if (isset($_SESSION['city'])){
 
 	<tr>
 		<td>
-		New adress1 :
+		<?php echo _US_ADRESS1?>
 		</td>
 		<td>
 		<input type="text" name="updateAdress1" value="">
@@ -147,7 +147,7 @@ if (isset($_SESSION['city'])){
 	</tr>
 	<tr>
 		<td>
-		New adress2 :
+		<?php echo _US_ADRESS2?>
 		</td>
 		<td>
 		<input type="text" name="updateAdress2" value="">
@@ -156,12 +156,12 @@ if (isset($_SESSION['city'])){
 	
 	<tr>
 		<td>
-		<b>New locality :</b>
+		<b><?php echo _US_CITY?></b>
 		</td>
 	</tr>
 	<tr>
 		<td>
-		New postcode :
+		<?php echo _CI_POSTCODE?>
 		</td>
 		<td>
 		<input type="text" name="updatePostcode" value="">
@@ -169,7 +169,7 @@ if (isset($_SESSION['city'])){
 	</tr>
 	<tr>
 		<td>
-		New city :
+		<?php echo _US_CITY?>
 		</td>
 		<td>
 		<input type="text" name="updateCity" value="">
@@ -181,7 +181,7 @@ if (isset($_SESSION['city'])){
 	?>
 	<tr>
 		<td>
-		New Society name :
+		<?php echo _US_SOCIETY?>
 		</td>
 		<td>
 		<input type="text" name="updateSociety" value="">
@@ -199,7 +199,7 @@ if (isset($_SESSION['city'])){
 	</div>
 
 <br>
-Update infos :<br>
+<?php echo _UPDATE_INFO?><br>
 <?php if(isset($_SESSION['rank'])){
 	if ($_SESSION['rank'] == 30){
 		echo $_SESSION['msg'];
@@ -214,7 +214,7 @@ Update infos :<br>
 <table>
 	<tr>
 		<td>
-		Change password :
+		<?php echo _US_PASSWORD?>
 		</td>
 		<td>
 		<input type="password" name="updatePassword" value="">
@@ -223,7 +223,7 @@ Update infos :<br>
 
 	<tr>
 		<td>
-		New adress1 :
+		<?php echo _US_ADRESS1?>
 		</td>
 		<td>
 		<input type="text" name="updateAdress1" value="">
@@ -231,7 +231,7 @@ Update infos :<br>
 	</tr>
 	<tr>
 		<td>
-		New adress2 :
+		<?php echo _US_ADRESS2?>
 		</td>
 		<td>
 		<input type="text" name="updateAdress2" value="">
@@ -240,12 +240,12 @@ Update infos :<br>
 	
 	<tr>
 		<td>
-		<b>New locality :</b>
+		<b><?php echo _US_CITY?></b>
 		</td>
 	</tr>
 	<tr>
 		<td>
-		New postcode :
+		<?php echo _CI_POSTCODE?>
 		</td>
 		<td>
 		<input type="text" name="updatePostcode" value="">
@@ -253,6 +253,7 @@ Update infos :<br>
 	</tr>
 	<tr>
 		<td>
+		<?php echo _US_CITY?>
 		New city :
 		</td>
 		<td>
@@ -265,7 +266,7 @@ Update infos :<br>
 	?>
 	<tr>
 		<td>
-		New Society name :
+		<?php echo _US_SOCIETY?>
 		</td>
 		<td>
 		<input type="text" name="updateSociety" value="">
@@ -285,7 +286,7 @@ Update infos :<br>
 ?>
 
 <!-- Essais d'afficher un devis -->
-Devis : <br>
+<?php echo _TR_ESTIMATE?> <br>
 <form method="post" action ="../tools/business/check_info_estimate.php">
 <input type ="submit" name="action" value="affiche devis">
 </form>
@@ -297,9 +298,9 @@ if(isset($_SESSION['estimate'])){
 	?>
 	<table width="360">
   <tr>
-    <th>Shipper</th>
-    <th>Price</th>
-    <th>Selection</th>
+    <th><?php echo _SHIPPER?></th>
+    <th><?php echo _PRICE?></th>
+    <th><?php echo _SELECTION?></th>
   </tr>
   <!-- Pour chaque élément dans le tableau "$estimate" on crée un formulare avec les données du devis -->
 	<?php 
@@ -326,15 +327,15 @@ if(isset($_SESSION['estimate_accepted'])){
 	$estimate = $_SESSION['estimate_accepted'];
 	
 	?>
-	Accepted :
+	<?php echo _ACCEPTE?>
 	<br>
 	<table width="360">
-  <tr>
-    <th>Shipper</th>
-    <th>Title Ad</th>
-    <th>Date Ad</th>
-    <th>Price</th>
-    <th>Selection</th>
+  <tr>  
+    <th><?php echo _SHIPPER?></th>
+    <th><?php echo _TITLE?></th>
+    <th><?php echo _DATE_BEGINNING?></th>
+    <th><?php echo _PRICE?></th>
+    <th><?php echo _SELECTION?></th>
   </tr>
   <!-- Pour chaque élément dans le tableau "$estimate" on crée un formulare avec les données du devis -->
 	<?php 
@@ -368,15 +369,15 @@ $element = urlencode($element);
 if(isset($_SESSION['estimate_refused'])){
 	$estimate = $_SESSION['estimate_refused'];
 	?>
-	Refused :
+	<?php echo _REFUSE?>
 	<br>
 	<table width="360">
   <tr>
-    <th>Shipper</th>
-    <th>Title Ad</th>
-    <th>Date Ad</th>
-    <th>Price</th>
-    <th>Selection</th>
+  	<th><?php echo _SHIPPER?></th>
+    <th><?php echo _TITLE?></th>
+    <th><?php echo _DATE_BEGINNING?></th>
+    <th><?php echo _PRICE?></th>
+    <th><?php echo _SELECTION?></th>
   </tr>
   <!-- Pour chaque élément dans le tableau "$estimate" on crée un formulare avec les données du devis -->
 	<?php 
@@ -395,7 +396,7 @@ if(isset($_SESSION['estimate_refused'])){
 $element = serialize($element);
 $element = urlencode($element);
 		?>
-	<td><input type="submit" name="action" value="OK"> </td><input type="hidden" name="estimate" value=<?php echo $element;?>>
+	<td><input type="submit" name="action" value=""> </td><input type="hidden" name="estimate" value=<?php echo $element;?>>
 </tr>
 </form>
 <?php 
@@ -405,7 +406,7 @@ $element = urlencode($element);
 
 
 <!-- Essais d'afficher info sur le transporteur -->
-Devis : <br>
+<?php _TR_ESTIMATE?><br>
 <form method="post" action ="../tools/business/check_info_estimate.php">
 <input type ="submit" name="action" value="info shipper">
 </form>
@@ -417,9 +418,9 @@ if(isset($_SESSION['infoShipper'])){
 	?>
 	<table width="560">
   <tr>
-    <th>Title AD</th>
-    <th>Society</th>
-    <th>Email</th>
+    <th><?php echo _TITLE?></th>
+    <th><?php echo _US_SOCIETY?></th>
+    <th><?php echo _US_EMAIL?></th>
   </tr>
   <!-- Pour chaque élément dans le tableau "$estimate" on crée un formulare avec les données du devis -->
 	<?php 
@@ -444,7 +445,7 @@ if(isset($_SESSION['infoShipper'])){
 
 
 <!-- Essais d'afficher info sur le client -->
-Devis : <br>
+<?php _TR_ESTIMATE?><br>
 <form method="post" action ="../tools/business/check_info_estimate.php">
 <input type ="submit" name="action" value="info customer">
 </form>
@@ -456,10 +457,10 @@ if(isset($_SESSION['infoCustomer'])){
 	?>
 	<table width="560">
   <tr>
-    <th>Title AD</th>
-    <th>Name</th>
-    <th>Firstname</th>
-    <th>Email</th>
+    <th><?php echo _TITLE?></th>
+    <th><?php echo _US_LASTNAME?></th>
+    <th><?php echo _US_FIRSTNAME?></th>
+    <th><?php echo _US_EMAIL?></th>
   </tr>
   <!-- Pour chaque élément dans le tableau "$estimate" on crée un formulare avec les données du devis -->
 	<?php 

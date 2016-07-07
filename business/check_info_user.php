@@ -19,6 +19,9 @@
 require_once '../tools/database/mysqlmanager.php';
 require_once '../tools/database/mysqlcitymanager.php';
 require_once '../tools/database/mysqlestimatemanager.php';
+require_once '../ressources/config.php';
+
+
 session_start();
 $mysql = new MySqlManager();
 $mysqlCity = new MySqlCityManager();
@@ -40,12 +43,12 @@ if(isset($_POST['action'])){
 	}
 	
 	//Authentication
-	if($_POST['action']=='Login'){
+	if($_POST['action']==_LOGIN){
 		
 		authenticateShipper($mysql, $mysqlCity, $mysqlEstimate);
 	}
 	
-	if($_POST['action']=='Login'){
+	if($_POST['action']==_LOGIN){
 		authenticateShipper($mysql, $mysqlCity);
 	}
 	

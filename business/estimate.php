@@ -17,7 +17,7 @@
  \************************************************************/
 class Estimate {
 	
-	public function __construct($id, $ad, $price, $shipper, $state) {
+	public function __construct($id, $ad, $price, $shipper, $state = 1) {
 		$this->id = $id;
 		$this->ad = $ad;
 		$this->price = $price;
