@@ -76,7 +76,7 @@ define("_AD_OBJECT_NUM","Nombre d'objets");
 define("_AD_TOTAL_VOLUME","Volume total");
 define("_AD_DATE_BEG","Date de début");
 define("_AD_DATE_END","Date de fin");
-define("_AD_DETAILS", "Détail de l'annonce");
+define("_AD_DETAILS", "Détails de l'annonce");
 define("_AD_LIST", "Liste des annonces");
 
 
@@ -123,7 +123,7 @@ define("_SELECTION", "selection");
 define("_FERMER", "fermer");
 define("_CE_MOIS", "ce mois");
 define("_ENREGISTRER_ANNONCE", "Enregistrer l'annonce");
-// Jours abr�g�s
+// Jours abrégés
 define("_JOUR_LU", "Lu");
 define("_JOUR_MA", "Ma");
 define("_JOUR_ME", "Me");
@@ -160,8 +160,17 @@ define("_MANQUE_DATE_DEBUT", "Il manque la date de début");
 define("_MANQUE_DATE_FIN", "Il manque la date de fin");
 define("_DATES_FIN_DEBUT_INVERSEES", "Ne peut être antérieure à la date de début");
 define("_ANNONCE_ENREGISTREE", "Votre annonce est enregistrée");
+
+
 /*
- * Traduction des cat�gories
+ * Traduction de tools/business/infoUser.php
+ */
+define("_ACCEPTE", "Accepté(s) :");
+define("_REFUSE", "Refusé(s)");
+define("_UPDATE_INFO", "Mise à jour des coordonnées :");
+
+/*
+ * Traduction des catégories
  */
 define("_CATEGORIE_DEMENAGEMENT", "Déménagement");
 define("_CATEGORIE_MOBILIER", "Mobilier");
@@ -210,6 +219,7 @@ define("_MSG_EMAIL_USED; ","E-mail déjà utilisé !");
  */
 define("_INFO_USER", "Informations du compte");
 define("_CHANGE_INFO_USER", "Modifier les informations du compte");
+
 
 /*
  * Traduction de infoAdmin.php

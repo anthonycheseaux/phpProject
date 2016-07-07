@@ -76,7 +76,8 @@ define("_AD_OBJECT_NUM","Number of objects");
 define("_AD_TOTAL_VOLUME","Total volume");
 define("_AD_DATE_BEG","Starting date");
 define("_AD_DATE_END","Ending date");
-
+define("_AD_DETAILS", "Details of the ad ");
+define("_AD_LIST", "List of ads");
 
 
 /*
@@ -122,7 +123,7 @@ define("_SELECTION", "selection");
 define("_FERMER", "close");
 define("_CE_MOIS", "this month");
 define("_ENREGISTRER_ANNONCE", "Save the ad");
-// Jours abr�g�s
+// Jours abrégés
 define("_JOUR_LU", "Mon");
 define("_JOUR_MA", "Tue");
 define("_JOUR_ME", "Wed");
@@ -159,8 +160,17 @@ define("_MANQUE_DATE_DEBUT", "Starting date missing");
 define("_MANQUE_DATE_FIN", "Ending date missing");
 define("_DATES_FIN_DEBUT_INVERSEES", "Cannot be earlier than the starting date");
 define("_ANNONCE_ENREGISTREE", "Your ad has been saved !");
+
+
 /*
- * Traduction des cat�gories
+ * Traduction de tools/business/infoUser.php
+ */
+define("_ACCEPTE", "Accepted :");
+define("_REFUSE", "Refused");
+define("_UPDATE_INFO", "Update contact information :");
+
+/*
+ * Traduction des catégories
  */
 define("_CATEGORIE_DEMENAGEMENT", "Move");
 define("_CATEGORIE_MOBILIER", "Furniture");
@@ -203,6 +213,14 @@ define("_MSG_REGISTRATION_SUCCESS","Registration succeeded");
 define("_MSG_MAIL_PASSWORD_INCORRECT", "E-mail or password incorrect!");
 define("_MSG_EMAIL_USED; ","E-mail already used !");
 
+
+/*
+ * Traduction de info_user.php
+ */
+define("_INFO_USER", "Account information");
+define("_CHANGE_INFO_USER", "Update contact information");
+
+
 /*
  * Traduction de infoAdmin.php
  */
@@ -217,7 +235,5 @@ define("_SHIPPER_SUBSCRIPTION_FINISHED", "Finished shipper subscriptions");
 define("_SHIPPER_SUBSCRIPTION_END", "Shipper subscriptions ending");
 define("_THERE_IS_NO_ONE", "There is no one");
 define("_ONE_MORE_YEAR", "One more year");
-
-
 
 ?>
