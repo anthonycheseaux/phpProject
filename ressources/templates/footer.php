@@ -15,7 +15,7 @@
 			<div class="loginmodal-container" style="max-width: 800px;">
 				<h1>CGV</h1>
 				<br>
-				<h3><?php echo _CGV_APPLICATION ?></h3>
+				<h3><?php echo _CGV_APPLICATION  ?></h3>
 				<p>Hoc inmaturo interitu ipse quoque sui pertaesus excessit e vita
 					aetatis nono anno atque vicensimo cum quadriennio imperasset. natus
 					apud Tuscos in Massa Veternensi, patre Constantio Constantini
