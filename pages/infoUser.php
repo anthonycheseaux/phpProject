@@ -1,4 +1,3 @@
-
 <?php 
 
 /************************************************************\
@@ -14,7 +13,7 @@
  * Project		teemw
  *
  \************************************************************/
-require_once ('../ressources/templates/navbar-backoffice.php');
+require_once ('../ressources/templates/navbar-backoffice-shipper.php');
 require_once '../business/user.php';
 require_once '../business/city.php';
 require_once '../business/estimate.php';
@@ -56,22 +55,20 @@ if (isset($_SESSION['city'])){
 
 
 
-<div class="container-fluid">
+<div class="container">
 	<h2 style="text-align: center; padding: 20px; padding-bottom: 50px"><?php echo _INFO_USER?></h2>
-<table class="table-striped" id="user-info" style="text-align: center">
-	<tr>
-		<td>
+<table class="table-striped" id="user-info">
+	<?php echo var_dump($user)?>
 		<?php 	
 			if($user->getRole()==3){
-				echo _US_SOCIETY . ' '.$user->getSociety().'</br>';
+				echo '<tr><td>' . _US_SOCIETY . ':</td><td>'.$user->getSociety().'</td></tr>';
 			}
 		?>
-		</td>
-	</tr>
 	<tr>
+		<td><?php echo _US_FIRSTNAME . ' & ' . _US_LASTNAME ?></td>
 		<td>
 		<?php 
-			echo strtoupper($user->getTitle()).' '.$user->getFirstname().' '.$user->getLastname();
+			echo ': ' . strtoupper($user->getTitle()).' '.$user->getFirstname().' '.$user->getLastname();
 		?>
 		</td>
 	</tr>
@@ -107,6 +104,7 @@ if (isset($_SESSION['city'])){
 	</tr>
 
 </table>
+</div>
 
 <a class="btn btn-default" data-toggle="modal" href="#changeInfoModal"role="button"><?php echo _CHANGE_INFO_USER?>&raquo;</a>
 

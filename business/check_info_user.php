@@ -48,7 +48,7 @@ if(isset($_POST['action'])){
 		authenticateShipper($mysql, $mysqlCity, $mysqlEstimate);
 	}
 	
-	if($_POST['action']=='Login'){
+	if($_POST['action']==_LOGIN){
 		authenticateShipper($mysql, $mysqlCity);
 	}
 	
