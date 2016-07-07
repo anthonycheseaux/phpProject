@@ -104,7 +104,7 @@ echo '<em>' . _THERE_IS_NO_ONE . '</em>';
 					<td><input type="submit" name="validate" value="<?php echo _VALIDATE;?>"><input type="hidden" name="estimate_id" value="<?php echo $estimate->getId();?>"></td>
 				</form>
 			</tr>		
-		<?php }?>
+		<?php }?> 
 	</table>
 <?php } else {
 echo '<em>' . _NO_ESTIMATE . '</em>';
