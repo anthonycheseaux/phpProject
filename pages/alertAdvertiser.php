@@ -1,4 +1,9 @@
 <!-- Essais d'afficher un devis -->
+<?php require_once ('../ressources/templates/navbar-backoffice-shipper.php');
+require_once '../business/user.php';
+require_once '../business/city.php';
+require_once '../business/estimate.php';?>
+
 <?php echo _TR_ESTIMATE?> <br>
 <form method="post" action ="../tools/business/check_info_estimate.php">
 <input type ="submit" name="action" value="affiche devis">
@@ -37,13 +42,14 @@ if(isset($_SESSION['estimate'])){
 
 
 <!-- Affiche les infos sur le transporteur -->
+Information sur les transporteurs : <br>
 <?php 
 if(isset($_SESSION['infoShipper'])){
 	$shipper = $_SESSION['infoShipper'];
 	?>
 	<table width="560">
   <tr>
-    <th><?php echo _TITLE?></th>
+    <th><?php echo _US_TITLE?></th>
     <th><?php echo _US_SOCIETY?></th>
     <th><?php echo _US_EMAIL?></th>
   </tr>

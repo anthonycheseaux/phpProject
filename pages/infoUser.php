@@ -26,18 +26,18 @@ if(empty($_SESSION['user'])){
 	exit();
 }
 
-//Redirection en cas de notification à afficher pour le transporteur
+//Redirection en cas de notification à afficher pour le transporteur (A placer au début de "infoShipper")
 if(isset($_SESSION['estimate_accepted'])){
 	header("location: ../pages/alertShipper.php");
 }
-if(isset($_SESSION['estimate_refuser'])){
+if(isset($_SESSION['estimate_refused'])){
 	header("location: ../pages/alertShipper.php");
 }
 if(isset($_SESSION['infoCustomer'])){
 	header("location: ../pages/alertShipper.php");
 }
 
-//Redirection en cas de notification à afficher pour l'advertiser
+//Redirection en cas de notification à afficher pour l'annonceur (A placer au début de "infoAdvertiser")
 if (isset($_SESSION['estimate'])){
 	header("location: ../pages/alertAdvertiser.php");
 }
@@ -418,7 +418,7 @@ if(isset($_SESSION['estimate_refused'])){
 $element = serialize($element);
 $element = urlencode($element);
 		?>
-	<td><input type="submit" name="action" value=""> </td><input type="hidden" name="estimate" value=<?php echo $element;?>>
+	<td><input type="submit" name="action" value="OK"> </td><input type="hidden" name="estimate" value=<?php echo $element;?>>
 </tr>
 </form>
 <?php 

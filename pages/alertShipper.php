@@ -17,8 +17,8 @@ if(isset($_SESSION['estimate_accepted'])){
 	<table width="360">
   <tr>  
     <th><?php echo _SHIPPER?></th>
-    <th><?php echo _TITLE?></th>
-    <th><?php echo _DATE_BEGINNING?></th>
+    <th><?php echo _US_TITLE?></th>
+   <th><?php echo _DATE?></th>
     <th><?php echo _PRICE?></th>
     <th><?php echo _SELECTION?></th>
   </tr>
@@ -59,7 +59,7 @@ if(isset($_SESSION['estimate_refused'])){
 	<table width="360">
   <tr>
   	<th><?php echo _SHIPPER?></th>
-    <th><?php echo _TITLE?></th>
+    <th><?php echo _US_TITLE?></th>
     <th><?php echo _DATE?></th>
     <th><?php echo _PRICE?></th>
     <th><?php echo _SELECTION?></th>
@@ -81,7 +81,7 @@ if(isset($_SESSION['estimate_refused'])){
 $element = serialize($element);
 $element = urlencode($element);
 		?>
-	<td><input type="submit" name="action" value=""> </td><input type="hidden" name="estimate" value=<?php echo $element;?>>
+	<td><input type="submit" name="action" value="OK"> </td><input type="hidden" name="estimate" value=<?php echo $element;?>>
 </tr>
 </form>
 <?php 
@@ -91,19 +91,14 @@ $element = urlencode($element);
 
 
 <!-- Essais d'afficher info sur le client -->
-<?php _TR_ESTIMATE?><br>
-<form method="post" action ="../tools/business/check_info_estimate.php">
-<input type ="submit" name="action" value="info customer">
-</form>
-
-
+Information sur les clients : <br>
 <?php
 if(isset($_SESSION['infoCustomer'])){
 	$customer = $_SESSION['infoCustomer'];
 	?>
 	<table width="560">
   <tr>
-    <th><?php echo _TITLE?></th>
+    <th><?php echo _US_TITLE?></th>
     <th><?php echo _US_LASTNAME?></th>
     <th><?php echo _US_FIRSTNAME?></th>
     <th><?php echo _US_EMAIL?></th>
