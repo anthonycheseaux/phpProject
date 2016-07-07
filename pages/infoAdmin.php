@@ -57,7 +57,7 @@ $estimates = $estimateManager->getAllEstimatesByState(3);
 			<th><?php echo _SHIPPER?></th>
 			<th><?php echo _PRICE?></th>
 		</tr>
-		<?php foreach ($estimates as $estimate) { ?>
+		<?php foreach ($estimates as $estimate) { var_dump($estimate)?>
 			<tr>
 				<td><?php echo $estimate->getId()?></td>
 				<td><?php $ad = $adManager->getAd($estimate->getAd()); $user = $userManager->getUser($ad->getUser()); echo $user->getFirstname() . ' ' . $user->getLastname() ; ?></td>
