@@ -241,7 +241,7 @@ class MySqlEstimateManager {
 			$estimate->setTitleAd($row[$this::TITLE_AD]);
 			$estimate->setBeginDate($row[$this::DATE_BEGIN_AD]);
 			$response[] = serialize($estimate);
-			unset($estimate);
+			unset($estimate); 
 		}
 			
 		if(isset($response)){
