@@ -21,7 +21,7 @@ require_once '../tools/database/mysqlcitymanager.php';
 require_once '../tools/database/mysqlestimatemanager.php';
 require_once '../ressources/config.php';
 
-
+ 
 if (! isset ( $_SESSION )) {
 	session_start ();
 }
