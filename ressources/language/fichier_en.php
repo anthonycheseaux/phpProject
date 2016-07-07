@@ -261,7 +261,7 @@ define("_TXT_GARANTIE", "Qualified shippers at your service.
 		<br>Shippers have obtained our quality seals. They are certified TeemW and are glad to answer your expectations.");
 
 define("_TITRE_REMPLIR", "FILL IN");
-define("_TXT_REMPLIR", "You are customer? Fill your transport demand in seconds and submit it to our recconus carriers.");
+define("_TXT_REMPLIR", "You are customer? Fill your transport demand in seconds and submit it to our well-known shippers.");
 define("_TITRE_RECEVOIR", "RECEIVE");
 define("_TXT_RECEVOIR", "As a shipper, receive a list of ads that can be answered in a few clicks . A quick way to put you in touch with a customer.");
 define("_TITRE_CHOISIR", "MAKE A CHOICE");

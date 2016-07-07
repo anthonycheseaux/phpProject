@@ -257,7 +257,7 @@ define("_TXT_ESTIMATE", "Besoin de transporter de lourds meubles ? Ajoutez une a
 define("_TXT_GARANTIE", "Des transporteurs qualifiés à votre service !
 		<br>Nos transporteurs ont obtenu notre sceau de qualité. Ils sont certifiés TeemW et se réjouissent de répondre à vos demandes.");
 
-define("_TXT_REMPLIR", "Vous êtes clients ? Remplissez votre demande de transport en quelques secondes et soumettez-la à nos transporteurs recconus.");
+define("_TXT_REMPLIR", "Vous êtes clients ? Remplissez votre demande de transport en quelques secondes et soumettez-la à nos transporteurs reconnus.");
 define("_TXT_RECEVOIR", "En tant que transporteur, recevez une liste d'annonces auxquelles vous pourrez répondre en quelques clics. Un moyen rapide de vous mettre en relation avec un client.");
 define("_TXT_CHOISIR", "Assurément, vous recevrez plusieurs devis pour vos demandes d'offre. Choissisez le devis le plus abordable ou celui qui convient le mieux à vos attentes. Une fois, le devis choisi, préparez vos cartons, le transporteur est en route pour vous aider !");
 
