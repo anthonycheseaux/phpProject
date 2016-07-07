@@ -22,7 +22,7 @@ if(isset($_SESSION['rank'])) {
 	$msg = $_SESSION['msg'];
 	echo '<script type="text/javascript">window.alert("' . $msg . '");</script>';
 }
-
+ 
 ?>
 
 <body>
