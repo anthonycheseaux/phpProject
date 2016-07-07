@@ -49,7 +49,7 @@ class MySqlCityManager
 	}
 	
 	public function getAllCities(){
-		$query = "SELECT * FROM city";
+		$query = "SELECT * FROM city ORDER BY city_name ASC";
 		$result = $this->_conn->selectDB($query);
 		while ($row = $result->fetch()) {
 			$city = new City($row['city_id'], $row['city_name'], $row['city_postcode'], $row['city_state'], $row['city_country']);
