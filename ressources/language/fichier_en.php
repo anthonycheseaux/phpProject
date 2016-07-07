@@ -105,7 +105,7 @@ define("_SUBSCRIBE_SHIPPER_TEXT", "Go ahead and sign up for a fair price in orde
 define("_SUBSCRIBE_CUSTOMER", "Looking for a shipper ?");
 define("_SUBSCRIBE_CUSTOMER_TEXT", "Create a free account and access to a dedicated area where you can post your requests and receive estimates in the shortest time !");
 define("_OUR_SERVICES", "Our services");
-define("_PRESTATION", "Presations");
+define("_PRESTATION", "Prestations");
 define("_GARANTY", "Guarantee");
 define("_DEVIS", "Estimate");
 define("_LEARN_MORE", "READ MORE");
@@ -168,6 +168,7 @@ define("_ANNONCE_ENREGISTREE", "Your ad has been saved !");
 define("_ACCEPTE", "Accepted :");
 define("_REFUSE", "Refused");
 define("_UPDATE_INFO", "Update contact information :");
+define("_DATE", "Date");
 
 /*
  * Traduction des catégories
@@ -250,22 +251,31 @@ define("_INFO_CUSTOMER", "Customer information");
 /*
  * Traduction home.php
  */
-define("_TITRE_PRESTATIONS", "Prestations");
 define("_TXT_PRESTATIONS", "Got a piano to ship ? You're a shipper looking for clients ?
 		<br>TEEMW is the site you need. We connect shippers and their customers.");
-define("_TITRE_STIMATE", "Estimates");
 define("_TXT_ESTIMATE", "Need to carry a heavy piece of furniture ? Put an ad on our website!
 		<br>Our partners interested will shortliy submit you an estimate.");
-define("_TITRE_GARANTIE", "Guaranty");
 define("_TXT_GARANTIE", "Qualified shippers at your service. 
 		<br>Shippers have obtained our quality seals. They are certified TeemW and are glad to answer your expectations.");
 
-define("_TITRE_REMPLIR", "FILL IN");
 define("_TXT_REMPLIR", "You are customer? Fill your transport demand in seconds and submit it to our well-known shippers.");
-define("_TITRE_RECEVOIR", "RECEIVE");
 define("_TXT_RECEVOIR", "As a shipper, receive a list of ads that can be answered in a few clicks . A quick way to put you in touch with a customer.");
-define("_TITRE_CHOISIR", "MAKE A CHOICE");
 define("_TXT_CHOISIR", "Surely you will receive multiple estimates for your requests for offers. Choose the most affordable estimate or the one that best suits your needs. Once you have chosen, prepare your boxes, the shipper is on its way to help!");
+
+
+/*
+ * Traduction CGV
+ */
+define("_CGV", "Terms & conditions");
+define("_CGV_APPLICATION", "Scope of applications"); //
+define("_CGV_COMMANDE", "Order");
+define("_CGV_CONCLUSION", "Conclusion of Contract");
+define("_CGV_PRIX", "Price");
+define("_CGV_LIVRAISON", "Delivery");
+define("_CGV_EXPEDITION", "Shipping and risks");
+define("_CGV_RESERVE", "Retention of title");
+define("_CGV_PAIEMENT", "Payment");
+define("_CGV_GARANTIE", "Guarantee");
 
 
 ?>

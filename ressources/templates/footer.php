@@ -1,7 +1,7 @@
 <footer>
 	<div class="container text-center">
 		<p>
-			<a href="#cgvModal" data-toggle="modal">CGV</a> &middot; <a
+			<a href="#cgvModal" data-toggle="modal"><?php echo _CGV?></a> &middot; <a
 				href="#contactModal" data-toggle="modal">Contact</a> &middot; <a
 				href="#sitemapModal" data-toggle="modal">Sitemap</a> <br> &copy;
 			2016 HES-SO Valais
@@ -15,91 +15,60 @@
 			<div class="loginmodal-container" style="max-width: 800px;">
 				<h1>CGV</h1>
 				<br>
-				<h3>Champ d'application</h3>
+				<h3><?php echo _CGV_APPLICATION  ?></h3>
 				<p>Hoc inmaturo interitu ipse quoque sui pertaesus excessit e vita
 					aetatis nono anno atque vicensimo cum quadriennio imperasset. natus
 					apud Tuscos in Massa Veternensi, patre Constantio Constantini
 					fratre imperatoris, matreque Galla sorore Rufini et Cerealis, quos
 					trabeae consulares nobilitarunt et praefecturae.</p>
-				<h3>Commande</h3>
+				<h3><?php echo _CGV_COMMANDE ?></h3>
 				<p>Hoc inmaturo interitu ipse quoque sui pertaesus excessit e vita
 					aetatis nono anno atque vicensimo cum quadriennio imperasset. natus
 					apud Tuscos in Massa Veternensi, patre Constantio Constantini
 					fratre imperatoris, matreque Galla sorore Rufini et Cerealis, quos
 					trabeae consulares nobilitarunt et praefecturae.</p>
-				<h3>Conclusion du contrat</h3>
+				<h3><?php echo _CGV_CONCLUSION ?></h3>
 				<p>Hoc inmaturo interitu ipse quoque sui pertaesus excessit e vita
 					aetatis nono anno atque vicensimo cum quadriennio imperasset. natus
 					apud Tuscos in Massa Veternensi, patre Constantio Constantini
 					fratre imperatoris, matreque Galla sorore Rufini et Cerealis, quos
 					trabeae consulares nobilitarunt et praefecturae.</p>
-				<h3>Prix</h3>
+				<h3><?php echo _CGV_PRIX?></h3>
 				<p>Hoc inmaturo interitu ipse quoque sui pertaesus excessit e vita
 					aetatis nono anno atque vicensimo cum quadriennio imperasset. natus
 					apud Tuscos in Massa Veternensi, patre Constantio Constantini
 					fratre imperatoris, matreque Galla sorore Rufini et Cerealis, quos
 					trabeae consulares nobilitarunt et praefecturae.</p>
-				<h3>Livraison</h3>
+				<h3><?php echo _CGV_LIVRAISON?></h3>
 				<p>Hoc inmaturo interitu ipse quoque sui pertaesus excessit e vita
 					aetatis nono anno atque vicensimo cum quadriennio imperasset. natus
 					apud Tuscos in Massa Veternensi, patre Constantio Constantini
 					fratre imperatoris, matreque Galla sorore Rufini et Cerealis, quos
 					trabeae consulares nobilitarunt et praefecturae.</p>
-				<h3>Expédition et risques</h3>
+				<h3><?php echo _CGV_EXPEDITION?></h3>
 				<p>Hoc inmaturo interitu ipse quoque sui pertaesus excessit e vita
 					aetatis nono anno atque vicensimo cum quadriennio imperasset. natus
 					apud Tuscos in Massa Veternensi, patre Constantio Constantini
 					fratre imperatoris, matreque Galla sorore Rufini et Cerealis, quos
 					trabeae consulares nobilitarunt et praefecturae.</p>
-				<h3>Réserve de propriété</h3>
+				<h3><?php echo _CGV_RESERVE?></h3>
 				<p>Hoc inmaturo interitu ipse quoque sui pertaesus excessit e vita
 					aetatis nono anno atque vicensimo cum quadriennio imperasset. natus
 					apud Tuscos in Massa Veternensi, patre Constantio Constantini
 					fratre imperatoris, matreque Galla sorore Rufini et Cerealis, quos
 					trabeae consulares nobilitarunt et praefecturae.</p>
-				<h3>Paiement</h3>
+				<h3><?php echo _CGV_PAIEMENT?></h3>
 				<p>Hoc inmaturo interitu ipse quoque sui pertaesus excessit e vita
 					aetatis nono anno atque vicensimo cum quadriennio imperasset. natus
 					apud Tuscos in Massa Veternensi, patre Constantio Constantini
 					fratre imperatoris, matreque Galla sorore Rufini et Cerealis, quos
 					trabeae consulares nobilitarunt et praefecturae.</p>
-				<h3>Garantie</h3>
+				<h3><?php echo _CGV_GARANTIE?></h3>
 				<p>Hoc inmaturo interitu ipse quoque sui pertaesus excessit e vita
 					aetatis nono anno atque vicensimo cum quadriennio imperasset. natus
 					apud Tuscos in Massa Veternensi, patre Constantio Constantini
 					fratre imperatoris, matreque Galla sorore Rufini et Cerealis, quos
 					trabeae consulares nobilitarunt et praefecturae.</p>
-				<h3>Limitation de responsabilité</h3>
-				<p>Hoc inmaturo interitu ipse quoque sui pertaesus excessit e vita
-					aetatis nono anno atque vicensimo cum quadriennio imperasset. natus
-					apud Tuscos in Massa Veternensi, patre Constantio Constantini
-					fratre imperatoris, matreque Galla sorore Rufini et Cerealis, quos
-					trabeae consulares nobilitarunt et praefecturae.</p>
-				<h3>Sécurité des données</h3>
-				<p>Hoc inmaturo interitu ipse quoque sui pertaesus excessit e vita
-					aetatis nono anno atque vicensimo cum quadriennio imperasset. natus
-					apud Tuscos in Massa Veternensi, patre Constantio Constantini
-					fratre imperatoris, matreque Galla sorore Rufini et Cerealis, quos
-					trabeae consulares nobilitarunt et praefecturae.</p>
-				<h3>Changements des conditions générales</h3>
-				<p>Hoc inmaturo interitu ipse quoque sui pertaesus excessit e vita
-					aetatis nono anno atque vicensimo cum quadriennio imperasset. natus
-					apud Tuscos in Massa Veternensi, patre Constantio Constantini
-					fratre imperatoris, matreque Galla sorore Rufini et Cerealis, quos
-					trabeae consulares nobilitarunt et praefecturae.</p>
-				<h3>Dispositions générales</h3>
-				<p>Hoc inmaturo interitu ipse quoque sui pertaesus excessit e vita
-					aetatis nono anno atque vicensimo cum quadriennio imperasset. natus
-					apud Tuscos in Massa Veternensi, patre Constantio Constantini
-					fratre imperatoris, matreque Galla sorore Rufini et Cerealis, quos
-					trabeae consulares nobilitarunt et praefecturae.</p>
-				<h3>Droit applicable et for</h3>
-				<p>Hoc inmaturo interitu ipse quoque sui pertaesus excessit e vita
-					aetatis nono anno atque vicensimo cum quadriennio imperasset. natus
-					apud Tuscos in Massa Veternensi, patre Constantio Constantini
-					fratre imperatoris, matreque Galla sorore Rufini et Cerealis, quos
-					trabeae consulares nobilitarunt et praefecturae.</p>
-				Etat des CGV: mai 2016
 			</div>
 		</div>
 	</div>
@@ -111,6 +80,13 @@
 			<div class="loginmodal-container">
 				<h1>Contact</h1>
 				<br>
+				Loïc TORNAY<br>
+				079 220 08 43<br>
+				<a href="mailto:loic.tornay@bluewin">mail</a><br>
+				<br>
+				Sylvain TORNAY<br>
+				079 351 04 66<br>
+				<a href="mailto:sylvain.tornay@gmail">mail</a>
 				
 			</div>
 		</div>

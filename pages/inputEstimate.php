@@ -63,14 +63,14 @@ $_SESSION[SHIPPER] = $user->getId();
 	<div class="container">
 			<FORM><INPUT Type="button" VALUE="X" onClick="window.location.href='./adDetails.php?id=<?php echo $ad->getId();?>';" class="buttonCloseAdDetails"></FORM>
 	
-	<div style="text-align: center">
+	<div>
 		<h2 style="text-align: center;"><?php echo _SAISIR_DEVIS?></h2>
 		<br>
 		
 		<h3 style="text-align: center;"><?php echo "Annonce: " . $ad->getTitle();?></h3>
 		<br>
-		<div style="width: 50%; ">
-		<form method="post" action="../tools/business/check_info_estimate.php">
+		<div style="    margin:50px 0px; padding:0px; text-align:center;align:center;">
+		<form method="post" action="../tools/business/check_info_estimate.php" style="display: inline-block;text-align: center;">
 
 		<table id="estimate" >
 
@@ -80,7 +80,7 @@ $_SESSION[SHIPPER] = $user->getId();
 				<td><input type="text" name="price"
 					value="<?php echo $form_data[PRICE];?>" /><?php if ($rank == PRICE) echo $msg;?></td>
 			</tr>
-
+			<tr><td><br></td></tr>
 			<tr>
 				<td colspan="2"><input type="submit" name="action"
 					value="<?php echo _PROPOSER_UN_DEVIS ?>" /></td>

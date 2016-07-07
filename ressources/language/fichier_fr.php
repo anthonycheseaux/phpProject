@@ -105,7 +105,7 @@ define("_SUBSCRIBE_SHIPPER_TEXT", "N'hésitez plus et inscrivez-vous pour un tar
 define("_SUBSCRIBE_CUSTOMER", "A la recherche d'un transporteur ?");
 define("_SUBSCRIBE_CUSTOMER_TEXT", "Créer un compte gratuitement et accéder à un espace dédié où vous pourrez poster vos demandes et recevrez des devis dans les plus brefs délais !");
 define("_OUR_SERVICES", "Nos services");
-define("_PRESTATION", "Presations");
+define("_PRESTATION", "Prestations");
 define("_GARANTY", "Garantie");
 define("_DEVIS", "Devis");
 define("_LEARN_MORE", "EN SAVOIR PLUS");
@@ -168,6 +168,7 @@ define("_ANNONCE_ENREGISTREE", "Votre annonce est enregistrée");
 define("_ACCEPTE", "Accepté(s) :");
 define("_REFUSE", "Refusé(s)");
 define("_UPDATE_INFO", "Mise à jour des coordonnées :");
+define("_DATE", "Date");
 
 /*
  * Traduction des catégories
@@ -261,5 +262,19 @@ define("_TXT_REMPLIR", "Vous êtes clients ? Remplissez votre demande de transpo
 define("_TXT_RECEVOIR", "En tant que transporteur, recevez une liste d'annonces auxquelles vous pourrez répondre en quelques clics. Un moyen rapide de vous mettre en relation avec un client.");
 define("_TXT_CHOISIR", "Assurément, vous recevrez plusieurs devis pour vos demandes d'offre. Choissisez le devis le plus abordable ou celui qui convient le mieux à vos attentes. Une fois, le devis choisi, préparez vos cartons, le transporteur est en route pour vous aider !");
 
+
+/*
+ * Traduction CGV
+ */
+define("_CGV", "CGV");
+define("_CGV_APPLICATION", "Champ d'application"); //
+define("_CGV_COMMANDE", "Commande");
+define("_CGV_CONCLUSION", "Conclusion du contrat");
+define("_CGV_PRIX", "Prix");
+define("CGV_LIVRAISON", "Livraison");
+define("_CGV_EXPEDITION", "Expédition et risques");
+define("_CGV_RESERVE", "Réserve de propriété");
+define("_CGV_PAIEMENT", "Paiement");
+define("_CGV_GARANTIE", "Garantie");
 
 ?>
