@@ -160,9 +160,10 @@ function registerShipper($mysql, $mysqlCity){
 	$title = htmlspecialchars($_POST['title']);
 	$adress1 = htmlspecialchars($_POST['adress1']);
 	$adress2 = htmlspecialchars($_POST['adress2']);
-	$cityName = htmlspecialchars($_POST['cityName']);
-	$postCode = htmlspecialchars($_POST['postCode']);
-	$country = htmlspecialchars($_POST['country']);
+	$city = htmlspecialchars($_POST['city']);
+	//$cityName = htmlspecialchars($_POST['cityName']);
+	//$postCode = htmlspecialchars($_POST['postCode']);
+	//$country = htmlspecialchars($_POST['country']);
 	$role = 3;
 	$email = htmlspecialchars($_POST['email']);
 	$society = htmlspecialchars($_POST['society']);
@@ -170,14 +171,14 @@ function registerShipper($mysql, $mysqlCity){
 	
 	
 	//Search the city in database
-	$cityResult = $mysqlCity->searchCityByName($postCode, $cityName);
+	//$cityResult = $mysqlCity->searchCityByName($postCode, $cityName);
 	//Check wich field is empty and get a message error
-	
+	/*
 	if($cityResult==false){
 		$rank = 21;
 		$msg = _MSG_CITY ;//"This city does not exist";
 	}
-	
+	*/
 	if(empty($society)){
 		$rank = 11;
 		$msg = _MSG_SETSOCT; //"Set a society";
@@ -192,7 +193,11 @@ function registerShipper($mysql, $mysqlCity){
 		$rank = 10;
 		$msg = _MSG_SETMAIL; //"Set an email";
 	}
-	
+	if(empty($city)) {
+		$rank = 7;
+		$msg = _MSG_SETCITY;
+	}
+	/*
 	if(empty($country)){
 		$rank = 9;
 		$msg = _MSG_SETCOUNTRY; //"Set a country";
@@ -206,7 +211,7 @@ function registerShipper($mysql, $mysqlCity){
 		$rank = 7;
 		$msg = _MSG_SETCITY; //"Set a city";
 	}
-	
+	*/
 	if(empty($adress1)){
 		$rank = 6;
 		$msg = _MSG_SETADDRESS; //"Set an adress";
@@ -234,20 +239,20 @@ function registerShipper($mysql, $mysqlCity){
 	if(isset($rank)){
 		$_SESSION['rank'] = $rank;
 		$_SESSION['msg'] = $msg;
-		$_SESSION['form_data'] = array($fname, $lname, $pwd, $title, $adress1, $adress2, $postCode, $cityName,  $country, $email, $society); //To auto complete the fields no empty
+		$_SESSION['form_data'] = array($fname, $lname, $pwd, $title, $adress1, $adress2, $email, $society); //To auto complete the fields no empty
 		header("location: ../pages/home.php");
 		exit();
 	}
-	$idCity = $cityResult->getId();
-	
-	$result = $mysql->saveShipper($fname, $lname, $pwd, $title, $adress1, $adress2, $idCity, $role, $email, $society);
+	//$idCity = $cityResult->getId();
+	$result = $mysql->saveShipper($fname, $lname, $pwd, $title, $adress1, $adress2, $city, $role, $email, $society);
+	//$result = $mysql->saveShipper($fname, $lname, $pwd, $title, $adress1, $adress2, $idCity, $role, $email, $society);
 	//$result = $mysql->saveShipper($fname, $lname, $pwd, $title, $adress1, $adress2, 1, $role, $email, $society);
 	
 	//If username already exist
 	if($result == 'doublon'){
 		$_SESSION['rank'] = 10;
 		$_SESSION['msg'] = _MSG_EMAIL_USED; //'Email already used';
-		$_SESSION['form_data'] = array($fname, $lname, $pwd, $title, $adress1, $adress2, $postCode, $cityName,  $country,  $email, $society);
+		$_SESSION['form_data'] = array($fname, $lname, $pwd, $title, $adress1, $adress2, $email, $society);
 	}
 	else{
 		$_SESSION['rank'] = 'shipper_ok';
@@ -266,22 +271,24 @@ function registerCustomer($mysql, $mysqlCity){
 	$title = htmlspecialchars($_POST['title']);
 	$adress1 = htmlspecialchars($_POST['adress1']);
 	$adress2 = htmlspecialchars($_POST['adress2']);
-	$cityName = htmlspecialchars($_POST['cityName']);
-	$postCode = htmlspecialchars($_POST['postCode']);
-	$country = htmlspecialchars($_POST['country']);
+	$city = htmlspecialchars($_POST['city']);
+	//$cityName = htmlspecialchars($_POST['cityName']);
+	//$postCode = htmlspecialchars($_POST['postCode']);
+	//$country = htmlspecialchars($_POST['country']);
 	$role = 2;
 	$email = htmlspecialchars($_POST['email']);
 	
 	//Search the city in database
-	$cityResult = $mysqlCity->searchCityByName($postCode, $cityName);
+	//$cityResult = $mysqlCity->searchCityByName($postCode, $cityName);
+	
+	
 	//Check wich field is empty and get a message error
-	
-	
+	/*
 	if($cityResult==false){
 		$rank = 22;
 		$msg = _MSG_CITY;
 	}
-	
+	*/
 	if(preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $email)==0){
 		$rank = 20;
 		$msg = _MSG_ERROR_EMAIL; // "Email structure is not correct";
@@ -291,12 +298,17 @@ function registerCustomer($mysql, $mysqlCity){
 		$rank = 20;
 		$msg = _MSG_SETMAIL; // "Set an email";
 	}
-	
+	/*
 	if(empty($country)){
 		$rank = 19;
 		$msg = _MSG_SETCOUNTRY; // "Set a country";
 	}
-	
+	*/
+	if (empty($city)) {
+		$rank = 17;
+		$msg = _MSG_SETCITY;
+	}
+	/*
 	if(empty($postCode)){
 		$rank = 18;
 		$msg = _MSG_SETPOSTCODE; // "Set a post code";
@@ -305,6 +317,7 @@ function registerCustomer($mysql, $mysqlCity){
 		$rank = 17;
 		$msg = _MSG_SETCITY; // "Set a city";
 	}
+	*/
 	if(empty($adress1)){
 		$rank = 16;
 		$msg = _MSG_SETADDRESS; // "Set an adress";
@@ -329,18 +342,20 @@ function registerCustomer($mysql, $mysqlCity){
 	if(isset($rank)){
 		$_SESSION['rank'] = $rank;
 		$_SESSION['msg'] = $msg;
-		$_SESSION['form_data_user'] = array($fname, $lname, $pwd, $title, $adress1, $adress2, $postCode, $cityName,  $country, $email); //To auto complete the fields no empty
+		$_SESSION['form_data_user'] = array($fname, $lname, $pwd, $title, $adress1, $adress2, $email); //To auto complete the fields no empty
 		header("location: ../pages/home.php");
 		exit();	
 	}
-	$idCity = $cityResult->getId();
-	$result = $mysql->saveCustomer($fname, $lname, $pwd, $title, $adress1, $adress2, $idCity, $role, $email);
+	//$idCity = $cityResult->getId();
+	//$result = $mysql->saveCustomer($fname, $lname, $pwd, $title, $adress1, $adress2, $idCity, $role, $email);
+	$result = $mysql->saveCustomer($fname, $lname, $pwd, $title, $adress1, $adress2, $city, $role, $email);
+	
 	//$result = $mysql->saveCustomer($fname, $lname, $pwd, $title, $adress1, $adress2, 1, $role, $email);
 	//If username already exist
 	if($result == 'doublon'){
 		$_SESSION['rank'] = 20;
 		$_SESSION['msg'] = _MSG_EMAIL_USED; // 'Email already used';
-		$_SESSION['form_data'] = array($fname, $lname, $pwd, $title, $adress1, $adress2, $postCode, $cityName,  $country, $email);
+		$_SESSION['form_data'] = array($fname, $lname, $pwd, $title, $adress1, $adress2, $email);
 	}
 	else{
 		$_SESSION['rank'] = 'customer_ok';
