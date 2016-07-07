@@ -50,17 +50,17 @@ $estimates = $estimateManager->getAllEstimatesByState(3);
 <!-- Transporteurs dont l'abonnement est terminé --> 
 <h1><?php echo _SHIPPER_SUBSCRIPTION_FINISHED?></h1>
 <?php if (!empty($finishedSubscriptions)) { ?>
-<form method="post" action="../tools/business/check_info_admin.php">
 	 <table>
 	 	<?php foreach ($finishedSubscriptions as $shipper) { ?>
 	 		<tr>
-	 			<td><?php echo $shipper->getSociety()?></td>
-	 			<td><?php echo $shipper->getEndDateShipper()?></td>
-	 			<td><input type="submit" name="onemoreyear" value="<?php echo _ONE_MORE_YEAR;?>"><input type="hidden" name="shipper_id" value="<?php echo $shipper->getId();?>"></td>
+	 			<form method="post" action="../tools/business/check_info_admin.php">
+	 				<td><?php echo $shipper->getSociety()?></td>
+	 				<td><?php echo $shipper->getEndDateShipper()?></td>
+	 				<td><input type="submit" name="onemoreyear" value="<?php echo _ONE_MORE_YEAR;?>"><input type="hidden" name="shipper_id" value="<?php echo $shipper->getId();?>"></td>
+	 			</form>
 	 		</tr>
 	 	<?php }?>
 	 </table>
-</form>
 <?php } else {
 echo '<em>' . _THERE_IS_NO_ONE . '</em>';
 }?>
@@ -68,24 +68,25 @@ echo '<em>' . _THERE_IS_NO_ONE . '</em>';
 <!-- Transporteurs en fin d'abonnement -->
 <h1><?php echo _SHIPPER_SUBSCRIPTION_END?></h1>
 <?php if (!empty($endingSubscriptions)) { ?>
-<form method="post" action="../tools/business/check_info_admin.php">
+
 	 <table>
 	 	<?php foreach ($endingSubscriptions as $shipper) { ?>
 	 		<tr>
-	 			<td><?php echo $shipper->getSociety()?></td>
-	 			<td><?php echo $shipper->getEndDateShipper()?></td>
-	 			<td><input type="submit" name="onemoreyear" value="<?php echo _ONE_MORE_YEAR;?>"><input type="hidden" name="shipper_id" value="<?php echo $shipper->getId();?>"></td>
+	 			<form method="post" action="../tools/business/check_info_admin.php">
+	 				<td><?php echo $shipper->getSociety()?></td>
+	 				<td><?php echo $shipper->getEndDateShipper()?></td>
+	 				<td><input type="submit" name="onemoreyear" value="<?php echo _ONE_MORE_YEAR;?>"><input type="hidden" name="shipper_id" value="<?php echo $shipper->getId();?>"></td>
+				</form>
 	 		</tr>
 	 	<?php }?>
 	 </table>
-</form>
+
 <?php } else {
 echo '<em>' . _THERE_IS_NO_ONE . '</em>';
 }?>
 <!-- Validation des devis sélectionnés pour envoi des coordonnées mutuelles -->
 <h1><?php echo _ESTIMATE_TO_VALIDATE;?></h1>
 <?php if (!empty($estimates)) {?>
-<form method="post" action="../tools/business/check_info_admin.php">
 	<table>
 		<tr>
 			<th><?php echo _ESTIMATE_NUMBER?></th>
@@ -95,15 +96,16 @@ echo '<em>' . _THERE_IS_NO_ONE . '</em>';
 		</tr>
 		<?php foreach ($estimates as $estimate) { var_dump($estimate)?>
 			<tr>
-				<td><?php echo $estimate->getId()?></td>
-				<td><?php $ad = $adManager->getAd($estimate->getAd()); $user = $userManager->getUser($ad->getUser()); echo $user->getFirstname() . ' ' . $user->getLastname() ; ?></td>
-				<td><?php $user = $userManager->getUser($estimate->getShipper()) ; echo $user->getFirstname() . ' ' . $user->getLastname() ;?></td>
-				<td><?php echo $estimate->getPrice();?></td>
-				<td><input type="submit" name="validate" value="<?php echo _VALIDATE;?>"><input type="hidden" name="estimate_id" value="<?php echo $estimate->getId();?>"></td>
+				<form method="post" action="../tools/business/check_info_admin.php">
+					<td><?php echo $estimate->getId()?></td>
+					<td><?php $ad = $adManager->getAd($estimate->getAd()); $user = $userManager->getUser($ad->getUser()); echo $user->getFirstname() . ' ' . $user->getLastname() ; ?></td>
+					<td><?php $user = $userManager->getUser($estimate->getShipper()) ; echo $user->getFirstname() . ' ' . $user->getLastname() ;?></td>
+					<td><?php echo $estimate->getPrice();?></td>
+					<td><input type="submit" name="validate" value="<?php echo _VALIDATE;?>"><input type="hidden" name="estimate_id" value="<?php echo $estimate->getId();?>"></td>
+				</form>
 			</tr>		
-		<?php }?>
+		<?php }?> 
 	</table>
-</form>
 <?php } else {
 echo '<em>' . _NO_ESTIMATE . '</em>';
 }?>

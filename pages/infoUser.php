@@ -14,7 +14,7 @@
  * Project		teemw
  *
  \************************************************************/
-include_once '../ressources/templates/header.php';
+require_once ('../ressources/templates/navbar-backoffice.php');
 require_once '../business/user.php';
 require_once '../business/city.php';
 require_once '../business/estimate.php';
@@ -54,7 +54,7 @@ if (isset($_SESSION['city'])){
 	
 ?>
 
-<body>
+
 
 <div class="container-fluid">
 	<h2 style="text-align: center; padding: 20px; padding-bottom: 50px"><?php echo _INFO_USER?></h2>
