@@ -396,7 +396,7 @@ if(isset($_SESSION['estimate_refused'])){
 	<table width="360">
   <tr>
   	<th><?php echo _SHIPPER?></th>
-    <th><?php echo _TITLE?></th>
+    <th><?php echo _US_TITLE?></th>
     <th><?php echo _DATE?></th>
     <th><?php echo _PRICE?></th>
     <th><?php echo _SELECTION?></th>
@@ -440,7 +440,7 @@ if(isset($_SESSION['infoShipper'])){
 	?>
 	<table width="560">
   <tr>
-    <th><?php echo _TITLE?></th>
+    <th><?php echo _US_TITLE?></th>
     <th><?php echo _US_SOCIETY?></th>
     <th><?php echo _US_EMAIL?></th>
   </tr>
@@ -479,7 +479,7 @@ if(isset($_SESSION['infoCustomer'])){
 	?>
 	<table width="560">
   <tr>
-    <th><?php echo _TITLE?></th>
+    <th><?php echo _US_TITLE?></th>
     <th><?php echo _US_LASTNAME?></th>
     <th><?php echo _US_FIRSTNAME?></th>
     <th><?php echo _US_EMAIL?></th>
