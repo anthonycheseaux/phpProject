@@ -14,10 +14,10 @@
  \************************************************************/
 set_include_path(get_include_path() . PATH_SEPARATOR . dirname(__FILE__) . '\..\..');
 require_once 'mysqlconnection.php';
-require_once '/business/estimate.php';
-require_once '/business/user.php';
-require_once '/tools/database/mysqladmanager.php';
-require_once '/tools/database/mysqlestimatemanager.php';
+require_once ('../business/estimate.php');
+require_once ('../business/user.php');
+require_once ('mysqladmanager.php');
+require_once ('mysqlestimatemanager.php');
 
 class MySqlEstimateManager {
 	

@@ -216,7 +216,7 @@ define("_MSG_SETFNAME", "Add a firstname");
 define("_MSG_UPDATE_SUCCESS", "Update succeeded, please logout and login again to apply update.");
 define("_MSG_REGISTRATION_SUCCESS","Registration succeeded");
 define("_MSG_MAIL_PASSWORD_INCORRECT", "E-mail or password incorrect!");
-define("_MSG_EMAIL_USED; ","E-mail already used !");
+define("_MSG_EMAIL_USED","E-mail already used !");
 
 
 /*

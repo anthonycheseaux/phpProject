@@ -12,10 +12,9 @@
  * Project		teemw
  *
  \************************************************************/
-
-set_include_path(get_include_path() . PATH_SEPARATOR . dirname(__FILE__) . '\..\..');
+//set_include_path(get_include_path() . PATH_SEPARATOR . dirname(__FILE__) . '/../../');
 require_once 'mysqlconnection.php';
-require_once 'business/user.php';
+require_once ('../business/user.php');
 class MySqlManager
 {
 	private $_conn;
