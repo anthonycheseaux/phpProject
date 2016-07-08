@@ -16,7 +16,7 @@
 
 
 require_once 'mysqlconnection.php';
-require_once '../business/city.php';
+require_once '../business/city.php'; 
 class MySqlCityManager
 {
 	private $_conn;
