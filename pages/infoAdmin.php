@@ -55,7 +55,7 @@ $estimates = $estimateManager->getAllEstimatesByState(3);
 		<br>
 
 <?php if (!empty($finishedSubscriptions)) { ?>
-	 <table>
+	 <table class="table-striped" id="user-info" style="text-align: left">
 	 	<?php foreach ($finishedSubscriptions as $shipper) { ?>
 	 		<tr>
 	 			<form method="post" action="../tools/business/check_info_admin.php">
@@ -74,7 +74,7 @@ echo '<em>' . _THERE_IS_NO_ONE . '</em>';
 <h2><?php echo _SHIPPER_SUBSCRIPTION_END?></h2>
 <?php if (!empty($endingSubscriptions)) { ?>
 
-	 <table>
+	 <table class="table-striped" id="user-info" style="text-align: left">
 	 	<?php foreach ($endingSubscriptions as $shipper) { ?>
 	 		<tr>
 	 			<form method="post" action="../tools/business/check_info_admin.php">
@@ -92,14 +92,14 @@ echo '<em>' . _THERE_IS_NO_ONE . '</em>';
 <!-- Validation des devis sélectionnés pour envoi des coordonnées mutuelles -->
 <h2><?php echo _ESTIMATE_TO_VALIDATE;?></h2>
 <?php if (!empty($estimates)) {?>
-	<table>
+	<table class="table-striped" id="user-info" style="text-align: left">
 		<tr>
 			<th><?php echo _ESTIMATE_NUMBER?></th>
 			<th><?php echo _ADVERTISER?></th>
 			<th><?php echo _SHIPPER?></th>
 			<th><?php echo _PRICE?></th>
 		</tr>
-		<?php foreach ($estimates as $estimate) { var_dump($estimate)?>
+		<?php foreach ($estimates as $estimate) { ?>
 			<tr>
 				<form method="post" action="../tools/business/check_info_admin.php">
 					<td><?php echo $estimate->getId()?></td>

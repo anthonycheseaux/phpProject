@@ -4,10 +4,9 @@ require_once '../business/user.php';
 require_once '../business/city.php';
 require_once '../business/estimate.php';?>
 
-<?php echo _TR_ESTIMATE?> <br>
-<form method="post" action ="../tools/business/check_info_estimate.php">
-<input type ="submit" name="action" value="affiche devis">
-</form>
+<div class="container">
+
+<h2><?php echo _TR_ESTIMATE?></h2> <br>
 
 <!-- Display estimate -->
 <?php 
@@ -66,10 +65,11 @@ if(isset($_SESSION['infoShipper'])){
 	<td><?php echo $element->getTitleAd();?></td>
 	<td><?php echo $element->getSociety();?></td>
 	<td><?php echo $element->getEmail();?></td>
-
+	<td><input type="submit" name="action" value="archiver"/></td>
 </tr>
 </form>
 <?php 
 		}
 	}
 }?>
+</table>

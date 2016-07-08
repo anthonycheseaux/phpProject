@@ -144,7 +144,9 @@ class MySqlEstimateManager {
 				unset($estimate);
 			}
 
-			return $response;
+			if(isset($response))
+				return $response;
+			
 	}
 	
 	public function getAllEstimatesByState($state) {

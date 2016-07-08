@@ -35,6 +35,14 @@ if (isset ( $_SESSION ['city'] )) {
 	$city = unserialize ( $_SESSION ['city'] );
 }
 
+//Redirection en cas de notification à afficher pour l'annonceur (A placer au début de "infoAdvertiser")
+// if (isset($_SESSION['estimate'])){
+// 	header("location: ../pages/alertAdvertiser.php");
+// }
+if(isset($_SESSION['infoShipper'])){
+	header("location: ../pages/alertAdvertiser.php");
+}
+
 ?>
 
 <div class="container">

@@ -12,6 +12,8 @@ if(isset($_SESSION['estimate_accepted'])){
 	$estimate = $_SESSION['estimate_accepted'];
 	
 	?>
+	
+	<h2><div class="container"></h2>
 	<?php echo _ACCEPTE?>
 	<br>
 	<table width="360">
@@ -117,10 +119,11 @@ if(isset($_SESSION['infoCustomer'])){
 	<td><?php echo $element->getLastname();?></td>
 	<td><?php echo $element->getFirstname();?></td>
 	<td><?php echo $element->getEmail();?></td>
-
+	<td><input type="submit" name="action" value="archiver"/></td>
 </tr>
 </form>
 <?php
 		}
 	}
 }?>
+</div>
