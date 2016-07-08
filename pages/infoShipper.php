@@ -34,6 +34,17 @@ if (isset ( $_SESSION ['city'] )) {
 	$city = unserialize ( $_SESSION ['city'] );
 }
 
+//Redirection en cas de notification à afficher pour le transporteur (A placer au début de "infoShipper")
+if(isset($_SESSION['estimate_accepted'])){
+	header("location: ../pages/alertShipper.php");
+}
+if(isset($_SESSION['estimate_refused'])){
+	header("location: ../pages/alertShipper.php");
+}
+if(isset($_SESSION['infoCustomer'])){
+	header("location: ../pages/alertShipper.php");
+}
+
 ?>
 
 <div class="container">

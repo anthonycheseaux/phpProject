@@ -127,20 +127,28 @@ function authenticateShipper($mysql, $mysqlCity, $mysqlEstimate, $mysqlAd){
 	if($result->getRole()==2){
 		
 		$listAd = $mysqlAd->getAdByCustomer($result->getId());
-
-		$shipper = null;
-		foreach ($listAd as $element){
-			$shipper[] = $mysqlEstimate->getInfoShipperByEstimateState($element->getId(), ESTIMATE_PAID);
-		}
-
-		if($shipper!=null){
-			$_SESSION['infoShipper'] = $shipper;
 		
+		if($listAd != null) {
+
+			$shipper = null;
+			foreach ($listAd as $element){
+				$shipper[] = $mysqlEstimate->getInfoShipperByEstimateState($element->getId(), ESTIMATE_PAID);
+			}
+	
+			if($shipper!=null){
+				$_SESSION['infoShipper'] = $shipper;
+			
+			}
 		}
 		//Code pour rediriger sur la page de l'annonceur
 		header("location: ../pages/infoAdvertiser.php");
 	}
 	
+	//gestion connection admin
+	if($result->getRole()==1){
+		//Code pour rediriger sur la page de l'admin
+		header("location: ../pages/infoAdmin.php");
+	}
 	
 	//header("location: ../pages/infoUser.php");
 	exit();

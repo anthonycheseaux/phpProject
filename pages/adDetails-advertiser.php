@@ -132,11 +132,17 @@ if ($ad = $adManager->getAd ( $ad_id )) {
 	</form>
 	<br>
 	<hr>
+	
+	
+	
 	<!-- Essais d'afficher un devis -->
 Devis : <br>
 <form method="post" action ="../tools/business/check_info_estimate.php">
 <input type ="submit" name="action" value="affiche devis">
+<input type="hidden" name="id_ad" value=<?php echo $ad->getId();?>>
 </form>
+
+
 	<!-- Display estimate -->
 <?php 
 if(isset($_SESSION['estimate'])){
@@ -159,7 +165,12 @@ if(isset($_SESSION['estimate'])){
 	<td><?php echo 'Shipper '.$element->getShipper()?></td>
 	<td><?php echo $element->getPrice().'.-'?></td>
 <!-- l'input "hidden" contient l'id du transporteur -->
-	<td><input type="submit" name="action" value="Select shipper"> </td><input type="hidden" name="id_estimate" value=<?php echo $element->getId();?>>
+	<td>
+		<input type="submit" name="action" value="Select shipper"> 
+		<input type="hidden" name="id_estimate" value=<?php echo $element->getId();?>>
+		
+	</td>
+	
 </tr>
 </form>
 <?php 

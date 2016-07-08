@@ -45,6 +45,11 @@ if (isset($_POST['action']) && $_POST['action'] == "Select shipper") {
 	validEstimate($estimateManager, $_POST['id_estimate']);
 }
 
+if (isset($_POST['action']) && $_POST['action'] == "archiver") {
+
+	archive();
+}
+
 if (isset($_POST['action']) && $_POST['action'] == "OK") {
 
 	$estimate = urldecode($_POST['estimate']);
@@ -63,10 +68,40 @@ if (isset($_POST['action']) && $_POST['action'] == "info customer") {
 	displayInfoCustommer($estimateManager);
 }
 
+function archive() {
+	if(isset($_SESSION['estimate_accepted'])){
+		unset($_SESSION['estimate_accepted']);
+	}
+	if(isset($_SESSION['estimate_refused'])){
+		unset($_SESSION['estimate_refused']);
+	}
+	if(isset($_SESSION['infoCustomer'])){
+		unset($_SESSION['infoCustomer']);
+	}
+	
+// 	if (isset($_SESSION['estimate'])){
+// 		unset($_SESSION['estimate']);
+// 	}
+	if(isset($_SESSION['infoShipper'])){
+		unset($_SESSION['infoShipper']);
+	}
+	
+	
+	$user = unserialize($_SESSION['user']);
+	
+	if($user->getRole() == 3) {
+		header("location: ../../pages/infoShipper.php");
+	}
+	
+	if($user->getRole() == 2) {
+		header("location: ../../pages/infoAdvertiser.php");
+	}
+}
+
 function registerEstimate($estimateManager) {
 	$ad = htmlspecialchars($_SESSION[AD]);
 	$price = htmlspecialchars($_POST[PRICE]);
-	$shipper = htmlspecialchars($_SESSION[SHIPPER]);
+	$shipper = unserialize($_SESSION['user']);
 	
 	// Check the fields
 	if (empty($price)) {
@@ -86,8 +121,9 @@ function registerEstimate($estimateManager) {
 		exit;
 	}
 	
+	
 	// Si on arrive là sans qu'il y ait un shipper, il y a un souci, en fait.
-	$estimate = new Estimate(0, $ad, $price, $shipper);
+	$estimate = new Estimate(0, $ad, $price, $shipper->getId());
 	
 	$result = $estimateManager->createEstimate($estimate);
 	
@@ -103,11 +139,12 @@ function registerEstimate($estimateManager) {
 function displayEstimate($estimateManager){
 	
 	//$ad = unserialize($_SESSION[AD]);
-	$result = $estimateManager->getAllEstimatesByAdAndState(2, 1);
+	$adId = $_POST["id_ad"];
+	$result = $estimateManager->getAllEstimatesByAdAndState($adId, 1);
 	
 	$_SESSION['estimate'] = $result;
 	
-	header("location: ../../pages/infoUser.php");
+	header("location: ../../pages/alertAdvertiser.php");
 	exit();
 	
 }
@@ -126,7 +163,7 @@ function validEstimate($estimateManager, $id){
 	}
 	$_SESSION['estimate'] = null;
 	
-	header("location: ../../pages/infoUser.php");
+	header("location: ../../pages/infoAdvertiser.php");
 	exit();
 }
 
@@ -165,7 +202,7 @@ function readInfo($estimateManager, $estimate){
 		$_SESSION['estimate_refused'] = $estimateRefused;
 	}
 
-	header("location: ../../pages/infoUser.php");
+	header("location: ../../pages/alertShipper.php");
 	exit();
 }
 
